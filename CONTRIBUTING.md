@@ -70,6 +70,7 @@ The main data file (`data/streaming-standards-data.json`) is organized in layers
             {
               "name": "Technology Name",
               "description": "Detailed description of the technology",
+              "maturity": "",
               "links": [
                 {
                   "text": "Documentation",
@@ -86,6 +87,39 @@ The main data file (`data/streaming-standards-data.json`) is organized in layers
 }
 ```
 
+### Technology Maturity Field
+
+The `maturity` field allows you to indicate the development stage of a technology. This enables future features like color coding and filtering based on technology maturity.
+
+#### Maturity Levels (Recommended Values)
+
+- **`"mature"`** - Well-established, widely adopted, stable technology (e.g., H.264, MP4)
+- **`"stable"`** - Production-ready, actively used in industry (e.g., HLS, DASH)
+- **`"emerging"`** - Growing adoption, becoming mainstream (e.g., AV1, WebRTC)
+- **`"experimental"`** - Early development, limited adoption (e.g., new protocols)
+- **`"deprecated"`** - Being phased out, legacy support only (e.g., MP3, older protocols)
+- **`""`** - Not yet classified (current default)
+
+#### Example Usage
+
+```json
+{
+  "name": "H.264/AVC",
+  "description": "Widely adopted video codec...",
+  "maturity": "mature",
+  "links": [...],
+  "searchTerms": [...]
+}
+```
+
+#### Future Features
+
+The maturity field will enable:
+- **Color coding**: Different shades based on maturity level
+- **Visual indicators**: Icons or borders showing maturity status
+- **Filtering**: Show/hide technologies by maturity level
+- **Timeline tracking**: Track how protocols evolve over time
+
 ## 🔧 Step-by-Step Editing Guide
 
 ### 1. Adding a New Technology
@@ -99,6 +133,7 @@ To add a new technology to an existing category:
 {
   "name": "Your New Technology",
   "description": "A clear, concise description of what this technology does, its key features, and where it's used. Include technical details like latency, bandwidth requirements, or compatibility.",
+  "maturity": "",
   "links": [
     {
       "text": "Official Documentation",
