@@ -1,6 +1,6 @@
 /**
  * Data Loader for Video Streaming Standards Diagram
- * Loads JSON data and renders the interactive diagram
+ * Loads JSON data and renders the interactive diagram with exact original styling
  */
 
 class StreamingStandardsDataLoader {
@@ -33,38 +33,21 @@ class StreamingStandardsDataLoader {
             throw new Error('Data not loaded. Call loadData() first.');
         }
 
-        this.renderHeader();
         this.renderLayers();
         this.renderWorkflows();
-        this.renderSearch();
-    }
-
-    renderHeader() {
-        const header = `
-            <div class="header">
-                <h1>${this.data.metadata.title}</h1>
-                <p class="subtitle">${this.data.metadata.subtitle}</p>
-                <p class="description">${this.data.metadata.description}</p>
-            </div>
-        `;
-        this.container.innerHTML = header;
     }
 
     renderLayers() {
-        const layersContainer = document.createElement('div');
-        layersContainer.className = 'layers-container';
-
         this.data.layers.forEach(layer => {
             const layerElement = this.createLayerElement(layer);
-            layersContainer.appendChild(layerElement);
+            this.container.appendChild(layerElement);
         });
-
-        this.container.appendChild(layersContainer);
     }
 
     createLayerElement(layer) {
         const layerDiv = document.createElement('div');
-        layerDiv.className = `layer ${layer.id}`;
+        layerDiv.className = `layer`;
+        layerDiv.setAttribute('data-layer', layer.id);
 
         const layerHeader = `
             <div class="layer-header ${layer.id}">
@@ -116,24 +99,18 @@ class StreamingStandardsDataLoader {
                 </ul>
                 
                 <p><strong>Links:</strong></p>
-                <ul>
-                    ${category.links.map(link => 
-                        `<li><a href="${link.url}" target="_blank">${link.text}</a></li>`
-                    ).join('')}
-                </ul>
+                ${category.links.map(link => 
+                    `<a href="${link.url}" target="_blank">🔗 ${link.text}</a>`
+                ).join('')}
             </div>
         `;
 
-        const technologiesDiv = document.createElement('div');
-        technologiesDiv.className = 'technologies';
-
         category.technologies.forEach(tech => {
             const techElement = this.createTechnologyElement(tech);
-            technologiesDiv.appendChild(techElement);
+            categoryDiv.appendChild(techElement);
         });
 
         categoryDiv.innerHTML = categoryHeader;
-        categoryDiv.appendChild(technologiesDiv);
         return categoryDiv;
     }
 
@@ -143,18 +120,13 @@ class StreamingStandardsDataLoader {
         techDiv.setAttribute('data-search', tech.searchTerms.join(' '));
 
         const techContent = `
-            <span class="tech-name">${tech.name}</span>
+            ${tech.name}
             <div class="tooltip">
                 <h5>${tech.name}</h5>
                 <p>${tech.description}</p>
-                ${tech.links ? `
-                    <p><strong>Links:</strong></p>
-                    <ul>
-                        ${tech.links.map(link => 
-                            `<li><a href="${link.url}" target="_blank">${link.text}</a></li>`
-                        ).join('')}
-                    </ul>
-                ` : ''}
+                ${tech.links ? tech.links.map(link => 
+                    `<a href="${link.url}" target="_blank">🔗 ${link.text}</a>`
+                ).join('') : ''}
             </div>
         `;
 
@@ -163,62 +135,47 @@ class StreamingStandardsDataLoader {
     }
 
     renderWorkflows() {
-        // Add workflow sections if needed
-        const workflowsContainer = document.createElement('div');
-        workflowsContainer.className = 'workflows-container';
-        workflowsContainer.innerHTML = `
-            <div class="workflow-section">
-                <h3>Live Streaming Workflow</h3>
-                <div class="workflow-steps">
-                    <div class="step">Camera/Input</div>
-                    <div class="step">Encoder</div>
-                    <div class="step">Packager</div>
-                    <div class="step">CDN</div>
-                    <div class="step">Player</div>
+        const workflowDiv = document.createElement('div');
+        workflowDiv.className = 'workflow';
+        workflowDiv.innerHTML = `
+            <h3>Typical Workflows</h3>
+            
+            <div class="workflow-path">
+                <h4>Live Streaming Workflow</h4>
+                <div class="path-flow">
+                    Camera/Input → Encoder → Packager → CDN → Player
                 </div>
             </div>
             
-            <div class="workflow-section">
-                <h3>VOD Workflow</h3>
-                <div class="workflow-steps">
-                    <div class="step">Source File</div>
-                    <div class="step">Transcoder</div>
-                    <div class="step">Storage</div>
-                    <div class="step">CDN</div>
-                    <div class="step">Player</div>
+            <div class="workflow-path">
+                <h4>VOD Workflow</h4>
+                <div class="path-flow">
+                    Source File → Transcoder → Storage → CDN → Player
+                </div>
+            </div>
+            
+            <div class="workflow-path">
+                <h4>Broadcast Workflow</h4>
+                <div class="path-flow">
+                    Studio → Encoder → Distribution → Transmitter → Receiver
+                </div>
+            </div>
+            
+            <div class="workflow-path">
+                <h4>OTT Workflow</h4>
+                <div class="path-flow">
+                    Content → Ingest → Processing → CDN → Apps/Web
+                </div>
+            </div>
+            
+            <div class="workflow-path">
+                <h4>Real-Time/Interactive</h4>
+                <div class="path-flow">
+                    Camera → WebRTC → SFU → WebRTC → Browser
                 </div>
             </div>
         `;
-        this.container.appendChild(workflowsContainer);
-    }
-
-    renderSearch() {
-        const searchContainer = document.createElement('div');
-        searchContainer.className = 'search-container';
-        searchContainer.innerHTML = `
-            <input type="text" id="searchInput" placeholder="Search technologies..." class="search-input">
-            <div id="searchResults" class="search-results"></div>
-        `;
-        this.container.appendChild(searchContainer);
-
-        this.setupSearch();
-    }
-
-    setupSearch() {
-        const searchInput = document.getElementById('searchInput');
-        const searchResults = document.getElementById('searchResults');
-
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            if (query.length < 2) {
-                searchResults.innerHTML = '';
-                this.showAllItems();
-                return;
-            }
-
-            const results = this.searchTechnologies(query);
-            this.displaySearchResults(results, query);
-        });
+        this.container.appendChild(workflowDiv);
     }
 
     searchTechnologies(query) {
@@ -243,21 +200,11 @@ class StreamingStandardsDataLoader {
     }
 
     displaySearchResults(results, query) {
-        const searchResults = document.getElementById('searchResults');
-        
         if (results.length === 0) {
-            searchResults.innerHTML = '<p>No results found</p>';
             this.hideAllItems();
             return;
         }
 
-        const resultsHtml = results.map(result => `
-            <div class="search-result" onclick="highlightTechnology('${result.tech.name}')">
-                <strong>${result.tech.name}</strong> - ${result.category.name} (${result.layer.name})
-            </div>
-        `).join('');
-
-        searchResults.innerHTML = resultsHtml;
         this.highlightSearchResults(results);
     }
 
