@@ -238,6 +238,28 @@
                 }
               ],
               "searchTerms": ["analytics", "streaming", "metrics"]
+            },
+            {
+              "name": "SCTE 35",
+              "description": "Digital program insertion standard for broadcast and streaming. Enables dynamic ad insertion, program switching, and content splicing. Critical for monetization and content management.",
+              "links": [
+                {
+                  "text": "SCTE 35 Standard",
+                  "url": "https://www.scte.org/standards/standards-library/35-2019"
+                }
+              ],
+              "searchTerms": ["scte", "35", "digital", "program", "insertion", "ad", "splicing"]
+            },
+            {
+              "name": "CMCD",
+              "description": "Common Media Client Data standard. Enables client-side data sharing for CDN optimization. Improves delivery efficiency and reduces bandwidth costs through intelligent caching.",
+              "links": [
+                {
+                  "text": "DVB CMCD",
+                  "url": "https://dvb.org/dvb-dash-fact-sheet/"
+                }
+              ],
+              "searchTerms": ["cmcd", "common", "media", "client", "data", "cdn", "optimization"]
             }
           ]
         }
@@ -526,6 +548,50 @@
                 }
               ],
               "searchTerms": ["whip", "whep", "webrtc", "http"]
+            },
+            {
+              "name": "SMPTE ST 2110",
+              "description": "Professional IP-based video, audio, and data transport standard. Replaces SDI in modern broadcast facilities. Supports uncompressed video with precise timing.",
+              "links": [
+                {
+                  "text": "SMPTE ST 2110",
+                  "url": "https://www.smpte.org/standards/st2110"
+                }
+              ],
+              "searchTerms": ["smpte", "st2110", "professional", "ip", "video", "broadcast"]
+            },
+            {
+              "name": "SMPTE ST 2022-7",
+              "description": "Seamless protection switching for IP streams. Provides redundancy and failover for critical broadcast applications. Ensures zero packet loss during network failures.",
+              "links": [
+                {
+                  "text": "SMPTE ST 2022-7",
+                  "url": "https://www.smpte.org/standards/st2022-7"
+                }
+              ],
+              "searchTerms": ["smpte", "st2022-7", "protection", "switching", "redundancy"]
+            },
+            {
+              "name": "NDI",
+              "description": "Network Device Interface by NewTek. Enables IP-based video production workflows. Low-latency, high-quality video over standard networks. Widely used in live production.",
+              "links": [
+                {
+                  "text": "NDI Documentation",
+                  "url": "https://www.ndi.tv/"
+                }
+              ],
+              "searchTerms": ["ndi", "newtek", "network", "device", "interface", "production"]
+            },
+            {
+              "name": "MOQ",
+              "description": "Media over QUIC protocol. Next-generation transport for low-latency streaming. Built on QUIC for improved performance over HTTP/3. Reduces latency and improves reliability.",
+              "links": [
+                {
+                  "text": "IETF MOQ Draft",
+                  "url": "https://datatracker.ietf.org/doc/draft-ietf-moq-transport/"
+                }
+              ],
+              "searchTerms": ["moq", "media", "quic", "transport", "low", "latency"]
             }
           ]
         }
@@ -941,6 +1007,17 @@
                 }
               ],
               "searchTerms": ["opus", "audio", "codec", "webrtc"]
+            },
+            {
+              "name": "MP3 Codec",
+              "description": "MPEG-1 Audio Layer III. Legacy audio compression format. Still widely supported for compatibility. Used in many legacy systems and applications.",
+              "links": [
+                {
+                  "text": "ISO/IEC 11172-3",
+                  "url": "https://www.iso.org/standard/19180.html"
+                }
+              ],
+              "searchTerms": ["mp3", "mpeg", "audio", "legacy", "compression"]
             }
           ]
         }
