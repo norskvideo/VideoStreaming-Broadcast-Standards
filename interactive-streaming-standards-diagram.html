@@ -740,6 +740,15 @@
             const tooltips = document.querySelectorAll('.tooltip, .category-tooltip, .layer-tooltip');
             console.log('Found tooltips:', tooltips.length);
             
+            // Debug: Log each tooltip type
+            tooltips.forEach((tooltip, index) => {
+                console.log(`Tooltip ${index}:`, {
+                    className: tooltip.className,
+                    parentElement: tooltip.parentElement.className,
+                    parentText: tooltip.parentElement.textContent.substring(0, 50) + '...'
+                });
+            });
+            
             tooltips.forEach((tooltip, index) => {
                 const element = tooltip.parentElement;
                 let hideTimeout;

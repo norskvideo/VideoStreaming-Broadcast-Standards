@@ -69,6 +69,8 @@ class StreamingStandardsDataLoader {
                 </div>
             </div>
         `;
+        
+        console.log(`Created layer header for ${layer.name}:`, layerHeader);
 
         const layerContent = document.createElement('div');
         layerContent.className = 'layer-content';
