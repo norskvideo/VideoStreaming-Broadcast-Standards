@@ -14,7 +14,7 @@
       "description": "The top layer handles user-facing features and business logic that directly impact the viewer experience.",
       "keyFunctions": [
         "Content protection and DRM systems",
-        "Content delivery network optimization", 
+        "Content delivery network optimization",
         "User analytics and quality monitoring",
         "Business logic and monetization"
       ],
@@ -29,7 +29,7 @@
               "description": "Encrypted Media Extensions (EME) for browser-based DRM"
             },
             {
-              "name": "MPEG", 
+              "name": "MPEG",
               "description": "Common Encryption (CENC) and CMAF standards"
             },
             {
@@ -67,7 +67,12 @@
                   "url": "https://developers.google.com/widevine"
                 }
               ],
-              "searchTerms": ["widevine", "drm", "google"]
+              "searchTerms": [
+                "widevine",
+                "drm",
+                "google"
+              ],
+              "maturity": ""
             },
             {
               "name": "PlayReady",
@@ -78,7 +83,12 @@
                   "url": "https://docs.microsoft.com/en-us/playready/"
                 }
               ],
-              "searchTerms": ["playready", "microsoft", "drm"]
+              "searchTerms": [
+                "playready",
+                "microsoft",
+                "drm"
+              ],
+              "maturity": ""
             },
             {
               "name": "FairPlay",
@@ -89,7 +99,12 @@
                   "url": "https://developer.apple.com/streaming/fps/"
                 }
               ],
-              "searchTerms": ["fairplay", "apple", "drm"]
+              "searchTerms": [
+                "fairplay",
+                "apple",
+                "drm"
+              ],
+              "maturity": ""
             }
           ]
         },
@@ -135,35 +150,50 @@
             {
               "name": "Akamai",
               "description": "Global content delivery network with 300,000+ edge servers. Industry leader for live streaming and video-on-demand. Advanced caching and optimization features.",
+              "maturity": "",
               "links": [
                 {
                   "text": "Media Delivery Solutions",
                   "url": "https://www.akamai.com/products/media-delivery"
                 }
               ],
-              "searchTerms": ["akamai", "cdn", "delivery"]
+              "searchTerms": [
+                "akamai",
+                "cdn",
+                "delivery"
+              ]
             },
             {
               "name": "CloudFront",
               "description": "AWS global CDN service with 400+ edge locations. Integrated with AWS media services. Cost-effective with pay-as-you-use pricing.",
+              "maturity": "",
               "links": [
                 {
                   "text": "AWS CloudFront",
                   "url": "https://aws.amazon.com/cloudfront/"
                 }
               ],
-              "searchTerms": ["cloudfront", "aws", "cdn"]
+              "searchTerms": [
+                "cloudfront",
+                "aws",
+                "cdn"
+              ]
             },
             {
               "name": "Cloudflare",
               "description": "Global edge network with focus on security and performance. Stream delivery platform with built-in analytics. Strong DDoS protection.",
+              "maturity": "",
               "links": [
                 {
                   "text": "Cloudflare Stream",
                   "url": "https://www.cloudflare.com/products/cloudflare-stream/"
                 }
               ],
-              "searchTerms": ["cloudflare", "cdn", "streaming"]
+              "searchTerms": [
+                "cloudflare",
+                "cdn",
+                "streaming"
+              ]
             }
           ]
         },
@@ -209,57 +239,91 @@
             {
               "name": "QoE Metrics",
               "description": "User-centric metrics measuring perceived quality. Includes startup time, rebuffering events, resolution changes, and completion rates.",
+              "maturity": "",
               "links": [
                 {
                   "text": "ITU Standards",
                   "url": "https://www.iso.org/standard/79707.html"
                 }
               ],
-              "searchTerms": ["qoe", "quality", "experience"]
+              "searchTerms": [
+                "qoe",
+                "quality",
+                "experience"
+              ]
             },
             {
               "name": "QoS Monitoring",
               "description": "Network-level performance metrics. Measures bandwidth, latency, packet loss, and jitter. Critical for professional broadcast workflows.",
+              "maturity": "",
               "links": [
                 {
                   "text": "IETF RFC 3393",
                   "url": "https://tools.ietf.org/html/rfc3393"
                 }
               ],
-              "searchTerms": ["qos", "quality", "service", "network"]
+              "searchTerms": [
+                "qos",
+                "quality",
+                "service",
+                "network"
+              ]
             },
             {
               "name": "Stream Analytics",
               "description": "Real-time analysis of viewer behavior, content performance, and system health. Enables data-driven optimization and personalization.",
+              "maturity": "",
               "links": [
                 {
                   "text": "Industry Overview",
                   "url": "https://www.streamingmedia.com/Articles/Editorial/What-Is-.../What-is-Streaming-Analytics-74647.aspx"
                 }
               ],
-              "searchTerms": ["analytics", "streaming", "metrics"]
+              "searchTerms": [
+                "analytics",
+                "streaming",
+                "metrics"
+              ]
             },
             {
               "name": "SCTE 35",
               "description": "Digital program insertion standard for broadcast and streaming. Enables dynamic ad insertion, program switching, and content splicing. Critical for monetization and content management.",
+              "maturity": "",
               "links": [
                 {
                   "text": "SCTE 35 Standard",
                   "url": "https://www.scte.org/standards/standards-library/35-2019"
                 }
               ],
-              "searchTerms": ["scte", "35", "digital", "program", "insertion", "ad", "splicing"]
+              "searchTerms": [
+                "scte",
+                "35",
+                "digital",
+                "program",
+                "insertion",
+                "ad",
+                "splicing"
+              ]
             },
             {
               "name": "CMCD",
               "description": "Common Media Client Data standard. Enables client-side data sharing for CDN optimization. Improves delivery efficiency and reduces bandwidth costs through intelligent caching.",
+              "maturity": "",
               "links": [
                 {
                   "text": "DVB CMCD",
                   "url": "https://dvb.org/dvb-dash-fact-sheet/"
                 }
               ],
-              "searchTerms": ["cmcd", "common", "media", "client", "data", "cdn", "optimization"]
+              "searchTerms": [
+                "cmcd",
+                "common",
+                "media",
+                "client",
+                "data",
+                "cdn",
+                "optimization"
+              ]
             }
           ]
         }
@@ -325,7 +389,13 @@
                   "url": "https://dashif.org/"
                 }
               ],
-              "searchTerms": ["dash", "mpeg", "streaming", "adaptive"]
+              "searchTerms": [
+                "dash",
+                "mpeg",
+                "streaming",
+                "adaptive"
+              ],
+              "maturity": ""
             },
             {
               "name": "MPD Manifest",
@@ -336,7 +406,12 @@
                   "url": "https://standards.iso.org/ittf/PubliclyAvailableStandards/c065274_ISO_IEC_23009-1_2014.zip"
                 }
               ],
-              "searchTerms": ["mpd", "manifest", "xml"]
+              "searchTerms": [
+                "mpd",
+                "manifest",
+                "xml"
+              ],
+              "maturity": ""
             },
             {
               "name": "fMP4 Segments",
@@ -347,7 +422,12 @@
                   "url": "https://www.iso.org/standard/68960.html"
                 }
               ],
-              "searchTerms": ["fmp4", "fragmented", "mp4"]
+              "searchTerms": [
+                "fmp4",
+                "fragmented",
+                "mp4"
+              ],
+              "maturity": ""
             }
           ]
         },
@@ -399,7 +479,14 @@
                   "url": "https://developer.apple.com/streaming/"
                 }
               ],
-              "searchTerms": ["hls", "apple", "http", "live", "streaming"]
+              "searchTerms": [
+                "hls",
+                "apple",
+                "http",
+                "live",
+                "streaming"
+              ],
+              "maturity": ""
             },
             {
               "name": "M3U8 Playlist",
@@ -410,7 +497,12 @@
                   "url": "https://tools.ietf.org/html/rfc8216"
                 }
               ],
-              "searchTerms": ["m3u8", "playlist", "manifest"]
+              "searchTerms": [
+                "m3u8",
+                "playlist",
+                "manifest"
+              ],
+              "maturity": ""
             },
             {
               "name": "LL-HLS",
@@ -421,7 +513,12 @@
                   "url": "https://developer.apple.com/documentation/http_live_streaming/enabling_low-latency_hls"
                 }
               ],
-              "searchTerms": ["ll-hls", "low", "latency"]
+              "searchTerms": [
+                "ll-hls",
+                "low",
+                "latency"
+              ],
+              "maturity": ""
             }
           ]
         },
@@ -473,7 +570,14 @@
                   "url": "https://www.iso.org/standard/71975.html"
                 }
               ],
-              "searchTerms": ["cmaf", "common", "media", "application", "format"]
+              "searchTerms": [
+                "cmaf",
+                "common",
+                "media",
+                "application",
+                "format"
+              ],
+              "maturity": ""
             },
             {
               "name": "Chunked Encoding",
@@ -484,7 +588,12 @@
                   "url": "https://www.iso.org/standard/71975.html"
                 }
               ],
-              "searchTerms": ["chunked", "encoding", "cmaf"]
+              "searchTerms": [
+                "chunked",
+                "encoding",
+                "cmaf"
+              ],
+              "maturity": ""
             }
           ]
         },
@@ -536,7 +645,13 @@
                   "url": "https://webrtc.org/"
                 }
               ],
-              "searchTerms": ["webrtc", "real", "time", "communication"]
+              "searchTerms": [
+                "webrtc",
+                "real",
+                "time",
+                "communication"
+              ],
+              "maturity": ""
             },
             {
               "name": "WHIP/WHEP",
@@ -547,7 +662,13 @@
                   "url": "https://datatracker.ietf.org/doc/draft-murillo-whep/"
                 }
               ],
-              "searchTerms": ["whip", "whep", "webrtc", "http"]
+              "searchTerms": [
+                "whip",
+                "whep",
+                "webrtc",
+                "http"
+              ],
+              "maturity": ""
             },
             {
               "name": "SMPTE ST 2110",
@@ -558,7 +679,15 @@
                   "url": "https://www.smpte.org/standards/st2110"
                 }
               ],
-              "searchTerms": ["smpte", "st2110", "professional", "ip", "video", "broadcast"]
+              "searchTerms": [
+                "smpte",
+                "st2110",
+                "professional",
+                "ip",
+                "video",
+                "broadcast"
+              ],
+              "maturity": ""
             },
             {
               "name": "SMPTE ST 2022-7",
@@ -569,7 +698,14 @@
                   "url": "https://www.smpte.org/standards/st2022-7"
                 }
               ],
-              "searchTerms": ["smpte", "st2022-7", "protection", "switching", "redundancy"]
+              "searchTerms": [
+                "smpte",
+                "st2022-7",
+                "protection",
+                "switching",
+                "redundancy"
+              ],
+              "maturity": ""
             },
             {
               "name": "NDI",
@@ -580,7 +716,15 @@
                   "url": "https://www.ndi.tv/"
                 }
               ],
-              "searchTerms": ["ndi", "newtek", "network", "device", "interface", "production"]
+              "searchTerms": [
+                "ndi",
+                "newtek",
+                "network",
+                "device",
+                "interface",
+                "production"
+              ],
+              "maturity": ""
             },
             {
               "name": "MOQ",
@@ -591,7 +735,15 @@
                   "url": "https://datatracker.ietf.org/doc/draft-ietf-moq-transport/"
                 }
               ],
-              "searchTerms": ["moq", "media", "quic", "transport", "low", "latency"]
+              "searchTerms": [
+                "moq",
+                "media",
+                "quic",
+                "transport",
+                "low",
+                "latency"
+              ],
+              "maturity": ""
             }
           ]
         }
@@ -657,7 +809,13 @@
                   "url": "https://tools.ietf.org/html/rfc7540"
                 }
               ],
-              "searchTerms": ["http2", "http", "protocol", "multiplexing"]
+              "searchTerms": [
+                "http2",
+                "http",
+                "protocol",
+                "multiplexing"
+              ],
+              "maturity": ""
             },
             {
               "name": "WebRTC",
@@ -668,7 +826,13 @@
                   "url": "https://webrtc.org/"
                 }
               ],
-              "searchTerms": ["webrtc", "real", "time", "communication"]
+              "searchTerms": [
+                "webrtc",
+                "real",
+                "time",
+                "communication"
+              ],
+              "maturity": ""
             },
             {
               "name": "RTP/RTCP",
@@ -679,7 +843,14 @@
                   "url": "https://tools.ietf.org/html/rfc3550"
                 }
               ],
-              "searchTerms": ["rtp", "rtcp", "real", "time", "transport"]
+              "searchTerms": [
+                "rtp",
+                "rtcp",
+                "real",
+                "time",
+                "transport"
+              ],
+              "maturity": ""
             }
           ]
         }
@@ -745,7 +916,13 @@
                   "url": "https://www.srtalliance.org/"
                 }
               ],
-              "searchTerms": ["srt", "secure", "reliable", "transport"]
+              "searchTerms": [
+                "srt",
+                "secure",
+                "reliable",
+                "transport"
+              ],
+              "maturity": ""
             },
             {
               "name": "RIST Protocol",
@@ -756,7 +933,14 @@
                   "url": "https://www.rist.tv/"
                 }
               ],
-              "searchTerms": ["rist", "reliable", "internet", "stream", "transport"]
+              "searchTerms": [
+                "rist",
+                "reliable",
+                "internet",
+                "stream",
+                "transport"
+              ],
+              "maturity": ""
             },
             {
               "name": "Zixi Protocol",
@@ -767,7 +951,12 @@
                   "url": "https://zixi.com/"
                 }
               ],
-              "searchTerms": ["zixi", "protocol", "transport"]
+              "searchTerms": [
+                "zixi",
+                "protocol",
+                "transport"
+              ],
+              "maturity": ""
             }
           ]
         }
@@ -833,7 +1022,12 @@
                   "url": "https://www.iso.org/standard/68960.html"
                 }
               ],
-              "searchTerms": ["mp4", "container", "format"]
+              "searchTerms": [
+                "mp4",
+                "container",
+                "format"
+              ],
+              "maturity": ""
             },
             {
               "name": "MPEG-TS",
@@ -844,7 +1038,13 @@
                   "url": "https://www.iso.org/standard/44169.html"
                 }
               ],
-              "searchTerms": ["mpeg-ts", "transport", "stream", "broadcast"]
+              "searchTerms": [
+                "mpeg-ts",
+                "transport",
+                "stream",
+                "broadcast"
+              ],
+              "maturity": ""
             },
             {
               "name": "MXF Format",
@@ -855,7 +1055,13 @@
                   "url": "https://www.smpte.org/standards/mxf"
                 }
               ],
-              "searchTerms": ["mxf", "material", "exchange", "format"]
+              "searchTerms": [
+                "mxf",
+                "material",
+                "exchange",
+                "format"
+              ],
+              "maturity": ""
             }
           ]
         }
@@ -921,7 +1127,13 @@
                   "url": "https://www.itu.int/rec/T-REC-H.264"
                 }
               ],
-              "searchTerms": ["h264", "avc", "codec", "video"]
+              "searchTerms": [
+                "h264",
+                "avc",
+                "codec",
+                "video"
+              ],
+              "maturity": ""
             },
             {
               "name": "H.265/HEVC",
@@ -932,7 +1144,13 @@
                   "url": "https://www.itu.int/rec/T-REC-H.265"
                 }
               ],
-              "searchTerms": ["h265", "hevc", "codec", "video"]
+              "searchTerms": [
+                "h265",
+                "hevc",
+                "codec",
+                "video"
+              ],
+              "maturity": ""
             },
             {
               "name": "AV1 Codec",
@@ -943,7 +1161,13 @@
                   "url": "https://aomedia.org/av1/"
                 }
               ],
-              "searchTerms": ["av1", "aomedia", "codec", "video"]
+              "searchTerms": [
+                "av1",
+                "aomedia",
+                "codec",
+                "video"
+              ],
+              "maturity": ""
             }
           ]
         },
@@ -995,7 +1219,12 @@
                   "url": "https://www.iso.org/standard/43345.html"
                 }
               ],
-              "searchTerms": ["aac", "audio", "codec"]
+              "searchTerms": [
+                "aac",
+                "audio",
+                "codec"
+              ],
+              "maturity": ""
             },
             {
               "name": "Opus Codec",
@@ -1006,7 +1235,13 @@
                   "url": "https://tools.ietf.org/html/rfc6716"
                 }
               ],
-              "searchTerms": ["opus", "audio", "codec", "webrtc"]
+              "searchTerms": [
+                "opus",
+                "audio",
+                "codec",
+                "webrtc"
+              ],
+              "maturity": ""
             },
             {
               "name": "MP3 Codec",
@@ -1017,7 +1252,14 @@
                   "url": "https://www.iso.org/standard/19180.html"
                 }
               ],
-              "searchTerms": ["mp3", "mpeg", "audio", "legacy", "compression"]
+              "searchTerms": [
+                "mp3",
+                "mpeg",
+                "audio",
+                "legacy",
+                "compression"
+              ],
+              "maturity": ""
             }
           ]
         }
@@ -1083,7 +1325,13 @@
                   "url": "https://tools.ietf.org/html/rfc8200"
                 }
               ],
-              "searchTerms": ["ipv4", "ipv6", "internet", "protocol"]
+              "searchTerms": [
+                "ipv4",
+                "ipv6",
+                "internet",
+                "protocol"
+              ],
+              "maturity": ""
             },
             {
               "name": "TCP/UDP",
@@ -1094,7 +1342,13 @@
                   "url": "https://tools.ietf.org/html/rfc793"
                 }
               ],
-              "searchTerms": ["tcp", "udp", "transport", "protocol"]
+              "searchTerms": [
+                "tcp",
+                "udp",
+                "transport",
+                "protocol"
+              ],
+              "maturity": ""
             },
             {
               "name": "WiFi 6/6E",
@@ -1105,7 +1359,13 @@
                   "url": "https://standards.ieee.org/standard/802_11-2016.html"
                 }
               ],
-              "searchTerms": ["wifi", "wireless", "802.11", "network"]
+              "searchTerms": [
+                "wifi",
+                "wireless",
+                "802.11",
+                "network"
+              ],
+              "maturity": ""
             }
           ]
         }
@@ -1171,7 +1431,13 @@
                   "url": "https://www.smpte.org/standards/sdi"
                 }
               ],
-              "searchTerms": ["sdi", "serial", "digital", "interface"]
+              "searchTerms": [
+                "sdi",
+                "serial",
+                "digital",
+                "interface"
+              ],
+              "maturity": ""
             },
             {
               "name": "HDMI Interface",
@@ -1182,7 +1448,12 @@
                   "url": "https://www.hdmi.org/specification"
                 }
               ],
-              "searchTerms": ["hdmi", "interface", "consumer"]
+              "searchTerms": [
+                "hdmi",
+                "interface",
+                "consumer"
+              ],
+              "maturity": ""
             },
             {
               "name": "Ethernet",
@@ -1193,11 +1464,16 @@
                   "url": "https://standards.ieee.org/standard/802_3-2018.html"
                 }
               ],
-              "searchTerms": ["ethernet", "network", "wired"]
+              "searchTerms": [
+                "ethernet",
+                "network",
+                "wired"
+              ],
+              "maturity": ""
             }
           ]
         }
       ]
     }
   ]
-} 
+}
