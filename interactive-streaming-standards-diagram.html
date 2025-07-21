@@ -561,6 +561,13 @@
         .footer a:hover {
             text-decoration: underline;
         }
+
+        .version-info {
+            font-size: 0.85em;
+            opacity: 0.8;
+            margin-top: 8px;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -588,6 +595,7 @@
 
         <div class="footer">
             <p>Published by Norsk as a free learning tool - see <a href="https://github.com/dom-robinson/VideoStreaming-Broadcast-Standards" target="_blank">GitHub repository</a> for contributions and suggestions</p>
+            <p class="version-info">Version <span id="version-number">loading...</span> | Last updated: <span id="last-updated">loading...</span></p>
         </div>
     </div>
 
@@ -603,6 +611,9 @@
                 
                 await loader.loadData();
                 loader.renderDiagram('diagram-container');
+                
+                // Display version information
+                displayVersionInfo(loader.data);
                 
                 // Initialize smart tooltip positioning after a short delay to ensure DOM is ready
                 setTimeout(() => {
@@ -786,6 +797,22 @@
                     }, 100); // Shorter delay when leaving tooltip
                 });
             });
+        }
+
+        // Display version information from JSON metadata
+        function displayVersionInfo(data) {
+            if (data && data.metadata) {
+                const versionElement = document.getElementById('version-number');
+                const lastUpdatedElement = document.getElementById('last-updated');
+                
+                if (versionElement && data.metadata.version) {
+                    versionElement.textContent = data.metadata.version;
+                }
+                
+                if (lastUpdatedElement && data.metadata.lastUpdated) {
+                    lastUpdatedElement.textContent = data.metadata.lastUpdated;
+                }
+            }
         }
 
         // Search functionality (keeping the original function name)
