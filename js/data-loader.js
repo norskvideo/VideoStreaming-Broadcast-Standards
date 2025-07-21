@@ -42,9 +42,12 @@ class StreamingStandardsDataLoader {
     }
 
     renderLayers() {
-        this.data.layers.forEach(layer => {
+        console.log('Rendering layers, total layers:', this.data.layers.length);
+        this.data.layers.forEach((layer, index) => {
+            console.log(`Rendering layer ${index + 1}:`, layer.name, 'with', layer.categories.length, 'categories');
             const layerElement = this.createLayerElement(layer);
             this.container.appendChild(layerElement);
+            console.log('Layer element created:', layerElement);
         });
     }
 
@@ -70,7 +73,9 @@ class StreamingStandardsDataLoader {
         const layerContent = document.createElement('div');
         layerContent.className = 'layer-content';
 
-        layer.categories.forEach(category => {
+        console.log(`Creating categories for layer ${layer.name}:`, layer.categories.length);
+        layer.categories.forEach((category, catIndex) => {
+            console.log(`Creating category ${catIndex + 1}:`, category.name);
             const categoryElement = this.createCategoryElement(category);
             layerContent.appendChild(categoryElement);
         });
