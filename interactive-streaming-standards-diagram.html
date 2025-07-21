@@ -570,8 +570,11 @@
                 await loader.loadData();
                 loader.renderDiagram('diagram-container');
                 
-                // Initialize smart tooltip positioning
-                initializeTooltipPositioning();
+                // Initialize smart tooltip positioning after a short delay to ensure DOM is ready
+                setTimeout(() => {
+                    initializeTooltipPositioning();
+                    console.log('Tooltip positioning initialized');
+                }, 100);
                 
                 console.log('Interactive diagram loaded successfully!');
             } catch (error) {
@@ -588,7 +591,12 @@
 
         // Smart tooltip positioning to prevent overflow
         function adjustTooltipPosition(tooltip, element) {
-            const tooltipRect = tooltip.getBoundingClientRect();
+            // Make tooltip temporarily visible to get its dimensions
+            const wasVisible = tooltip.style.visibility === 'visible';
+            tooltip.style.visibility = 'hidden';
+            tooltip.style.opacity = '0';
+            tooltip.style.display = 'block';
+            
             const elementRect = element.getBoundingClientRect();
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
@@ -596,47 +604,52 @@
             // Reset positioning classes
             tooltip.classList.remove('tooltip-above', 'tooltip-below', 'tooltip-left', 'tooltip-right');
             
-            // Check if tooltip overflows on the right
-            if (tooltipRect.right > viewportWidth - 20) {
-                if (elementRect.left - tooltipRect.width > 20) {
+            // Calculate tooltip dimensions
+            const tooltipWidth = 280; // Default width for tech tooltips
+            const tooltipHeight = 150; // Approximate height
+            
+            // Check if tooltip would overflow on the right
+            if (elementRect.left + tooltipWidth/2 > viewportWidth - 20) {
+                if (elementRect.left - tooltipWidth > 20) {
                     tooltip.classList.add('tooltip-left');
                 } else {
                     tooltip.classList.add('tooltip-right');
                 }
-                return;
             }
-            
-            // Check if tooltip overflows on the left
-            if (tooltipRect.left < 20) {
-                if (elementRect.right + tooltipRect.width < viewportWidth - 20) {
+            // Check if tooltip would overflow on the left
+            else if (elementRect.left - tooltipWidth/2 < 20) {
+                if (elementRect.right + tooltipWidth < viewportWidth - 20) {
                     tooltip.classList.add('tooltip-right');
                 } else {
                     tooltip.classList.add('tooltip-left');
                 }
-                return;
             }
-            
-            // Check if tooltip overflows on the top
-            if (tooltipRect.top < 20) {
+            // Check if tooltip would overflow on the top
+            else if (elementRect.top - tooltipHeight < 20) {
                 tooltip.classList.add('tooltip-below');
-                return;
             }
-            
-            // Check if tooltip overflows on the bottom
-            if (tooltipRect.bottom > viewportHeight - 20) {
+            // Check if tooltip would overflow on the bottom
+            else if (elementRect.bottom + tooltipHeight > viewportHeight - 20) {
                 tooltip.classList.add('tooltip-above');
-                return;
+            }
+            // Default positioning (above)
+            else {
+                tooltip.classList.add('tooltip-above');
             }
             
-            // Default positioning (above)
-            tooltip.classList.add('tooltip-above');
+            // Restore visibility
+            if (wasVisible) {
+                tooltip.style.visibility = 'visible';
+                tooltip.style.opacity = '1';
+            }
         }
 
         // Add smart positioning to all tooltips
         function initializeTooltipPositioning() {
             const tooltips = document.querySelectorAll('.tooltip, .category-tooltip, .layer-tooltip');
+            console.log('Found tooltips:', tooltips.length);
             
-            tooltips.forEach(tooltip => {
+            tooltips.forEach((tooltip, index) => {
                 const element = tooltip.parentElement;
                 let hideTimeout;
                 
