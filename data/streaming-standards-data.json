@@ -276,7 +276,11 @@
               "links": [
                 {
                   "text": "Industry Overview",
-                  "url": "https://www.streamingmedia.com/Articles/Editorial/What-Is-.../What-is-Streaming-Analytics-74647.aspx"
+                  "url": "https://www.wowza.com/blog/streaming-analytics"
+                },
+                {
+                  "text": "Real-time Analytics Guide",
+                  "url": "https://www.akamai.com/blog/performance/streaming-analytics"
                 }
               ],
               "searchTerms": [
