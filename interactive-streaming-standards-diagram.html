@@ -756,10 +756,12 @@
                 
                 // Show tooltip on mouse enter with delay
                 element.addEventListener('mouseenter', () => {
+                    console.log('Mouse enter on element:', element.className, element.textContent.substring(0, 30) + '...');
                     clearTimeout(hideTimeout);
                     clearTimeout(showTimeout);
                     
                     showTimeout = setTimeout(() => {
+                        console.log('Showing tooltip for:', element.className);
                         tooltip.style.visibility = 'visible';
                         tooltip.style.opacity = '1';
                         
@@ -771,8 +773,10 @@
                 
                 // Hide tooltip on mouse leave with delay
                 element.addEventListener('mouseleave', () => {
+                    console.log('Mouse leave on element:', element.className);
                     clearTimeout(showTimeout);
                     hideTimeout = setTimeout(() => {
+                        console.log('Hiding tooltip for:', element.className);
                         tooltip.style.visibility = 'hidden';
                         tooltip.style.opacity = '0';
                     }, 300); // 300ms delay
