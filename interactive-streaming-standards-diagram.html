@@ -153,6 +153,8 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
             overflow: visible;
+            position: relative;
+            z-index: 1;
         }
 
         .category {
@@ -162,6 +164,7 @@
             border-left: 4px solid #667eea;
             position: relative;
             overflow: visible;
+            z-index: 1;
         }
 
         .category h4 {
@@ -297,8 +300,8 @@
             transition: all 0.3s ease;
             pointer-events: none;
             
-            /* Default positioning - will be adjusted by JavaScript */
-            bottom: 125%;
+            /* Position above the tech-item to avoid clipping */
+            top: 125%;
             left: 50%;
             transform: translateX(-50%);
         }
@@ -308,10 +311,10 @@
             position: absolute;
             border-width: 8px;
             border-style: solid;
-            top: 100%;
+            bottom: 100%;
             left: 50%;
             margin-left: -8px;
-            border-color: #2c3e50 transparent transparent transparent;
+            border-color: transparent transparent #2c3e50 transparent;
         }
 
         .tech-item:hover .tooltip {
