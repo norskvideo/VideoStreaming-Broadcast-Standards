@@ -383,6 +383,60 @@
             border-color: transparent #2c3e50 transparent transparent;
         }
 
+        /* Category tooltip positioning classes */
+        .category-tooltip.tooltip-above {
+            bottom: 100%;
+            top: auto;
+        }
+
+        .category-tooltip.tooltip-below {
+            bottom: auto;
+            top: 100%;
+        }
+
+        .category-tooltip.tooltip-left {
+            bottom: auto;
+            top: 50%;
+            left: auto;
+            right: 125%;
+            transform: translateY(-50%);
+        }
+
+        .category-tooltip.tooltip-right {
+            bottom: auto;
+            top: 50%;
+            left: auto;
+            right: 125%;
+            transform: translateY(-50%);
+        }
+
+        /* Layer tooltip positioning classes */
+        .layer-tooltip.tooltip-above {
+            bottom: 125%;
+            top: auto;
+        }
+
+        .layer-tooltip.tooltip-below {
+            bottom: auto;
+            top: 125%;
+        }
+
+        .layer-tooltip.tooltip-left {
+            bottom: auto;
+            top: 50%;
+            left: auto;
+            right: 125%;
+            transform: translateY(-50%);
+        }
+
+        .layer-tooltip.tooltip-right {
+            bottom: auto;
+            top: 50%;
+            left: auto;
+            right: 125%;
+            transform: translateY(-50%);
+        }
+
         .tooltip h5 {
             color: #3498db;
             margin-bottom: 8px;
@@ -601,41 +655,64 @@
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
             
+            console.log('Positioning tooltip:', {
+                elementLeft: elementRect.left,
+                elementRight: elementRect.right,
+                viewportWidth: viewportWidth,
+                tooltipClass: tooltip.className
+            });
+            
             // Reset positioning classes
             tooltip.classList.remove('tooltip-above', 'tooltip-below', 'tooltip-left', 'tooltip-right');
             
-            // Calculate tooltip dimensions
-            const tooltipWidth = 280; // Default width for tech tooltips
+            // Calculate tooltip dimensions based on type
+            let tooltipWidth = 280; // Default width for tech tooltips
+            if (tooltip.classList.contains('category-tooltip')) {
+                tooltipWidth = 320;
+            } else if (tooltip.classList.contains('layer-tooltip')) {
+                tooltipWidth = 350;
+            }
             const tooltipHeight = 150; // Approximate height
             
             // Check if tooltip would overflow on the right
             if (elementRect.left + tooltipWidth/2 > viewportWidth - 20) {
+                console.log('Would overflow right, positioning left');
                 if (elementRect.left - tooltipWidth > 20) {
                     tooltip.classList.add('tooltip-left');
+                    console.log('Added tooltip-left class');
                 } else {
                     tooltip.classList.add('tooltip-right');
+                    console.log('Added tooltip-right class');
                 }
             }
             // Check if tooltip would overflow on the left
             else if (elementRect.left - tooltipWidth/2 < 20) {
+                console.log('Would overflow left, positioning right');
                 if (elementRect.right + tooltipWidth < viewportWidth - 20) {
                     tooltip.classList.add('tooltip-right');
+                    console.log('Added tooltip-right class');
                 } else {
                     tooltip.classList.add('tooltip-left');
+                    console.log('Added tooltip-left class');
                 }
             }
             // Check if tooltip would overflow on the top
             else if (elementRect.top - tooltipHeight < 20) {
+                console.log('Would overflow top, positioning below');
                 tooltip.classList.add('tooltip-below');
             }
             // Check if tooltip would overflow on the bottom
             else if (elementRect.bottom + tooltipHeight > viewportHeight - 20) {
+                console.log('Would overflow bottom, positioning above');
                 tooltip.classList.add('tooltip-above');
             }
             // Default positioning (above)
             else {
+                console.log('Default positioning above');
                 tooltip.classList.add('tooltip-above');
             }
+            
+            console.log('Final tooltip classes:', tooltip.className);
             
             // Restore visibility
             if (wasVisible) {
