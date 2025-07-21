@@ -36,6 +36,11 @@ The project now uses a **JSON-based data structure** that makes it easy for anyo
 3. **Test your changes**: Open the HTML file in a browser to verify
 4. **Submit a pull request**: We'll review and merge your improvements
 
+### Community Guidelines
+- Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing
+- For security issues, see our [Security Policy](SECURITY.md)
+- Check the [examples](examples/) folder for reference implementations
+
 ### For Developers
 - If you have suggestions, corrections, or want to add new standards/technologies, please open a pull request.
 - For larger changes, consider opening an issue first to discuss your ideas.
