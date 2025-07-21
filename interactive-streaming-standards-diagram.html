@@ -609,10 +609,7 @@
                 // Initialize smart tooltip positioning after a short delay to ensure DOM is ready
                 setTimeout(() => {
                     initializeTooltipPositioning();
-                    console.log('Tooltip positioning initialized');
                 }, 100);
-                
-                console.log('Interactive diagram loaded successfully!');
             } catch (error) {
                 console.error('Error loading diagram:', error);
                 document.getElementById('diagram-container').innerHTML = `
@@ -631,12 +628,7 @@
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
             
-            console.log('Positioning tooltip:', {
-                elementLeft: elementRect.left,
-                elementRight: elementRect.right,
-                viewportWidth: viewportWidth,
-                tooltipClass: tooltip.className
-            });
+
             
             // Reset positioning classes and inline styles
             tooltip.classList.remove('tooltip-above', 'tooltip-below', 'tooltip-left', 'tooltip-right');
@@ -657,36 +649,30 @@
             
             // Check if tooltip would overflow on the right
             if (elementRect.left + tooltipWidth/2 > viewportWidth - 20) {
-                console.log('Would overflow right, positioning left');
                 if (elementRect.left - tooltipWidth > 20) {
                     tooltip.style.right = '125%';
                     tooltip.style.top = '50%';
                     tooltip.style.transform = 'translateY(-50%)';
                     tooltip.style.left = 'auto';
                     tooltip.style.bottom = 'auto';
-                    console.log('Positioned left via inline styles');
                 } else {
                     tooltip.style.left = '125%';
                     tooltip.style.top = '50%';
                     tooltip.style.transform = 'translateY(-50%)';
                     tooltip.style.right = 'auto';
                     tooltip.style.bottom = 'auto';
-                    console.log('Positioned right via inline styles');
                 }
             }
             // Check if tooltip would overflow on the left
             else if (elementRect.left - tooltipWidth/2 < 20) {
-                console.log('Would overflow left, positioning right');
                 if (elementRect.right + tooltipWidth < viewportWidth - 20) {
                     tooltip.style.left = '125%';
                     tooltip.style.top = '50%';
                     tooltip.style.transform = 'translateY(-50%)';
                     tooltip.style.right = 'auto';
                     tooltip.style.bottom = 'auto';
-                    console.log('Positioned right via inline styles');
                 } else {
                     // If it would also overflow right, position it above instead
-                    console.log('Would also overflow right, positioning above');
                     if (tooltip.classList.contains('layer-tooltip')) {
                         tooltip.style.bottom = '125%';
                         tooltip.style.top = 'auto';
@@ -704,7 +690,6 @@
             }
             // Check if tooltip would overflow on the top
             else if (elementRect.top - tooltipHeight < 20) {
-                console.log('Would overflow top, positioning below');
                 if (tooltip.classList.contains('layer-tooltip')) {
                     tooltip.style.top = '125%';
                     tooltip.style.bottom = 'auto';
@@ -721,7 +706,6 @@
             }
             // Check if tooltip would overflow on the bottom
             else if (elementRect.bottom + tooltipHeight > viewportHeight - 20) {
-                console.log('Would overflow bottom, positioning above');
                 if (tooltip.classList.contains('layer-tooltip')) {
                     tooltip.style.bottom = '125%';
                     tooltip.style.top = 'auto';
@@ -738,7 +722,6 @@
             }
             // Default positioning (above)
             else {
-                console.log('Default positioning above');
                 if (tooltip.classList.contains('layer-tooltip')) {
                     // Layer tooltips have different default positioning
                     tooltip.style.bottom = '125%';
@@ -756,28 +739,12 @@
                 }
             }
             
-            console.log('Final inline styles:', {
-                left: tooltip.style.left,
-                right: tooltip.style.right,
-                top: tooltip.style.top,
-                bottom: tooltip.style.bottom,
-                transform: tooltip.style.transform
-            });
+
         }
 
         // Add smart positioning to all tooltips
         function initializeTooltipPositioning() {
             const tooltips = document.querySelectorAll('.tooltip, .category-tooltip, .layer-tooltip');
-            console.log('Found tooltips:', tooltips.length);
-            
-            // Debug: Log each tooltip type
-            tooltips.forEach((tooltip, index) => {
-                console.log(`Tooltip ${index}:`, {
-                    className: tooltip.className,
-                    parentElement: tooltip.parentElement.className,
-                    parentText: tooltip.parentElement.textContent.substring(0, 50) + '...'
-                });
-            });
             
             tooltips.forEach((tooltip, index) => {
                 const element = tooltip.parentElement;
@@ -786,12 +753,10 @@
                 
                 // Show tooltip on mouse enter with delay
                 element.addEventListener('mouseenter', () => {
-                    console.log('Mouse enter on element:', element.className, element.textContent.substring(0, 30) + '...');
                     clearTimeout(hideTimeout);
                     clearTimeout(showTimeout);
                     
                     showTimeout = setTimeout(() => {
-                        console.log('Showing tooltip for:', element.className);
                         tooltip.style.visibility = 'visible';
                         tooltip.style.opacity = '1';
                         
@@ -803,10 +768,8 @@
                 
                 // Hide tooltip on mouse leave with delay
                 element.addEventListener('mouseleave', () => {
-                    console.log('Mouse leave on element:', element.className);
                     clearTimeout(showTimeout);
                     hideTimeout = setTimeout(() => {
-                        console.log('Hiding tooltip for:', element.className);
                         tooltip.style.visibility = 'hidden';
                         tooltip.style.opacity = '0';
                     }, 300); // 300ms delay
