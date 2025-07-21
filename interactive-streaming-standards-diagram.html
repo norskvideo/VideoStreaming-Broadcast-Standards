@@ -380,8 +380,8 @@
         .tooltip.tooltip-right {
             bottom: auto;
             top: 50%;
-            left: 125%;
-            right: auto;
+            left: auto;
+            right: 125%;
             transform: translateY(-50%);
         }
 
@@ -587,6 +587,9 @@
                 await loader.loadData();
                 loader.renderDiagram('diagram-container');
                 
+                // Initialize smart tooltip positioning
+                initializeTooltipPositioning();
+                
                 console.log('Interactive diagram loaded successfully!');
             } catch (error) {
                 console.error('Error loading diagram:', error);
@@ -599,6 +602,69 @@
                 `;
             }
         });
+
+        // Smart tooltip positioning to prevent overflow
+        function adjustTooltipPosition(tooltip, element) {
+            const tooltipRect = tooltip.getBoundingClientRect();
+            const elementRect = element.getBoundingClientRect();
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            
+            // Reset positioning classes
+            tooltip.classList.remove('tooltip-above', 'tooltip-below', 'tooltip-left', 'tooltip-right');
+            
+            // Check if tooltip overflows on the right
+            if (tooltipRect.right > viewportWidth - 20) {
+                if (elementRect.left - tooltipRect.width > 20) {
+                    tooltip.classList.add('tooltip-left');
+                } else {
+                    tooltip.classList.add('tooltip-right');
+                }
+                return;
+            }
+            
+            // Check if tooltip overflows on the left
+            if (tooltipRect.left < 20) {
+                if (elementRect.right + tooltipRect.width < viewportWidth - 20) {
+                    tooltip.classList.add('tooltip-right');
+                } else {
+                    tooltip.classList.add('tooltip-left');
+                }
+                return;
+            }
+            
+            // Check if tooltip overflows on the top
+            if (tooltipRect.top < 20) {
+                tooltip.classList.add('tooltip-below');
+                return;
+            }
+            
+            // Check if tooltip overflows on the bottom
+            if (tooltipRect.bottom > viewportHeight - 20) {
+                tooltip.classList.add('tooltip-above');
+                return;
+            }
+            
+            // Default positioning (above)
+            tooltip.classList.add('tooltip-above');
+        }
+
+        // Add smart positioning to all tooltips
+        function initializeTooltipPositioning() {
+            const tooltips = document.querySelectorAll('.tooltip, .category-tooltip, .layer-tooltip');
+            
+            tooltips.forEach(tooltip => {
+                const element = tooltip.parentElement;
+                
+                element.addEventListener('mouseenter', () => {
+                    setTimeout(() => {
+                        if (tooltip.style.visibility === 'visible' || tooltip.style.opacity === '1') {
+                            adjustTooltipPosition(tooltip, element);
+                        }
+                    }, 10);
+                });
+            });
+        }
 
         // Search functionality (keeping the original function name)
         function searchTechnology() {
