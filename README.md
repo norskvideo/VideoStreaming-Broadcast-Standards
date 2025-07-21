@@ -30,7 +30,10 @@ Open `interactive-streaming-standards-diagram.html` in any modern web browser. N
 - I will be actively accepting pull requests for a while to gather community input and improvements.
 
 ## License
-[MIT](LICENSE) (or specify your preferred license)
+
+This work is licensed under a [Creative Commons Attribution-NoDerivatives 4.0 International License](LICENSE).
+
+You may use and reference this chart with attribution, but you may not create derivative works or forks. The latest version will always be available in this repository.
 
 ---
 
