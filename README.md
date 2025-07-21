@@ -7,9 +7,9 @@ Note that this image is only periodically updated. To see what **latest** data w
 
 Contributions are welcome, particularly where we don't have latest standards documentation links in the pop up modals for each element in the chart.
 
-[<img src="https://github.com/dom-robinson/VideoStreaming-Broadcast-Standards/blob/master/htmlpreview_github_io__.jpg">](https://htmlpreview.github.io/?https://github.com/dom-robinson/VideoStreaming-Broadcast-Standards/blob/master/interactive-streaming-standards-diagram.html)
+[<img src="htmlpreview_github_io__.jpg" alt="Interactive Video Streaming Standards Diagram Preview" width="800">](https://htmlpreview.github.io/?https://github.com/dom-robinson/VideoStreaming-Broadcast-Standards/blob/master/interactive-streaming-standards-diagram.html)
 
-[Link text]https://htmlpreview.github.io/?https://github.com/dom-robinson/VideoStreaming-Broadcast-Standards/blob/master/interactive-streaming-standards-diagram.html
+**[Launch Interactive Diagram](https://htmlpreview.github.io/?https://github.com/dom-robinson/VideoStreaming-Broadcast-Standards/blob/master/interactive-streaming-standards-diagram.html)**
 
 
 
