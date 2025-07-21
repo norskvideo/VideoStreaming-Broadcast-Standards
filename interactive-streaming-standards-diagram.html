@@ -72,7 +72,6 @@
             cursor: pointer;
             position: relative;
             transition: all 0.3s ease;
-            z-index: 999998;
         }
 
         .layer-header:hover {
@@ -83,7 +82,7 @@
             visibility: hidden;
             opacity: 0;
             position: absolute;
-            z-index: 999999;
+            z-index: 1000;
             background: #2c3e50;
             color: white;
             text-align: left;
@@ -153,8 +152,6 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
             overflow: visible;
-            position: relative;
-            z-index: 1;
         }
 
         .category {
@@ -164,7 +161,6 @@
             border-left: 4px solid #667eea;
             position: relative;
             overflow: visible;
-            z-index: 1;
         }
 
         .category h4 {
@@ -195,7 +191,7 @@
             visibility: hidden;
             opacity: 0;
             position: absolute;
-            z-index: 9999999;
+            z-index: 1000;
             background: #2c3e50;
             color: white;
             text-align: left;
@@ -270,8 +266,6 @@
             transition: all 0.3s ease;
             border: 1px solid #e0e0e0;
             position: relative;
-            z-index: 1;
-            overflow: visible;
         }
 
         .tech-item:hover {
@@ -286,7 +280,7 @@
             visibility: hidden;
             opacity: 0;
             position: absolute;
-            z-index: 99999999;
+            z-index: 1000;
             background: #2c3e50;
             color: white;
             text-align: left;
@@ -300,8 +294,8 @@
             transition: all 0.3s ease;
             pointer-events: none;
             
-            /* Position above the tech-item to avoid clipping */
-            top: 125%;
+            /* Default positioning - will be adjusted by JavaScript */
+            bottom: 125%;
             left: 50%;
             transform: translateX(-50%);
         }
@@ -311,10 +305,10 @@
             position: absolute;
             border-width: 8px;
             border-style: solid;
-            bottom: 100%;
+            top: 100%;
             left: 50%;
             margin-left: -8px;
-            border-color: transparent transparent #2c3e50 transparent;
+            border-color: #2c3e50 transparent transparent transparent;
         }
 
         .tech-item:hover .tooltip {
