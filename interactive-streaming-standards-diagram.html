@@ -664,12 +664,21 @@
                     tooltip.style.bottom = 'auto';
                     console.log('Positioned right via inline styles');
                 } else {
-                    tooltip.style.right = '125%';
-                    tooltip.style.top = '50%';
-                    tooltip.style.transform = 'translateY(-50%)';
-                    tooltip.style.left = 'auto';
-                    tooltip.style.bottom = 'auto';
-                    console.log('Positioned left via inline styles');
+                    // If it would also overflow right, position it above instead
+                    console.log('Would also overflow right, positioning above');
+                    if (tooltip.classList.contains('layer-tooltip')) {
+                        tooltip.style.bottom = '125%';
+                        tooltip.style.top = 'auto';
+                        tooltip.style.left = '50%';
+                        tooltip.style.right = 'auto';
+                        tooltip.style.transform = 'translateX(-50%)';
+                    } else {
+                        tooltip.style.bottom = '100%';
+                        tooltip.style.top = 'auto';
+                        tooltip.style.left = '0';
+                        tooltip.style.right = 'auto';
+                        tooltip.style.transform = 'none';
+                    }
                 }
             }
             // Check if tooltip would overflow on the top
