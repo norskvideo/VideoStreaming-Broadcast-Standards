@@ -33,8 +33,12 @@ class StreamingStandardsDataLoader {
             throw new Error('Data not loaded. Call loadData() first.');
         }
 
+        // Clear the loading message
+        this.container.innerHTML = '';
+
         this.renderLayers();
         this.renderWorkflows();
+        this.renderLegend();
     }
 
     renderLayers() {
@@ -179,6 +183,46 @@ class StreamingStandardsDataLoader {
             </div>
         `;
         this.container.appendChild(workflowDiv);
+    }
+
+    renderLegend() {
+        const legendDiv = document.createElement('div');
+        legendDiv.className = 'legend';
+        legendDiv.innerHTML = `
+            <div class="legend-item">
+                <div class="legend-color application"></div>
+                <span>Application Layer - User-facing services and business logic</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color adaptive"></div>
+                <span>Adaptive Streaming - Client-side quality adaptation</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color transport"></div>
+                <span>Transport Layer - Protocol and session management</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color reliable-udp"></div>
+                <span>Reliable UDP - Professional transport with error correction</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color container-layer"></div>
+                <span>Container Layer - Media packaging and metadata</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color codec"></div>
+                <span>Codec Layer - Compression and decompression algorithms</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color network"></div>
+                <span>Network Layer - Basic network protocols and routing</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color physical"></div>
+                <span>Physical Layer - Hardware interfaces and transmission</span>
+            </div>
+        `;
+        this.container.appendChild(legendDiv);
     }
 
     searchTechnologies(query) {

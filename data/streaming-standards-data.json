@@ -530,6 +530,597 @@
           ]
         }
       ]
+    },
+    {
+      "id": "transport",
+      "name": "STREAMING TRANSPORT LAYER",
+      "subtitle": "Protocol & Session Management",
+      "description": "Handles the reliable delivery of streaming data across networks with session management and protocol handling.",
+      "keyFunctions": [
+        "Protocol management (HTTP, WebRTC, RTP)",
+        "Session establishment and maintenance",
+        "Connection reliability and error handling",
+        "Transport layer security and encryption"
+      ],
+      "categories": [
+        {
+          "id": "transport-protocols",
+          "name": "Transport Protocols",
+          "description": "Core transport protocols for streaming media",
+          "keyOrganizations": [
+            {
+              "name": "IETF",
+              "description": "HTTP, WebRTC, and RTP standards"
+            },
+            {
+              "name": "W3C",
+              "description": "WebRTC browser APIs"
+            },
+            {
+              "name": "ITU-T",
+              "description": "Real-time communication standards"
+            }
+          ],
+          "researchAreas": [
+            "Low-latency transport protocols",
+            "WebRTC scalability and optimization",
+            "HTTP-based streaming optimization",
+            "Cross-platform transport compatibility"
+          ],
+          "links": [
+            {
+              "text": "IETF RTP RFC",
+              "url": "https://tools.ietf.org/html/rfc3550"
+            },
+            {
+              "text": "W3C WebRTC",
+              "url": "https://www.w3.org/TR/webrtc/"
+            },
+            {
+              "text": "ITU-T H.323",
+              "url": "https://www.itu.int/rec/T-REC-H.323"
+            }
+          ],
+          "technologies": [
+            {
+              "name": "HTTP/2",
+              "description": "Modern HTTP protocol with multiplexing and server push. Reduces latency and improves streaming performance.",
+              "links": [
+                {
+                  "text": "IETF RFC 7540",
+                  "url": "https://tools.ietf.org/html/rfc7540"
+                }
+              ],
+              "searchTerms": ["http2", "http", "protocol", "multiplexing"]
+            },
+            {
+              "name": "WebRTC",
+              "description": "Browser-native real-time streaming. Sub-500ms latency. P2P connections or SFU scaling. DTLS security.",
+              "links": [
+                {
+                  "text": "WebRTC.org",
+                  "url": "https://webrtc.org/"
+                }
+              ],
+              "searchTerms": ["webrtc", "real", "time", "communication"]
+            },
+            {
+              "name": "RTP/RTCP",
+              "description": "Real-time transport protocol for media streaming. Used in WebRTC and professional broadcast. Provides timing and quality feedback.",
+              "links": [
+                {
+                  "text": "IETF RFC 3550",
+                  "url": "https://tools.ietf.org/html/rfc3550"
+                }
+              ],
+              "searchTerms": ["rtp", "rtcp", "real", "time", "transport"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reliable-udp",
+      "name": "RELIABLE UDP LAYER",
+      "subtitle": "Enhanced Transport Protocols",
+      "description": "Professional-grade transport protocols built on UDP with reliability features for broadcast and contribution.",
+      "keyFunctions": [
+        "Reliable UDP-based transport",
+        "Error correction and packet recovery",
+        "Low-latency professional streaming",
+        "Network adaptation and congestion control"
+      ],
+      "categories": [
+        {
+          "id": "reliable-protocols",
+          "name": "Reliable UDP Protocols",
+          "description": "Professional transport protocols with reliability features",
+          "keyOrganizations": [
+            {
+              "name": "SRT Alliance",
+              "description": "Secure Reliable Transport protocol"
+            },
+            {
+              "name": "RIST Forum",
+              "description": "Reliable Internet Stream Transport"
+            },
+            {
+              "name": "IETF",
+              "description": "Transport protocol standards"
+            }
+          ],
+          "researchAreas": [
+            "Professional contribution protocols",
+            "Low-latency reliable transport",
+            "Network resilience and error correction",
+            "Cross-platform protocol compatibility"
+          ],
+          "links": [
+            {
+              "text": "SRT Alliance",
+              "url": "https://www.srtalliance.org/"
+            },
+            {
+              "text": "RIST Forum",
+              "url": "https://www.rist.tv/"
+            },
+            {
+              "text": "IETF Transport",
+              "url": "https://tools.ietf.org/wg/tsvwg/"
+            }
+          ],
+          "technologies": [
+            {
+              "name": "SRT Protocol",
+              "description": "Secure Reliable Transport for low-latency streaming. 120ms+ latency, AES encryption, caller/listener mode. Widely adopted for contribution.",
+              "links": [
+                {
+                  "text": "SRT Alliance",
+                  "url": "https://www.srtalliance.org/"
+                }
+              ],
+              "searchTerms": ["srt", "secure", "reliable", "transport"]
+            },
+            {
+              "name": "RIST Protocol",
+              "description": "Reliable Internet Stream Transport for professional video contribution. Provides sub-second latency with error correction.",
+              "links": [
+                {
+                  "text": "RIST Specification",
+                  "url": "https://www.rist.tv/"
+                }
+              ],
+              "searchTerms": ["rist", "reliable", "internet", "stream", "transport"]
+            },
+            {
+              "name": "Zixi Protocol",
+              "description": "Proprietary reliable transport protocol. Used for professional broadcast contribution over public internet.",
+              "links": [
+                {
+                  "text": "Zixi Documentation",
+                  "url": "https://zixi.com/"
+                }
+              ],
+              "searchTerms": ["zixi", "protocol", "transport"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "container-layer",
+      "name": "CONTAINER LAYER",
+      "subtitle": "Media Packaging & Metadata",
+      "description": "File formats and containers that package audio, video, and metadata for storage and transmission.",
+      "keyFunctions": [
+        "Media container format management",
+        "Metadata storage and synchronization",
+        "Multi-stream packaging (audio, video, subtitles)",
+        "Timing and synchronization information"
+      ],
+      "categories": [
+        {
+          "id": "container-formats",
+          "name": "Container Formats",
+          "description": "Media container formats for streaming and storage",
+          "keyOrganizations": [
+            {
+              "name": "ISO/IEC",
+              "description": "MP4 and MPEG-TS standards"
+            },
+            {
+              "name": "SMPTE",
+              "description": "MXF and professional formats"
+            },
+            {
+              "name": "AOMedia",
+              "description": "WebM and modern formats"
+            }
+          ],
+          "researchAreas": [
+            "Modern container formats",
+            "Metadata standards and interoperability",
+            "Multi-stream container optimization",
+            "Professional format compatibility"
+          ],
+          "links": [
+            {
+              "text": "ISO 14496-12",
+              "url": "https://www.iso.org/standard/68960.html"
+            },
+            {
+              "text": "SMPTE MXF",
+              "url": "https://www.smpte.org/standards/mxf"
+            },
+            {
+              "text": "WebM Specification",
+              "url": "https://www.webmproject.org/"
+            }
+          ],
+          "technologies": [
+            {
+              "name": "MP4 Container",
+              "description": "Universal media container format. Supports multiple codecs, DRM, and streaming. Industry standard for digital media.",
+              "links": [
+                {
+                  "text": "ISO 14496-12",
+                  "url": "https://www.iso.org/standard/68960.html"
+                }
+              ],
+              "searchTerms": ["mp4", "container", "format"]
+            },
+            {
+              "name": "MPEG-TS",
+              "description": "Transport stream format for broadcast and streaming. Packet-based with error correction. Used in DVB and ATSC.",
+              "links": [
+                {
+                  "text": "ISO 13818-1",
+                  "url": "https://www.iso.org/standard/44169.html"
+                }
+              ],
+              "searchTerms": ["mpeg-ts", "transport", "stream", "broadcast"]
+            },
+            {
+              "name": "MXF Format",
+              "description": "Material eXchange Format for professional video. Rich metadata support. Used in broadcast and post-production.",
+              "links": [
+                {
+                  "text": "SMPTE MXF",
+                  "url": "https://www.smpte.org/standards/mxf"
+                }
+              ],
+              "searchTerms": ["mxf", "material", "exchange", "format"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "codec",
+      "name": "CODEC LAYER",
+      "subtitle": "Video & Audio Compression",
+      "description": "Compression and decompression algorithms for video and audio data to reduce bandwidth requirements.",
+      "keyFunctions": [
+        "Video compression and decompression",
+        "Audio compression and decompression",
+        "Quality vs. bandwidth optimization",
+        "Hardware acceleration support"
+      ],
+      "categories": [
+        {
+          "id": "video-codecs",
+          "name": "Video Codecs",
+          "description": "Video compression standards and algorithms",
+          "keyOrganizations": [
+            {
+              "name": "ITU-T",
+              "description": "H.264, H.265, H.266 standards"
+            },
+            {
+              "name": "AOMedia",
+              "description": "AV1 and modern codecs"
+            },
+            {
+              "name": "SMPTE",
+              "description": "Professional codec standards"
+            }
+          ],
+          "researchAreas": [
+            "Next-generation video compression",
+            "Hardware acceleration and optimization",
+            "Quality vs. efficiency trade-offs",
+            "Multi-codec delivery strategies"
+          ],
+          "links": [
+            {
+              "text": "ITU-T H.264",
+              "url": "https://www.itu.int/rec/T-REC-H.264"
+            },
+            {
+              "text": "AOMedia AV1",
+              "url": "https://aomedia.org/av1/"
+            },
+            {
+              "text": "SMPTE Standards",
+              "url": "https://www.smpte.org/standards"
+            }
+          ],
+          "technologies": [
+            {
+              "name": "H.264/AVC",
+              "description": "Widely adopted video codec. Excellent compatibility and hardware support. Used in most streaming and broadcast applications.",
+              "links": [
+                {
+                  "text": "ITU-T H.264",
+                  "url": "https://www.itu.int/rec/T-REC-H.264"
+                }
+              ],
+              "searchTerms": ["h264", "avc", "codec", "video"]
+            },
+            {
+              "name": "H.265/HEVC",
+              "description": "High Efficiency Video Coding. 50% better compression than H.264. Used for 4K and HDR content.",
+              "links": [
+                {
+                  "text": "ITU-T H.265",
+                  "url": "https://www.itu.int/rec/T-REC-H.265"
+                }
+              ],
+              "searchTerms": ["h265", "hevc", "codec", "video"]
+            },
+            {
+              "name": "AV1 Codec",
+              "description": "Open-source video codec from AOMedia. 30% better compression than H.265. Royalty-free and web-optimized.",
+              "links": [
+                {
+                  "text": "AOMedia AV1",
+                  "url": "https://aomedia.org/av1/"
+                }
+              ],
+              "searchTerms": ["av1", "aomedia", "codec", "video"]
+            }
+          ]
+        },
+        {
+          "id": "audio-codecs",
+          "name": "Audio Codecs",
+          "description": "Audio compression standards and algorithms",
+          "keyOrganizations": [
+            {
+              "name": "ISO/IEC",
+              "description": "AAC and MP3 standards"
+            },
+            {
+              "name": "IETF",
+              "description": "Opus codec standard"
+            },
+            {
+              "name": "ITU-T",
+              "description": "Audio codec standards"
+            }
+          ],
+          "researchAreas": [
+            "High-quality audio compression",
+            "Low-latency audio codecs",
+            "Multi-channel audio support",
+            "Audio-visual synchronization"
+          ],
+          "links": [
+            {
+              "text": "ISO 13818-7",
+              "url": "https://www.iso.org/standard/43345.html"
+            },
+            {
+              "text": "IETF Opus",
+              "url": "https://tools.ietf.org/html/rfc6716"
+            },
+            {
+              "text": "ITU-T G.711",
+              "url": "https://www.itu.int/rec/T-REC-G.711"
+            }
+          ],
+          "technologies": [
+            {
+              "name": "AAC Codec",
+              "description": "Advanced Audio Coding. High-quality audio compression. Used in most streaming platforms and devices.",
+              "links": [
+                {
+                  "text": "ISO 13818-7",
+                  "url": "https://www.iso.org/standard/43345.html"
+                }
+              ],
+              "searchTerms": ["aac", "audio", "codec"]
+            },
+            {
+              "name": "Opus Codec",
+              "description": "Modern audio codec for web and real-time applications. Excellent quality and low latency. Used in WebRTC.",
+              "links": [
+                {
+                  "text": "IETF RFC 6716",
+                  "url": "https://tools.ietf.org/html/rfc6716"
+                }
+              ],
+              "searchTerms": ["opus", "audio", "codec", "webrtc"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "name": "NETWORK LAYER",
+      "subtitle": "Internet Protocol & Routing",
+      "description": "Network protocols and routing that enable data transmission across the internet and local networks.",
+      "keyFunctions": [
+        "IP packet routing and addressing",
+        "Network protocol management",
+        "Quality of Service (QoS)",
+        "Network security and firewalls"
+      ],
+      "categories": [
+        {
+          "id": "network-protocols",
+          "name": "Network Protocols",
+          "description": "Core network protocols for data transmission",
+          "keyOrganizations": [
+            {
+              "name": "IETF",
+              "description": "IP, TCP, UDP standards"
+            },
+            {
+              "name": "IEEE",
+              "description": "Network standards and specifications"
+            },
+            {
+              "name": "ITU-T",
+              "description": "Network infrastructure standards"
+            }
+          ],
+          "researchAreas": [
+            "IPv6 transition and adoption",
+            "Network optimization for streaming",
+            "Quality of Service mechanisms",
+            "Network security and resilience"
+          ],
+          "links": [
+            {
+              "text": "IETF IPv6",
+              "url": "https://tools.ietf.org/html/rfc8200"
+            },
+            {
+              "text": "IEEE 802.11",
+              "url": "https://standards.ieee.org/standard/802_11-2016.html"
+            },
+            {
+              "text": "ITU-T Network",
+              "url": "https://www.itu.int/rec/T-REC-G.8271"
+            }
+          ],
+          "technologies": [
+            {
+              "name": "IPv4/IPv6",
+              "description": "Internet Protocol versions. IPv6 provides larger address space and better support for real-time services.",
+              "links": [
+                {
+                  "text": "IETF IPv6",
+                  "url": "https://tools.ietf.org/html/rfc8200"
+                }
+              ],
+              "searchTerms": ["ipv4", "ipv6", "internet", "protocol"]
+            },
+            {
+              "name": "TCP/UDP",
+              "description": "Transport protocols. TCP for reliable delivery, UDP for real-time streaming. Used by all streaming applications.",
+              "links": [
+                {
+                  "text": "IETF TCP",
+                  "url": "https://tools.ietf.org/html/rfc793"
+                }
+              ],
+              "searchTerms": ["tcp", "udp", "transport", "protocol"]
+            },
+            {
+              "name": "WiFi 6/6E",
+              "description": "Modern wireless standards. Higher bandwidth and lower latency. Better support for streaming applications.",
+              "links": [
+                {
+                  "text": "IEEE 802.11ax",
+                  "url": "https://standards.ieee.org/standard/802_11-2016.html"
+                }
+              ],
+              "searchTerms": ["wifi", "wireless", "802.11", "network"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "physical",
+      "name": "PHYSICAL LAYER",
+      "subtitle": "Hardware Interfaces & Connectivity",
+      "description": "Physical hardware interfaces and connectivity options for video and audio transmission.",
+      "keyFunctions": [
+        "Physical connection management",
+        "Hardware interface standards",
+        "Signal transmission and reception",
+        "Physical media specifications"
+      ],
+      "categories": [
+        {
+          "id": "physical-interfaces",
+          "name": "Physical Interfaces",
+          "description": "Hardware interfaces for video and audio",
+          "keyOrganizations": [
+            {
+              "name": "SMPTE",
+              "description": "SDI and professional interfaces"
+            },
+            {
+              "name": "HDMI Forum",
+              "description": "HDMI interface standards"
+            },
+            {
+              "name": "ITU-R",
+              "description": "Broadcast transmission standards"
+            }
+          ],
+          "researchAreas": [
+            "High-bandwidth interfaces",
+            "Wireless transmission technologies",
+            "Professional interface standards",
+            "Consumer interface evolution"
+          ],
+          "links": [
+            {
+              "text": "SMPTE SDI",
+              "url": "https://www.smpte.org/standards/sdi"
+            },
+            {
+              "text": "HDMI Specification",
+              "url": "https://www.hdmi.org/specification"
+            },
+            {
+              "text": "ITU-R Broadcasting",
+              "url": "https://www.itu.int/rec/R-REC-BT.709"
+            }
+          ],
+          "technologies": [
+            {
+              "name": "SDI Interface",
+              "description": "Serial Digital Interface for professional video. Uncompressed video transmission. Used in broadcast and production.",
+              "links": [
+                {
+                  "text": "SMPTE SDI",
+                  "url": "https://www.smpte.org/standards/sdi"
+                }
+              ],
+              "searchTerms": ["sdi", "serial", "digital", "interface"]
+            },
+            {
+              "name": "HDMI Interface",
+              "description": "High Definition Multimedia Interface. Consumer standard for audio/video transmission. Supports 4K and HDR.",
+              "links": [
+                {
+                  "text": "HDMI Specification",
+                  "url": "https://www.hdmi.org/specification"
+                }
+              ],
+              "searchTerms": ["hdmi", "interface", "consumer"]
+            },
+            {
+              "name": "Ethernet",
+              "description": "Wired network connectivity. Gigabit and 10Gigabit speeds. Foundation for IP-based video transmission.",
+              "links": [
+                {
+                  "text": "IEEE 802.3",
+                  "url": "https://standards.ieee.org/standard/802_3-2018.html"
+                }
+              ],
+              "searchTerms": ["ethernet", "network", "wired"]
+            }
+          ]
+        }
+      ]
     }
   ]
 } 
