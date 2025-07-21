@@ -105,12 +105,15 @@ class StreamingStandardsDataLoader {
             </div>
         `;
 
+        // Set the innerHTML first
+        categoryDiv.innerHTML = categoryHeader;
+
+        // Then append the tech elements
         category.technologies.forEach(tech => {
             const techElement = this.createTechnologyElement(tech);
             categoryDiv.appendChild(techElement);
         });
 
-        categoryDiv.innerHTML = categoryHeader;
         return categoryDiv;
     }
 
