@@ -95,6 +95,7 @@
             border-radius: 8px;
             padding: 15px;
             border-left: 4px solid #667eea;
+            position: relative;
         }
 
         .category h4 {
@@ -139,10 +140,10 @@
             transition: all 0.3s ease;
             pointer-events: none;
             
-            /* Default positioning - will be adjusted by JavaScript */
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
+            /* Positioning relative to the category */
+            top: 100%;
+            left: 0;
+            margin-top: 5px;
         }
 
         .category-tooltip::after {
@@ -150,15 +151,15 @@
             position: absolute;
             border-width: 8px;
             border-style: solid;
-            top: 100%;
-            left: 50%;
-            margin-left: -8px;
-            border-color: #2c3e50 transparent transparent transparent;
+            bottom: 100%;
+            left: 20px;
+            border-color: transparent transparent #2c3e50 transparent;
         }
 
-        .category-header:hover + .category-tooltip {
-            visibility: visible;
-            opacity: 1;
+        .category-header:hover + .category-tooltip,
+        .category-header:focus + .category-tooltip {
+            visibility: visible !important;
+            opacity: 1 !important;
         }
 
         .category-tooltip h5 {
@@ -598,34 +599,26 @@
                 </div>
                 <div class="layer-content">
                     <div class="category">
-                        <h4>Standards Bodies</h4>
-                        <div class="tech-item" data-search="iso iec mpeg-dash cmaf">
-                            ISO/IEC
-                            <div class="tooltip">
-                                <h5>ISO/IEC Standards</h5>
-                                <p>Global standards body publishing official MPEG-DASH (ISO/IEC 23009) and CMAF (ISO/IEC 23000-19) specifications.</p>
-                                <a href="https://www.iso.org/standard/83314.html" target="_blank">🔗 MPEG-DASH Standard</a>
-                            </div>
+                        <h4 class="category-header" data-search="mpeg dash adaptive streaming">MPEG-DASH</h4>
+                        <div class="category-tooltip">
+                            <h5>Dynamic Adaptive Streaming over HTTP</h5>
+                            <p><strong>Key Organizations:</strong></p>
+                            <ul>
+                                <li><strong>ISO/IEC:</strong> Official MPEG-DASH standard (ISO/IEC 23009)</li>
+                                <li><strong>MPEG:</strong> DASH specification development</li>
+                                <li><strong>SVTA:</strong> Implementation guidelines and interoperability</li>
+                            </ul>
+                            <p><strong>Research Areas:</strong></p>
+                            <ul>
+                                <li>Adaptive bitrate algorithms</li>
+                                <li>Low-latency DASH techniques</li>
+                                <li>Multi-codec DASH delivery</li>
+                                <li>DASH analytics and optimization</li>
+                            </ul>
+                            <a href="https://www.iso.org/standard/83314.html" target="_blank">🔗 ISO/IEC 23009</a>
+                            <a href="https://dashif.org/" target="_blank">🔗 DASH Industry Forum</a>
+                            <a href="https://dashif.org/guidelines/iop-v5/" target="_blank">🔗 SVTA IOP Guidelines</a>
                         </div>
-                        <div class="tech-item" data-search="svta dash-if iop">
-                            SVTA
-                            <div class="tooltip">
-                                <h5>Streaming Video Technology Alliance (SVTA)</h5>
-                                <p>Formerly DASH-IF, creates practical implementation guidelines (IOP) for real-world DASH deployment and interoperability.</p>
-                                <a href="https://dashif.org/guidelines/iop-v5/" target="_blank">🔗 IOP Guidelines</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="ietf webrtc hls rfc8216">
-                            IETF
-                            <div class="tooltip">
-                                <h5>Internet Engineering Task Force (IETF)</h5>
-                                <p>Standardized WebRTC for real-time communications and published HLS as RFC 8216 for HTTP live streaming.</p>
-                                <a href="https://datatracker.ietf.org/doc/rfc8216/" target="_blank">🔗 HLS RFC 8216</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4>MPEG-DASH</h4>
                         <div class="tech-item" data-search="dash mpeg streaming adaptive">
                             DASH Protocol
                             <div class="tooltip">
@@ -652,7 +645,26 @@
                         </div>
                     </div>
                     <div class="category">
-                        <h4>Apple HLS</h4>
+                        <h4 class="category-header" data-search="hls apple http live streaming">Apple HLS</h4>
+                        <div class="category-tooltip">
+                            <h5>HTTP Live Streaming Protocol</h5>
+                            <p><strong>Key Organizations:</strong></p>
+                            <ul>
+                                <li><strong>Apple:</strong> HLS specification and development</li>
+                                <li><strong>IETF:</strong> HLS standardization (RFC 8216)</li>
+                                <li><strong>W3C:</strong> Web-based HLS implementation</li>
+                            </ul>
+                            <p><strong>Research Areas:</strong></p>
+                            <ul>
+                                <li>Low-latency HLS optimization</li>
+                                <li>Cross-platform HLS compatibility</li>
+                                <li>HLS analytics and monitoring</li>
+                                <li>HLS security and DRM integration</li>
+                            </ul>
+                            <a href="https://developer.apple.com/streaming/" target="_blank">🔗 Apple HLS Documentation</a>
+                            <a href="https://tools.ietf.org/html/rfc8216" target="_blank">🔗 IETF RFC 8216</a>
+                            <a href="https://www.w3.org/TR/media-source/" target="_blank">🔗 W3C Media Source Extensions</a>
+                        </div>
                         <div class="tech-item" data-search="hls apple http live streaming">
                             HLS Protocol
                             <div class="tooltip">
@@ -679,7 +691,26 @@
                         </div>
                     </div>
                     <div class="category">
-                        <h4>CMAF Standard</h4>
+                        <h4 class="category-header" data-search="cmaf common media application format">CMAF Standard</h4>
+                        <div class="category-tooltip">
+                            <h5>Common Media Application Format</h5>
+                            <p><strong>Key Organizations:</strong></p>
+                            <ul>
+                                <li><strong>ISO/IEC:</strong> CMAF standard (ISO/IEC 23000-19)</li>
+                                <li><strong>MPEG:</strong> CMAF specification development</li>
+                                <li><strong>SVTA:</strong> CMAF implementation guidelines</li>
+                            </ul>
+                            <p><strong>Research Areas:</strong></p>
+                            <ul>
+                                <li>CMAF storage optimization</li>
+                                <li>Multi-protocol delivery strategies</li>
+                                <li>CMAF low-latency streaming</li>
+                                <li>CMAF analytics and monitoring</li>
+                            </ul>
+                            <a href="https://www.iso.org/standard/71975.html" target="_blank">🔗 ISO/IEC 23000-19</a>
+                            <a href="https://www.mpeg.org/standards/MPEG-A/19/" target="_blank">🔗 MPEG CMAF</a>
+                            <a href="https://www.svta.org/workstreams/cmaf/" target="_blank">🔗 SVTA CMAF Guidelines</a>
+                        </div>
                         <div class="tech-item" data-search="cmaf common media application format">
                             CMAF Protocol
                             <div class="tooltip">
