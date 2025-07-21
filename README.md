@@ -19,15 +19,34 @@ Contributions are welcome, particularly where we don't have latest standards doc
 - **Search Functionality:** Instantly filter and highlight any standard, protocol, or codec.
 - **Workflow Examples:** See typical end-to-end workflows for live streaming, broadcast, OTT, and real-time/interactive use cases.
 - **Modern, Responsive UI:** Clean, mobile-friendly design for easy exploration.
+- **Easy to Maintain:** JSON-based data structure for simple content updates by non-coders.
+- **Community-Driven:** Designed for easy contributions from industry experts.
 
 ## Usage
 Open `interactive-streaming-standards-diagram.html` in any modern web browser. No build or server required.
 
 ## Contributing
 **Pull requests are welcome!**
+
+### For Non-Coders (Recommended)
+The project now uses a **JSON-based data structure** that makes it easy for anyone to contribute:
+
+1. **Edit the data file**: `data/streaming-standards-data.json`
+2. **Follow the guide**: See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed instructions
+3. **Test your changes**: Open the HTML file in a browser to verify
+4. **Submit a pull request**: We'll review and merge your improvements
+
+### For Developers
 - If you have suggestions, corrections, or want to add new standards/technologies, please open a pull request.
 - For larger changes, consider opening an issue first to discuss your ideas.
-- I will be actively accepting pull requests for a while to gather community input and improvements.
+- I will be actively accepting pull requests to gather community input and improvements.
+
+### What You Can Contribute
+- **New Technologies**: Add emerging streaming technologies, codecs, or protocols
+- **Updated Information**: Correct outdated descriptions, links, or specifications
+- **New Categories**: Suggest new technology categories or reorganize existing ones
+- **Research Areas**: Add new research topics or industry trends
+- **Organization Information**: Update or add standards organizations and their roles
 
 ## License
 

@@ -1,0 +1,19 @@
+{
+  "name": "AV2 Codec",
+  "description": "Next-generation video codec from AOMedia. Successor to AV1 with improved compression efficiency. Expected to reduce bandwidth by 30% compared to AV1. Currently in development with focus on real-time encoding and hardware acceleration.",
+  "links": [
+    {
+      "text": "AOMedia AV2 Specification",
+      "url": "https://aomedia.org/av2/"
+    },
+    {
+      "text": "Technical Overview",
+      "url": "https://aomedia.org/av2/technical-overview/"
+    },
+    {
+      "text": "Implementation Guide",
+      "url": "https://aomedia.org/av2/implementation/"
+    }
+  ],
+  "searchTerms": ["av2", "aomedia", "codec", "video", "compression", "av1", "successor", "next-gen"]
+} 

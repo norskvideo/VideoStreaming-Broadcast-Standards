@@ -1,0 +1,535 @@
+{
+  "metadata": {
+    "title": "Video Streaming & Broadcast Standards",
+    "subtitle": "Interactive Technology Stack Diagram - Hover over any technology for detailed information",
+    "version": "1.0.0",
+    "lastUpdated": "2024-01-01",
+    "description": "Interactive diagram of video streaming and broadcast technology standards"
+  },
+  "layers": [
+    {
+      "id": "application",
+      "name": "APPLICATION LAYER",
+      "subtitle": "User Experience & Business Logic",
+      "description": "The top layer handles user-facing features and business logic that directly impact the viewer experience.",
+      "keyFunctions": [
+        "Content protection and DRM systems",
+        "Content delivery network optimization", 
+        "User analytics and quality monitoring",
+        "Business logic and monetization"
+      ],
+      "categories": [
+        {
+          "id": "drm-security",
+          "name": "DRM & Security",
+          "description": "Digital Rights Management & Security Standards",
+          "keyOrganizations": [
+            {
+              "name": "W3C",
+              "description": "Encrypted Media Extensions (EME) for browser-based DRM"
+            },
+            {
+              "name": "MPEG", 
+              "description": "Common Encryption (CENC) and CMAF standards"
+            },
+            {
+              "name": "DVB",
+              "description": "Conditional Access and broadcast security"
+            }
+          ],
+          "researchAreas": [
+            "Conditional Access Systems (CAS)",
+            "History of DRM evolution",
+            "Hardware Security Modules (HSM)",
+            "Watermarking and fingerprinting"
+          ],
+          "links": [
+            {
+              "text": "W3C EME Standards",
+              "url": "https://www.w3.org/2017/01/pressrelease-eme-recommendation.html.en"
+            },
+            {
+              "text": "MPEG CENC",
+              "url": "https://www.mpeg.org/standards/MPEG-A/19/"
+            },
+            {
+              "text": "DVB Conditional Access",
+              "url": "https://dvb.org/technology/conditional-access/"
+            }
+          ],
+          "technologies": [
+            {
+              "name": "Widevine",
+              "description": "Content protection system supporting multiple security levels. Used by Netflix, Disney+, and most Android devices. Provides hardware-based security for premium content.",
+              "links": [
+                {
+                  "text": "Documentation",
+                  "url": "https://developers.google.com/widevine"
+                }
+              ],
+              "searchTerms": ["widevine", "drm", "google"]
+            },
+            {
+              "name": "PlayReady",
+              "description": "Microsoft's content protection technology. Widely used in Windows ecosystems and Xbox. Supports both software and hardware implementations.",
+              "links": [
+                {
+                  "text": "Documentation",
+                  "url": "https://docs.microsoft.com/en-us/playready/"
+                }
+              ],
+              "searchTerms": ["playready", "microsoft", "drm"]
+            },
+            {
+              "name": "FairPlay",
+              "description": "Apple's proprietary content protection for iOS, tvOS, and macOS. Integrated with HLS streaming. Required for premium content on Apple devices.",
+              "links": [
+                {
+                  "text": "Documentation",
+                  "url": "https://developer.apple.com/streaming/fps/"
+                }
+              ],
+              "searchTerms": ["fairplay", "apple", "drm"]
+            }
+          ]
+        },
+        {
+          "id": "cdn-delivery",
+          "name": "CDN & Delivery",
+          "description": "Content Delivery Networks & Distribution",
+          "keyOrganizations": [
+            {
+              "name": "Streaming Video Technology Alliance (SVTA)",
+              "description": "CDN interoperability"
+            },
+            {
+              "name": "IETF",
+              "description": "HTTP-based delivery protocols"
+            },
+            {
+              "name": "DVB",
+              "description": "Broadcast distribution standards"
+            }
+          ],
+          "researchAreas": [
+            "Edge computing for video",
+            "Multi-CDN strategies",
+            "Geographic distribution optimization",
+            "CDN analytics and monitoring"
+          ],
+          "links": [
+            {
+              "text": "SVTA CDN Guidelines",
+              "url": "https://www.svta.org/"
+            },
+            {
+              "text": "IETF HTTP/1.1",
+              "url": "https://tools.ietf.org/html/rfc7230"
+            },
+            {
+              "text": "DVB Delivery Standards",
+              "url": "https://dvb.org/technology/delivery/"
+            }
+          ],
+          "technologies": [
+            {
+              "name": "Akamai",
+              "description": "Global content delivery network with 300,000+ edge servers. Industry leader for live streaming and video-on-demand. Advanced caching and optimization features.",
+              "links": [
+                {
+                  "text": "Media Delivery Solutions",
+                  "url": "https://www.akamai.com/products/media-delivery"
+                }
+              ],
+              "searchTerms": ["akamai", "cdn", "delivery"]
+            },
+            {
+              "name": "CloudFront",
+              "description": "AWS global CDN service with 400+ edge locations. Integrated with AWS media services. Cost-effective with pay-as-you-use pricing.",
+              "links": [
+                {
+                  "text": "AWS CloudFront",
+                  "url": "https://aws.amazon.com/cloudfront/"
+                }
+              ],
+              "searchTerms": ["cloudfront", "aws", "cdn"]
+            },
+            {
+              "name": "Cloudflare",
+              "description": "Global edge network with focus on security and performance. Stream delivery platform with built-in analytics. Strong DDoS protection.",
+              "links": [
+                {
+                  "text": "Cloudflare Stream",
+                  "url": "https://www.cloudflare.com/products/cloudflare-stream/"
+                }
+              ],
+              "searchTerms": ["cloudflare", "cdn", "streaming"]
+            }
+          ]
+        },
+        {
+          "id": "analytics-monitoring",
+          "name": "Analytics & Monitoring",
+          "description": "Streaming Analytics & Quality Monitoring",
+          "keyOrganizations": [
+            {
+              "name": "ITU-T",
+              "description": "Quality of Experience (QoE) standards"
+            },
+            {
+              "name": "IETF",
+              "description": "Quality of Service (QoS) protocols"
+            },
+            {
+              "name": "DVB",
+              "description": "Common Media Client Data (CMCD)"
+            }
+          ],
+          "researchAreas": [
+            "Real-time analytics platforms",
+            "Viewer behavior analysis",
+            "Predictive quality optimization",
+            "Cross-platform measurement"
+          ],
+          "links": [
+            {
+              "text": "ITU-T QoE Standards",
+              "url": "https://www.itu.int/rec/T-REC-P.1203"
+            },
+            {
+              "text": "IETF QoS RFC",
+              "url": "https://tools.ietf.org/html/rfc3393"
+            },
+            {
+              "text": "DVB CMCD",
+              "url": "https://dvb.org/dvb-dash-fact-sheet/"
+            }
+          ],
+          "technologies": [
+            {
+              "name": "QoE Metrics",
+              "description": "User-centric metrics measuring perceived quality. Includes startup time, rebuffering events, resolution changes, and completion rates.",
+              "links": [
+                {
+                  "text": "ITU Standards",
+                  "url": "https://www.iso.org/standard/79707.html"
+                }
+              ],
+              "searchTerms": ["qoe", "quality", "experience"]
+            },
+            {
+              "name": "QoS Monitoring",
+              "description": "Network-level performance metrics. Measures bandwidth, latency, packet loss, and jitter. Critical for professional broadcast workflows.",
+              "links": [
+                {
+                  "text": "IETF RFC 3393",
+                  "url": "https://tools.ietf.org/html/rfc3393"
+                }
+              ],
+              "searchTerms": ["qos", "quality", "service", "network"]
+            },
+            {
+              "name": "Stream Analytics",
+              "description": "Real-time analysis of viewer behavior, content performance, and system health. Enables data-driven optimization and personalization.",
+              "links": [
+                {
+                  "text": "Industry Overview",
+                  "url": "https://www.streamingmedia.com/Articles/Editorial/What-Is-.../What-is-Streaming-Analytics-74647.aspx"
+                }
+              ],
+              "searchTerms": ["analytics", "streaming", "metrics"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "adaptive",
+      "name": "ADAPTIVE STREAMING LAYER",
+      "subtitle": "Client-Side Adaptation & Manifest Management",
+      "description": "Manages how video content adapts to varying network conditions and device capabilities in real-time.",
+      "keyFunctions": [
+        "Dynamic bitrate adaptation based on network conditions",
+        "Manifest file management (MPD, M3U8)",
+        "Multi-protocol support (DASH, HLS, CMAF)",
+        "Client-side quality selection algorithms"
+      ],
+      "categories": [
+        {
+          "id": "mpeg-dash",
+          "name": "MPEG-DASH",
+          "description": "Dynamic Adaptive Streaming over HTTP",
+          "keyOrganizations": [
+            {
+              "name": "ISO/IEC",
+              "description": "Official MPEG-DASH standard (ISO/IEC 23009)"
+            },
+            {
+              "name": "MPEG",
+              "description": "DASH specification development"
+            },
+            {
+              "name": "SVTA",
+              "description": "Implementation guidelines and interoperability"
+            }
+          ],
+          "researchAreas": [
+            "Adaptive bitrate algorithms",
+            "Low-latency DASH techniques",
+            "Multi-codec DASH delivery",
+            "DASH analytics and optimization"
+          ],
+          "links": [
+            {
+              "text": "ISO/IEC 23009",
+              "url": "https://www.iso.org/standard/83314.html"
+            },
+            {
+              "text": "DASH Industry Forum",
+              "url": "https://dashif.org/"
+            },
+            {
+              "text": "SVTA IOP Guidelines",
+              "url": "https://dashif.org/guidelines/iop-v5/"
+            }
+          ],
+          "technologies": [
+            {
+              "name": "DASH Protocol",
+              "description": "ISO standard for adaptive streaming. Uses MPD manifest files and fMP4 segments. Codec agnostic and supports multiple DRM systems. Latency: 2-30s.",
+              "links": [
+                {
+                  "text": "DASH Industry Forum",
+                  "url": "https://dashif.org/"
+                }
+              ],
+              "searchTerms": ["dash", "mpeg", "streaming", "adaptive"]
+            },
+            {
+              "name": "MPD Manifest",
+              "description": "XML-based manifest file describing available media representations, segments, and timing. Supports live and on-demand content.",
+              "links": [
+                {
+                  "text": "ISO Standard",
+                  "url": "https://standards.iso.org/ittf/PubliclyAvailableStandards/c065274_ISO_IEC_23009-1_2014.zip"
+                }
+              ],
+              "searchTerms": ["mpd", "manifest", "xml"]
+            },
+            {
+              "name": "fMP4 Segments",
+              "description": "Media container format for DASH streaming. Allows efficient seeking and adaptive streaming. Compatible with CMAF standard.",
+              "links": [
+                {
+                  "text": "ISO 14496-12",
+                  "url": "https://www.iso.org/standard/68960.html"
+                }
+              ],
+              "searchTerms": ["fmp4", "fragmented", "mp4"]
+            }
+          ]
+        },
+        {
+          "id": "apple-hls",
+          "name": "Apple HLS",
+          "description": "HTTP Live Streaming Protocol",
+          "keyOrganizations": [
+            {
+              "name": "Apple",
+              "description": "HLS specification and development"
+            },
+            {
+              "name": "IETF",
+              "description": "HLS standardization (RFC 8216)"
+            },
+            {
+              "name": "W3C",
+              "description": "Web-based HLS implementation"
+            }
+          ],
+          "researchAreas": [
+            "Low-latency HLS optimization",
+            "Cross-platform HLS compatibility",
+            "HLS analytics and monitoring",
+            "HLS security and DRM integration"
+          ],
+          "links": [
+            {
+              "text": "Apple HLS Documentation",
+              "url": "https://developer.apple.com/streaming/"
+            },
+            {
+              "text": "IETF RFC 8216",
+              "url": "https://tools.ietf.org/html/rfc8216"
+            },
+            {
+              "text": "W3C Media Source Extensions",
+              "url": "https://www.w3.org/TR/media-source/"
+            }
+          ],
+          "technologies": [
+            {
+              "name": "HLS Protocol",
+              "description": "Apple's adaptive streaming protocol. Uses M3U8 playlists and TS or fMP4 segments. Dominant on mobile platforms. Native iOS/macOS support.",
+              "links": [
+                {
+                  "text": "Apple Developer",
+                  "url": "https://developer.apple.com/streaming/"
+                }
+              ],
+              "searchTerms": ["hls", "apple", "http", "live", "streaming"]
+            },
+            {
+              "name": "M3U8 Playlist",
+              "description": "Text-based manifest format for HLS. Lists media segments with timing and quality information. Supports live and VOD content.",
+              "links": [
+                {
+                  "text": "IETF RFC 8216",
+                  "url": "https://tools.ietf.org/html/rfc8216"
+                }
+              ],
+              "searchTerms": ["m3u8", "playlist", "manifest"]
+            },
+            {
+              "name": "LL-HLS",
+              "description": "Extension reducing HLS latency to 2-6 seconds. Uses partial segments and blocking playlist reload. Enables near real-time streaming.",
+              "links": [
+                {
+                  "text": "Apple Documentation",
+                  "url": "https://developer.apple.com/documentation/http_live_streaming/enabling_low-latency_hls"
+                }
+              ],
+              "searchTerms": ["ll-hls", "low", "latency"]
+            }
+          ]
+        },
+        {
+          "id": "cmaf-standard",
+          "name": "CMAF Standard",
+          "description": "Common Media Application Format",
+          "keyOrganizations": [
+            {
+              "name": "ISO/IEC",
+              "description": "CMAF standard (ISO/IEC 23000-19)"
+            },
+            {
+              "name": "MPEG",
+              "description": "CMAF specification development"
+            },
+            {
+              "name": "SVTA",
+              "description": "CMAF implementation guidelines"
+            }
+          ],
+          "researchAreas": [
+            "CMAF storage optimization",
+            "Multi-protocol delivery strategies",
+            "CMAF low-latency streaming",
+            "CMAF analytics and monitoring"
+          ],
+          "links": [
+            {
+              "text": "ISO/IEC 23000-19",
+              "url": "https://www.iso.org/standard/71975.html"
+            },
+            {
+              "text": "MPEG CMAF",
+              "url": "https://www.mpeg.org/standards/MPEG-A/19/"
+            },
+            {
+              "text": "SVTA CMAF Guidelines",
+              "url": "https://www.svta.org/workstreams/cmaf/"
+            }
+          ],
+          "technologies": [
+            {
+              "name": "CMAF Protocol",
+              "description": "Unified format for DASH and HLS delivery. Reduces storage costs by 75%. Single encode for multiple protocols. Supports low-latency streaming.",
+              "links": [
+                {
+                  "text": "ISO 23000-19",
+                  "url": "https://www.iso.org/standard/71975.html"
+                }
+              ],
+              "searchTerms": ["cmaf", "common", "media", "application", "format"]
+            },
+            {
+              "name": "Chunked Encoding",
+              "description": "CMAF chunked transfer encoding for low-latency streaming. Enables sub-second latency for live content delivery.",
+              "links": [
+                {
+                  "text": "CMAF Specification",
+                  "url": "https://www.iso.org/standard/71975.html"
+                }
+              ],
+              "searchTerms": ["chunked", "encoding", "cmaf"]
+            }
+          ]
+        },
+        {
+          "id": "real-time",
+          "name": "Real-Time",
+          "description": "Real-Time Communication Protocols",
+          "keyOrganizations": [
+            {
+              "name": "IETF",
+              "description": "WebRTC, RTP, and RTCP standards"
+            },
+            {
+              "name": "W3C",
+              "description": "WebRTC browser APIs and specifications"
+            },
+            {
+              "name": "ITU-T",
+              "description": "Real-time communication standards"
+            }
+          ],
+          "researchAreas": [
+            "WebRTC scalability and optimization",
+            "Real-time video compression",
+            "Network adaptation for real-time",
+            "Cross-platform WebRTC compatibility"
+          ],
+          "links": [
+            {
+              "text": "IETF RTP RFC",
+              "url": "https://tools.ietf.org/html/rfc3550"
+            },
+            {
+              "text": "W3C WebRTC",
+              "url": "https://www.w3.org/TR/webrtc/"
+            },
+            {
+              "text": "ITU-T H.323",
+              "url": "https://www.itu.int/rec/T-REC-H.323"
+            }
+          ],
+          "technologies": [
+            {
+              "name": "WebRTC",
+              "description": "Browser-native real-time streaming. Sub-500ms latency. P2P connections or SFU scaling. DTLS security. Growing integration with traditional streaming.",
+              "links": [
+                {
+                  "text": "WebRTC.org",
+                  "url": "https://webrtc.org/"
+                }
+              ],
+              "searchTerms": ["webrtc", "real", "time", "communication"]
+            },
+            {
+              "name": "WHIP/WHEP",
+              "description": "WebRTC HTTP ingest and egress protocols. Standardized ingest for live streaming. Enables browser-based contribution and distribution.",
+              "links": [
+                {
+                  "text": "IETF Draft",
+                  "url": "https://datatracker.ietf.org/doc/draft-murillo-whep/"
+                }
+              ],
+              "searchTerms": ["whip", "whep", "webrtc", "http"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+} 

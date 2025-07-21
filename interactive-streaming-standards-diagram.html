@@ -42,13 +42,23 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .header p {
+        .header .subtitle {
             font-size: 1.2em;
             opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .header .description {
+            font-size: 1em;
+            opacity: 0.8;
         }
 
         .diagram {
             padding: 30px;
+        }
+
+        .layers-container {
+            margin-bottom: 30px;
         }
 
         .layer {
@@ -95,8 +105,6 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
             pointer-events: none;
-            
-            /* Positioning relative to the layer header */
             bottom: 125%;
             left: 50%;
             transform: translateX(-50%);
@@ -118,65 +126,24 @@
             opacity: 1 !important;
         }
 
-        .layer-tooltip h5 {
-            color: #3498db;
-            margin-bottom: 8px;
-            font-size: 1em;
-        }
-
-        .layer-tooltip p {
-            margin-bottom: 8px;
-        }
-
-        .layer-tooltip ul {
-            margin: 8px 0;
-            padding-left: 20px;
-        }
-
-        .layer-tooltip li {
-            margin-bottom: 4px;
-        }
-
-        .application { background: linear-gradient(135deg, #ff6b6b, #ee5a52); color: white; }
-        .adaptive { background: linear-gradient(135deg, #4ecdc4, #44a08d); color: white; }
-        .transport { background: linear-gradient(135deg, #45b7d1, #3498db); color: white; }
-        .reliable-udp { background: linear-gradient(135deg, #f39c12, #e67e22); color: white; }
-        .container-layer { background: linear-gradient(135deg, #9b59b6, #8e44ad); color: white; }
-        .codec { background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; }
-        .network { background: linear-gradient(135deg, #34495e, #2c3e50); color: white; }
-        .physical { background: linear-gradient(135deg, #95a5a6, #7f8c8d); color: white; }
-
         .layer-content {
             padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
             overflow: visible;
         }
 
         .category {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 15px;
-            border-left: 4px solid #667eea;
-            position: relative;
+            margin-bottom: 25px;
             overflow: visible;
-        }
-
-        .category h4 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 1em;
-            border-bottom: 1px solid #e0e0e0;
-            padding-bottom: 5px;
+            position: relative;
         }
 
         .category-header {
+            font-size: 1.1em;
+            font-weight: bold;
             color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 1em;
-            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 15px;
             padding-bottom: 5px;
+            border-bottom: 2px solid #e0e0e0;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
@@ -204,8 +171,6 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
             pointer-events: none;
-            
-            /* Positioning relative to the category */
             bottom: 100%;
             left: 0;
             margin-bottom: 5px;
@@ -218,6 +183,7 @@
             border-style: solid;
             top: 100%;
             left: 20px;
+            margin-left: -8px;
             border-color: #2c3e50 transparent transparent transparent;
         }
 
@@ -227,45 +193,21 @@
             opacity: 1 !important;
         }
 
-        .category-tooltip h5 {
-            color: #3498db;
-            margin-bottom: 8px;
-            font-size: 1em;
-        }
-
-        .category-tooltip ul {
-            margin: 8px 0;
-            padding-left: 20px;
-        }
-
-        .category-tooltip li {
-            margin-bottom: 4px;
-        }
-
-        .category-tooltip a {
-            color: #74b9ff;
-            text-decoration: none;
-            margin-top: 8px;
-            display: inline-block;
-            font-size: 0.9em;
-            margin-right: 10px;
-        }
-
-        .category-tooltip a:hover {
-            text-decoration: underline;
+        .technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .tech-item {
-            display: inline-block;
-            background: white;
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
             padding: 8px 12px;
-            margin: 4px;
-            border-radius: 20px;
-            font-size: 0.9em;
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 1px solid #e0e0e0;
             position: relative;
+            overflow: visible;
         }
 
         .tech-item:hover {
@@ -273,7 +215,6 @@
             color: white;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
-            z-index: 9999;
         }
 
         .tooltip {
@@ -286,15 +227,13 @@
             text-align: left;
             padding: 15px;
             border-radius: 8px;
-            width: 280px;
+            width: 300px;
             max-width: 90vw;
             font-size: 0.85em;
             line-height: 1.4;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
             pointer-events: none;
-            
-            /* Default positioning - will be adjusted by JavaScript */
             bottom: 125%;
             left: 50%;
             transform: translateX(-50%);
@@ -312,2245 +251,165 @@
         }
 
         .tech-item:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        /* Dynamic positioning classes */
-        .tooltip.tooltip-above {
-            bottom: 125%;
-            top: auto;
-        }
-
-        .tooltip.tooltip-below {
-            bottom: auto;
-            top: 125%;
-        }
-
-        .tooltip.tooltip-above::after {
-            top: 100%;
-            bottom: auto;
-            border-color: #2c3e50 transparent transparent transparent;
-        }
-
-        .tooltip.tooltip-below::after {
-            top: auto;
-            bottom: 100%;
-            border-color: transparent transparent #2c3e50 transparent;
-        }
-
-        .tooltip.tooltip-left {
-            bottom: auto;
-            top: 50%;
-            left: auto;
-            right: 125%;
-            transform: translateY(-50%);
-        }
-
-        .tooltip.tooltip-left::after {
-            top: 50%;
-            left: 100%;
-            right: auto;
-            bottom: auto;
-            margin-left: 0;
-            margin-top: -8px;
-            border-color: transparent transparent transparent #2c3e50;
-        }
-
-        .tooltip.tooltip-right {
-            bottom: auto;
-            top: 50%;
-            left: 125%;
-            right: auto;
-            transform: translateY(-50%);
-        }
-
-        .tooltip.tooltip-right::after {
-            top: 50%;
-            left: auto;
-            right: 100%;
-            bottom: auto;
-            margin-left: 0;
-            margin-top: -8px;
-            border-color: transparent #2c3e50 transparent transparent;
-        }
-
-        .tech-item:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
 
         .tooltip h5 {
-            color: #3498db;
             margin-bottom: 8px;
-            font-size: 1em;
+            color: #667eea;
+        }
+
+        .tooltip ul {
+            margin: 8px 0;
+            padding-left: 20px;
         }
 
         .tooltip a {
-            color: #74b9ff;
+            color: #667eea;
             text-decoration: none;
-            margin-top: 8px;
-            display: inline-block;
-            font-size: 0.9em;
         }
 
         .tooltip a:hover {
             text-decoration: underline;
         }
 
-        .workflow {
-            margin-top: 30px;
-            padding: 25px;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border-radius: 10px;
-        }
-
-        .workflow h3 {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .workflow-path {
-            margin: 15px 0;
-            padding: 15px;
-            background: white;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-        }
-
-        .workflow-path h4 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        .path-flow {
-            font-family: 'Courier New', monospace;
-            background: #f1f2f6;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-            font-size: 0.9em;
-        }
-
-        .legend {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
+        .workflows-container {
+            margin-top: 40px;
             padding: 20px;
             background: #f8f9fa;
             border-radius: 10px;
         }
 
-        .legend-item {
+        .workflow-section {
+            margin-bottom: 30px;
+        }
+
+        .workflow-section h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .workflow-steps {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            font-size: 0.9em;
+            gap: 20px;
         }
 
-        .legend-color {
-            width: 20px;
-            height: 20px;
-            border-radius: 3px;
-            margin-right: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .layer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .tooltip {
-                width: 250px;
-                max-width: 85vw;
-                font-size: 0.8em;
-            }
-            
-            .header h1 {
-                font-size: 2em;
-            }
-            
-            .search-box input {
-                width: 250px;
-            }
-        }
-
-        .search-box {
-            margin: 20px 0;
+        .step {
+            background: #667eea;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
             text-align: center;
+            flex: 1;
+            font-weight: bold;
         }
 
-        .search-box input {
-            padding: 12px 20px;
-            font-size: 1em;
+        .search-container {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px;
             border: 2px solid #e0e0e0;
-            border-radius: 25px;
-            width: 300px;
-            max-width: 100%;
-            outline: none;
+            border-radius: 6px;
+            font-size: 1em;
             transition: border-color 0.3s ease;
         }
 
-        .search-box input:focus {
+        .search-input:focus {
+            outline: none;
             border-color: #667eea;
+        }
+
+        .search-results {
+            margin-top: 15px;
+        }
+
+        .search-result {
+            padding: 10px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-result:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .error {
+            text-align: center;
+            padding: 50px;
+            color: #e74c3c;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            .workflow-steps {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .technologies {
+                flex-direction: column;
+            }
+            
+            .tooltip, .category-tooltip, .layer-tooltip {
+                width: 280px;
+                left: 0;
+                transform: none;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Video Streaming & Broadcast Standards</h1>
-            <p>Interactive Technology Stack Diagram - Hover over any technology for detailed information</p>
-        </div>
-
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search technologies, standards, or organizations (e.g. 'MPEG', 'low latency', 'ITU')..." onkeyup="searchTechnology()">
-        </div>
-
-        <div class="diagram">
-            <!-- Application Layer -->
-            <div class="layer" data-layer="application">
-                <div class="layer-header application">
-                    APPLICATION LAYER - User Experience & Business Logic
-                    <div class="layer-tooltip">
-                        <h5>Application Layer</h5>
-                        <p>The top layer handles user-facing features and business logic that directly impact the viewer experience.</p>
-                        <p><strong>Key Functions:</strong></p>
-                        <ul>
-                            <li>Content protection and DRM systems</li>
-                            <li>Content delivery network optimization</li>
-                            <li>User analytics and quality monitoring</li>
-                            <li>Business logic and monetization</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="layer-content">
-                    <div class="category">
-                        <h4 class="category-header" data-search="drm security widevine playready fairplay">DRM & Security</h4>
-                        <div class="category-tooltip">
-                            <h5>Digital Rights Management & Security Standards</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>W3C:</strong> Encrypted Media Extensions (EME) for browser-based DRM</li>
-                                <li><strong>MPEG:</strong> Common Encryption (CENC) and CMAF standards</li>
-                                <li><strong>DVB:</strong> Conditional Access and broadcast security</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Conditional Access Systems (CAS)</li>
-                                <li>History of DRM evolution</li>
-                                <li>Hardware Security Modules (HSM)</li>
-                                <li>Watermarking and fingerprinting</li>
-                            </ul>
-                            <a href="https://www.w3.org/2017/01/pressrelease-eme-recommendation.html.en" target="_blank">🔗 W3C EME Standards</a>
-                            <a href="https://www.mpeg.org/standards/MPEG-A/19/" target="_blank">🔗 MPEG CENC</a>
-                            <a href="https://dvb.org/technology/conditional-access/" target="_blank">🔗 DVB Conditional Access</a>
-                        </div>
-                        <div class="tech-item" data-search="widevine drm google">
-                            Widevine
-                            <div class="tooltip">
-                                <h5>Google Widevine DRM</h5>
-                                <p>Content protection system supporting multiple security levels. Used by Netflix, Disney+, and most Android devices. Provides hardware-based security for premium content.</p>
-                                <a href="https://developers.google.com/widevine" target="_blank">🔗 Documentation</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="playready microsoft drm">
-                            PlayReady
-                            <div class="tooltip">
-                                <h5>Microsoft PlayReady DRM</h5>
-                                <p>Microsoft's content protection technology. Widely used in Windows ecosystems and Xbox. Supports both software and hardware implementations.</p>
-                                <a href="https://docs.microsoft.com/en-us/playready/" target="_blank">🔗 Documentation</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="fairplay apple drm">
-                            FairPlay
-                            <div class="tooltip">
-                                <h5>Apple FairPlay DRM</h5>
-                                <p>Apple's proprietary content protection for iOS, tvOS, and macOS. Integrated with HLS streaming. Required for premium content on Apple devices.</p>
-                                <a href="https://developer.apple.com/streaming/fps/" target="_blank">�� Documentation</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="cdn delivery akamai cloudfront">CDN & Delivery</h4>
-                        <div class="category-tooltip">
-                            <h5>Content Delivery Networks & Distribution</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>Streaming Video Technology Alliance (SVTA):</strong> CDN interoperability</li>
-                                <li><strong>IETF:</strong> HTTP-based delivery protocols</li>
-                                <li><strong>DVB:</strong> Broadcast distribution standards</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Edge computing for video</li>
-                                <li>Multi-CDN strategies</li>
-                                <li>Geographic distribution optimization</li>
-                                <li>CDN analytics and monitoring</li>
-                            </ul>
-                            <a href="https://www.svta.org/" target="_blank">🔗 SVTA CDN Guidelines</a>
-                            <a href="https://tools.ietf.org/html/rfc7230" target="_blank">🔗 IETF HTTP/1.1</a>
-                            <a href="https://dvb.org/technology/delivery/" target="_blank">🔗 DVB Delivery Standards</a>
-                        </div>
-                        <div class="tech-item" data-search="akamai cdn delivery">
-                            Akamai
-                            <div class="tooltip">
-                                <h5>Akamai CDN</h5>
-                                <p>Global content delivery network with 300,000+ edge servers. Industry leader for live streaming and video-on-demand. Advanced caching and optimization features.</p>
-                                <a href="https://www.akamai.com/products/media-delivery" target="_blank">🔗 Media Delivery Solutions</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="cloudfront aws cdn">
-                            CloudFront
-                            <div class="tooltip">
-                                <h5>Amazon CloudFront</h5>
-                                <p>AWS global CDN service with 400+ edge locations. Integrated with AWS media services. Cost-effective with pay-as-you-use pricing.</p>
-                                <a href="https://aws.amazon.com/cloudfront/" target="_blank">�� AWS CloudFront</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="cloudflare cdn streaming">
-                            Cloudflare
-                            <div class="tooltip">
-                                <h5>Cloudflare CDN</h5>
-                                <p>Global edge network with focus on security and performance. Stream delivery platform with built-in analytics. Strong DDoS protection.</p>
-                                <a href="https://www.cloudflare.com/products/cloudflare-stream/" target="_blank">🔗 Cloudflare Stream</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="analytics monitoring qoe qos">Analytics & Monitoring</h4>
-                        <div class="category-tooltip">
-                            <h5>Streaming Analytics & Quality Monitoring</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>ITU-T:</strong> Quality of Experience (QoE) standards</li>
-                                <li><strong>IETF:</strong> Quality of Service (QoS) protocols</li>
-                                <li><strong>DVB:</strong> Common Media Client Data (CMCD)</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Real-time analytics platforms</li>
-                                <li>Viewer behavior analysis</li>
-                                <li>Predictive quality optimization</li>
-                                <li>Cross-platform measurement</li>
-                            </ul>
-                            <a href="https://www.itu.int/rec/T-REC-P.1203" target="_blank">🔗 ITU-T QoE Standards</a>
-                            <a href="https://tools.ietf.org/html/rfc3393" target="_blank">🔗 IETF QoS RFC</a>
-                            <a href="https://dvb.org/dvb-dash-fact-sheet/" target="_blank">🔗 DVB CMCD</a>
-                        </div>
-                        <div class="tech-item" data-search="qoe quality experience">
-                            QoE Metrics
-                            <div class="tooltip">
-                                <h5>Quality of Experience</h5>
-                                <p>User-centric metrics measuring perceived quality. Includes startup time, rebuffering events, resolution changes, and completion rates.</p>
-                                <a href="https://www.iso.org/standard/79707.html" target="_blank">🔗 ITU Standards</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="qos quality service network">
-                            QoS Monitoring
-                            <div class="tooltip">
-                                <h5>Quality of Service</h5>
-                                <p>Network-level performance metrics. Measures bandwidth, latency, packet loss, and jitter. Critical for professional broadcast workflows.</p>
-                                <a href="https://tools.ietf.org/html/rfc3393" target="_blank">🔗 IETF RFC 3393</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="analytics streaming metrics">
-                            Stream Analytics
-                            <div class="tooltip">
-                                <h5>Streaming Analytics</h5>
-                                <p>Real-time analysis of viewer behavior, content performance, and system health. Enables data-driven optimization and personalization.</p>
-                                <a href="https://www.streamingmedia.com/Articles/Editorial/What-Is-.../What-is-Streaming-Analytics-74647.aspx" target="_blank">🔗 Industry Overview</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Adaptive Streaming Layer -->
-            <div class="layer" data-layer="adaptive">
-                <div class="layer-header adaptive">
-                    ADAPTIVE STREAMING LAYER - Client-Side Adaptation & Manifest Management
-                    <div class="layer-tooltip">
-                        <h5>Adaptive Streaming Layer</h5>
-                        <p>Manages how video content adapts to varying network conditions and device capabilities in real-time.</p>
-                        <p><strong>Key Functions:</strong></p>
-                        <ul>
-                            <li>Dynamic bitrate adaptation based on network conditions</li>
-                            <li>Manifest file management (MPD, M3U8)</li>
-                            <li>Multi-protocol support (DASH, HLS, CMAF)</li>
-                            <li>Client-side quality selection algorithms</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="layer-content">
-                    <div class="category">
-                        <h4 class="category-header" data-search="mpeg dash adaptive streaming">MPEG-DASH</h4>
-                        <div class="category-tooltip">
-                            <h5>Dynamic Adaptive Streaming over HTTP</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>ISO/IEC:</strong> Official MPEG-DASH standard (ISO/IEC 23009)</li>
-                                <li><strong>MPEG:</strong> DASH specification development</li>
-                                <li><strong>SVTA:</strong> Implementation guidelines and interoperability</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Adaptive bitrate algorithms</li>
-                                <li>Low-latency DASH techniques</li>
-                                <li>Multi-codec DASH delivery</li>
-                                <li>DASH analytics and optimization</li>
-                            </ul>
-                            <a href="https://www.iso.org/standard/83314.html" target="_blank">🔗 ISO/IEC 23009</a>
-                            <a href="https://dashif.org/" target="_blank">🔗 DASH Industry Forum</a>
-                            <a href="https://dashif.org/guidelines/iop-v5/" target="_blank">🔗 SVTA IOP Guidelines</a>
-                        </div>
-                        <div class="tech-item" data-search="dash mpeg streaming adaptive">
-                            DASH Protocol
-                            <div class="tooltip">
-                                <h5>Dynamic Adaptive Streaming over HTTP</h5>
-                                <p>ISO standard for adaptive streaming. Uses MPD manifest files and fMP4 segments. Codec agnostic and supports multiple DRM systems. Latency: 2-30s.</p>
-                                <a href="https://dashif.org/" target="_blank">🔗 DASH Industry Forum</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="mpd manifest xml">
-                            MPD Manifest
-                            <div class="tooltip">
-                                <h5>Media Presentation Description</h5>
-                                <p>XML-based manifest file describing available media representations, segments, and timing. Supports live and on-demand content.</p>
-                                <a href="https://standards.iso.org/ittf/PubliclyAvailableStandards/c065274_ISO_IEC_23009-1_2014.zip" target="_blank">🔗 ISO Standard</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="fmp4 fragmented mp4">
-                            fMP4 Segments
-                            <div class="tooltip">
-                                <h5>Fragmented MP4</h5>
-                                <p>Media container format for DASH streaming. Allows efficient seeking and adaptive streaming. Compatible with CMAF standard.</p>
-                                <a href="https://www.iso.org/standard/68960.html" target="_blank">🔗 ISO 14496-12</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="hls apple http live streaming">Apple HLS</h4>
-                        <div class="category-tooltip">
-                            <h5>HTTP Live Streaming Protocol</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>Apple:</strong> HLS specification and development</li>
-                                <li><strong>IETF:</strong> HLS standardization (RFC 8216)</li>
-                                <li><strong>W3C:</strong> Web-based HLS implementation</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Low-latency HLS optimization</li>
-                                <li>Cross-platform HLS compatibility</li>
-                                <li>HLS analytics and monitoring</li>
-                                <li>HLS security and DRM integration</li>
-                            </ul>
-                            <a href="https://developer.apple.com/streaming/" target="_blank">🔗 Apple HLS Documentation</a>
-                            <a href="https://tools.ietf.org/html/rfc8216" target="_blank">🔗 IETF RFC 8216</a>
-                            <a href="https://www.w3.org/TR/media-source/" target="_blank">🔗 W3C Media Source Extensions</a>
-                        </div>
-                        <div class="tech-item" data-search="hls apple http live streaming">
-                            HLS Protocol
-                            <div class="tooltip">
-                                <h5>HTTP Live Streaming</h5>
-                                <p>Apple's adaptive streaming protocol. Uses M3U8 playlists and TS or fMP4 segments. Dominant on mobile platforms. Native iOS/macOS support.</p>
-                                <a href="https://developer.apple.com/streaming/" target="_blank">🔗 Apple Developer</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="m3u8 playlist manifest">
-                            M3U8 Playlist
-                            <div class="tooltip">
-                                <h5>Extended M3U Playlist</h5>
-                                <p>Text-based manifest format for HLS. Lists media segments with timing and quality information. Supports live and VOD content.</p>
-                                <a href="https://tools.ietf.org/html/rfc8216" target="_blank">🔗 IETF RFC 8216</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="ll-hls low latency">
-                            LL-HLS
-                            <div class="tooltip">
-                                <h5>Low-Latency HLS</h5>
-                                <p>Extension reducing HLS latency to 2-6 seconds. Uses partial segments and blocking playlist reload. Enables near real-time streaming.</p>
-                                <a href="https://developer.apple.com/documentation/http_live_streaming/enabling_low-latency_hls" target="_blank">🔗 Apple Documentation</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="cmaf common media application format">CMAF Standard</h4>
-                        <div class="category-tooltip">
-                            <h5>Common Media Application Format</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>ISO/IEC:</strong> CMAF standard (ISO/IEC 23000-19)</li>
-                                <li><strong>MPEG:</strong> CMAF specification development</li>
-                                <li><strong>SVTA:</strong> CMAF implementation guidelines</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>CMAF storage optimization</li>
-                                <li>Multi-protocol delivery strategies</li>
-                                <li>CMAF low-latency streaming</li>
-                                <li>CMAF analytics and monitoring</li>
-                            </ul>
-                            <a href="https://www.iso.org/standard/71975.html" target="_blank">🔗 ISO/IEC 23000-19</a>
-                            <a href="https://www.mpeg.org/standards/MPEG-A/19/" target="_blank">🔗 MPEG CMAF</a>
-                            <a href="https://www.svta.org/workstreams/cmaf/" target="_blank">🔗 SVTA CMAF Guidelines</a>
-                        </div>
-                        <div class="tech-item" data-search="cmaf common media application format">
-                            CMAF Protocol
-                            <div class="tooltip">
-                                <h5>Common Media Application Format</h5>
-                                <p>Unified format for DASH and HLS delivery. Reduces storage costs by 75%. Single encode for multiple protocols. Supports low-latency streaming.</p>
-                                <a href="https://www.iso.org/standard/71975.html" target="_blank">🔗 ISO 23000-19</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="chunked encoding cmtt">
-                            Chunked Encoding
-                            <div class="tooltip">
-                                <h5>Chunked Transfer Encoding</h5>
-                                <p>Enables low-latency streaming by sending partial segments. Reduces glass-to-glass latency. Used in both CMAF and LL-HLS.</p>
-                                <a href="https://www.w3.org/TR/mse-byte-stream-format-mp4/" target="_blank">🔗 W3C Specification</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="webrtc real-time communication">Real-Time</h4>
-                        <div class="category-tooltip">
-                            <h5>Real-Time Communication Protocols</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>IETF:</strong> WebRTC, RTP, and RTCP standards</li>
-                                <li><strong>W3C:</strong> WebRTC browser APIs and specifications</li>
-                                <li><strong>ITU-T:</strong> Real-time communication standards</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>WebRTC scalability and optimization</li>
-                                <li>Real-time video compression</li>
-                                <li>Network adaptation for real-time</li>
-                                <li>Cross-platform WebRTC compatibility</li>
-                            </ul>
-                            <a href="https://tools.ietf.org/html/rfc3550" target="_blank">🔗 IETF RTP RFC</a>
-                            <a href="https://www.w3.org/TR/webrtc/" target="_blank">🔗 W3C WebRTC</a>
-                            <a href="https://www.itu.int/rec/T-REC-H.323" target="_blank">🔗 ITU-T H.323</a>
-                        </div>
-                        <div class="tech-item" data-search="whip webrtc http ingest protocol">
-                            WHIP/WHEP
-                            <div class="tooltip">
-                                <h5>WebRTC-HTTP Ingestion/Egress Protocol</h5>
-                                <p>Standardized protocols for WebRTC streaming. WHIP for ingestion, WHEP for playback. Simplifies WebRTC implementation for broadcasters.</p>
-                                <a href="https://datatracker.ietf.org/doc/draft-ietf-wish-whip/" target="_blank">🔗 IETF Draft</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="webrtc real time communication">
-                            WebRTC
-                            <div class="tooltip">
-                                <h5>Web Real-Time Communication</h5>
-                                <p>Browser-native real-time streaming. Sub-500ms latency. P2P connections or SFU scaling. DTLS security. Growing integration with traditional streaming.</p>
-                                <a href="https://webrtc.org/" target="_blank">🔗 WebRTC.org</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Transport Layer -->
-            <div class="layer" data-layer="transport">
-                <div class="layer-header transport">
-                    STREAMING TRANSPORT LAYER - Protocol & Session Management
-                    <div class="layer-tooltip">
-                        <h5>Streaming Transport Layer</h5>
-                        <p>Handles the reliable delivery of video data across networks using various protocols optimized for different use cases.</p>
-                        <p><strong>Key Functions:</strong></p>
-                        <ul>
-                            <li>HTTP-based streaming protocols (DASH, HLS)</li>
-                            <li>Real-time communication (WebRTC, RTP)</li>
-                            <li>Session management and connection handling</li>
-                            <li>Protocol-specific error recovery and optimization</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="layer-content">
-                    <div class="category">
-                        <h4 class="category-header" data-search="http streaming dash hls">HTTP-Based Streaming</h4>
-                        <div class="category-tooltip">
-                            <h5>HTTP-Based Streaming Protocols</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>IETF:</strong> HTTP/1.1, HTTP/2, and HTTP/3 standards</li>
-                                <li><strong>MPEG-DASH:</strong> Dynamic Adaptive Streaming over HTTP</li>
-                                <li><strong>Apple:</strong> HTTP Live Streaming (HLS) specification</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Adaptive bitrate algorithms</li>
-                                <li>Low-latency streaming techniques</li>
-                                <li>Multi-codec delivery strategies</li>
-                                <li>HTTP/3 and QUIC for streaming</li>
-                            </ul>
-                            <a href="https://tools.ietf.org/html/rfc7230" target="_blank">🔗 IETF HTTP/1.1</a>
-                            <a href="https://dashif.org/" target="_blank">🔗 DASH Industry Forum</a>
-                            <a href="https://developer.apple.com/streaming/" target="_blank">🔗 Apple HLS</a>
-                        </div>
-                        <div class="tech-item" data-search="http2 multiplexing streaming">
-                            HTTP/2
-                            <div class="tooltip">
-                                <h5>HTTP/2 Protocol</h5>
-                                <p>Multiplexed HTTP with server push capabilities. Reduces connection overhead. Enables efficient streaming with binary framing and header compression.</p>
-                                <a href="https://tools.ietf.org/html/rfc7540" target="_blank">🔗 IETF RFC 7540</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="http3 quic udp">
-                            HTTP/3
-                            <div class="tooltip">
-                                <h5>HTTP/3 over QUIC</h5>
-                                <p>Latest HTTP version using QUIC transport. Reduces latency with 0-RTT connection establishment. Better performance over lossy networks.</p>
-                                <a href="https://tools.ietf.org/html/rfc9114" target="_blank">🔗 IETF RFC 9114</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="tls encryption security">
-                            TLS Security
-                            <div class="tooltip">
-                                <h5>Transport Layer Security</h5>
-                                <p>Encryption protocol securing HTTP streams. TLS 1.3 provides forward secrecy and reduced handshake latency. Required for premium content delivery.</p>
-                                <a href="https://tools.ietf.org/html/rfc8446" target="_blank">🔗 IETF RFC 8446</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="webrtc rtp rtcp real-time">Real-Time Protocols</h4>
-                        <div class="category-tooltip">
-                            <h5>Real-Time Communication Protocols</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>IETF:</strong> RTP, RTCP, and WebRTC standards</li>
-                                <li><strong>W3C:</strong> WebRTC browser APIs</li>
-                                <li><strong>ITU-T:</strong> Real-time communication standards</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>WebRTC scalability and optimization</li>
-                                <li>Real-time video compression</li>
-                                <li>Network adaptation for real-time</li>
-                                <li>Cross-platform WebRTC compatibility</li>
-                            </ul>
-                            <a href="https://tools.ietf.org/html/rfc3550" target="_blank">🔗 IETF RTP RFC</a>
-                            <a href="https://www.w3.org/TR/webrtc/" target="_blank">🔗 W3C WebRTC</a>
-                            <a href="https://www.itu.int/rec/T-REC-H.323" target="_blank">🔗 ITU-T H.323</a>
-                        </div>
-                        <div class="tech-item" data-search="rtp real time protocol">
-                            RTP
-                            <div class="tooltip">
-                                <h5>Real-time Transport Protocol</h5>
-                                <p>Standard for audio/video delivery over IP networks. Provides sequencing, timing, and payload identification. Used in WebRTC and professional broadcasting.</p>
-                                <a href="https://tools.ietf.org/html/rfc3550" target="_blank">🔗 IETF RFC 3550</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="rtcp control protocol">
-                            RTCP
-                            <div class="tooltip">
-                                <h5>RTP Control Protocol</h5>
-                                <p>Companion protocol to RTP providing quality feedback, participant identification, and session control. Essential for adaptive real-time streaming.</p>
-                                <a href="https://tools.ietf.org/html/rfc3550" target="_blank">🔗 IETF RFC 3550</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="srtp secure rtp encryption">
-                            SRTP
-                            <div class="tooltip">
-                                <h5>Secure Real-time Transport Protocol</h5>
-                                <p>Encrypted version of RTP providing authentication and replay protection. Used in WebRTC and secure professional streaming applications.</p>
-                                <a href="https://tools.ietf.org/html/rfc3711" target="_blank">🔗 IETF RFC 3711</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="srt haivision professional transport">Professional Transport</h4>
-                        <div class="category-tooltip">
-                            <h5>Professional Video Transport Protocols</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>SRT Alliance:</strong> Secure Reliable Transport protocol</li>
-                                <li><strong>Haivision:</strong> SRT development and implementation</li>
-                                <li><strong>RIST Forum:</strong> Reliable Internet Stream Transport</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Low-latency professional streaming</li>
-                                <li>Network resilience and error recovery</li>
-                                <li>Professional video over IP</li>
-                                <li>Broadcast-quality internet transport</li>
-                            </ul>
-                            <a href="https://www.srtalliance.org/" target="_blank">🔗 SRT Alliance</a>
-                            <a href="https://www.haivision.com/products/srt/" target="_blank">🔗 Haivision SRT</a>
-                            <a href="https://www.rist.tv/" target="_blank">🔗 RIST Forum</a>
-                        </div>
-                        <div class="tech-item" data-search="srt secure reliable transport">
-                            SRT Protocol
-                            <div class="tooltip">
-                                <h5>Secure Reliable Transport</h5>
-                                <p>Open-source protocol for low-latency streaming over unpredictable networks. 120ms+ latency, AES encryption, caller/listener mode. Widely adopted for contribution.</p>
-                                <a href="https://www.srtalliance.org/" target="_blank">🔗 SRT Alliance</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="rist reliable internet streaming transport">
-                            RIST Protocol
-                            <div class="tooltip">
-                                <h5>Reliable Internet Stream Transport</h5>
-                                <p>Professional streaming protocol with three profiles. Based on RTP with advanced error correction. Designed for broadcast contribution over public internet.</p>
-                                <a href="https://www.rist.tv/" target="_blank">🔗 RIST Forum</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="st2110 smpte professional ip">
-                            SMPTE ST 2110
-                            <div class="tooltip">
-                                <h5>Professional Media Over IP</h5>
-                                <p>Suite of standards for uncompressed media over IP networks. Separate essence flows for video, audio, and metadata. Requires PTP synchronization.</p>
-                                <a href="https://www.smpte.org/standards/st2110" target="_blank">🔗 SMPTE Standards</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="rtmp legacy streaming protocols">Legacy Protocols</h4>
-                        <div class="category-tooltip">
-                            <h5>Legacy Streaming Protocols</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>Adobe:</strong> RTMP protocol development</li>
-                                <li><strong>IETF:</strong> Historical streaming protocol standards</li>
-                                <li><strong>Industry:</strong> Legacy protocol maintenance</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Legacy protocol modernization</li>
-                                <li>Protocol migration strategies</li>
-                                <li>Backward compatibility solutions</li>
-                                <li>Legacy system integration</li>
-                            </ul>
-                            <a href="https://www.adobe.com/devnet/rtmp.html" target="_blank">🔗 Adobe RTMP</a>
-                            <a href="https://tools.ietf.org/html/rfc2326" target="_blank">🔗 IETF RTSP RFC</a>
-                            <a href="https://www.streamingmedia.com/Articles/Editorial/What-Is-.../What-is-RTMP-74731.aspx" target="_blank">🔗 RTMP Overview</a>
-                        </div>
-                        <div class="tech-item" data-search="rtsp real time streaming protocol">
-                            RTSP
-                            <div class="tooltip">
-                                <h5>Real-Time Streaming Protocol</h5>
-                                <p>Application-level protocol for streaming media control. Supports VCR-like commands (play, pause, stop). Common in surveillance and IPTV systems.</p>
-                                <a href="https://tools.ietf.org/html/rfc2326" target="_blank">🔗 IETF RFC 2326</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="rtmp real time messaging protocol">
-                            RTMP
-                            <div class="tooltip">
-                                <h5>Real-Time Messaging Protocol</h5>
-                                <p>Adobe's streaming protocol, still widely used for ingestion. TCP-based with 2-5s latency. Being phased out in favor of WebRTC and SRT for contribution.</p>
-                                <a href="https://rtmp.veriskope.com/pdf/rtmp_specification_1.0.pdf" target="_blank">🔗 Specification PDF</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Reliable UDP Layer -->
-            <div class="layer" data-layer="reliable-udp">
-                <div class="layer-header reliable-udp">
-                    RELIABLE UDP LAYER - Enhanced Transport Protocols
-                    <div class="layer-tooltip">
-                        <h5>Reliable UDP Layer</h5>
-                        <p>Provides enhanced UDP-based transport protocols that add reliability features while maintaining low latency for professional streaming.</p>
-                        <p><strong>Key Functions:</strong></p>
-                        <ul>
-                            <li>Low-latency reliable transport (SRT, RIST)</li>
-                            <li>Error correction and packet recovery</li>
-                            <li>Professional contribution and distribution</li>
-                            <li>Network resilience and adaptation</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="layer-content">
-                    <div class="category">
-                        <h4 class="category-header" data-search="quic udp reliable transport">Reliable UDP Protocols</h4>
-                        <div class="category-tooltip">
-                            <h5>Reliable UDP-Based Transport Protocols</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>IETF:</strong> QUIC protocol standardization</li>
-                                <li><strong>Google:</strong> Original QUIC development</li>
-                                <li><strong>Cloudflare:</strong> QUIC implementation and optimization</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>QUIC performance optimization</li>
-                                <li>UDP-based reliability mechanisms</li>
-                                <li>Multipath transport protocols</li>
-                                <li>Low-latency transport solutions</li>
-                            </ul>
-                            <a href="https://tools.ietf.org/html/rfc9000" target="_blank">🔗 IETF QUIC RFC</a>
-                            <a href="https://quicwg.org/" target="_blank">🔗 QUIC Working Group</a>
-                            <a href="https://blog.cloudflare.com/the-road-to-quic/" target="_blank">🔗 Cloudflare QUIC</a>
-                        </div>
-                        <div class="tech-item" data-search="srt alliance haivision">
-                            SRT Alliance
-                            <div class="tooltip">
-                                <h5>SRT Alliance</h5>
-                                <p>600+ member collaborative community promoting Secure Reliable Transport (SRT) as the standard for low-latency internet video streaming.</p>
-                                <a href="https://www.srtalliance.org/" target="_blank">🔗 SRT Alliance</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="vsf rist activity group">
-                            VSF
-                            <div class="tooltip">
-                                <h5>Video Services Forum (VSF)</h5>
-                                <p>Develops Reliable Internet Stream Transport (RIST) protocol through their RIST Activity Group for professional broadcasting.</p>
-                                <a href="https://www.videoservicesforum.org/technical_recommendations.shtml" target="_blank">🔗 VSF Technical Recommendations</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="rist forum specifications">
-                            RIST Forum
-                            <div class="tooltip">
-                                <h5>RIST Forum</h5>
-                                <p>Industry forum focused on RIST protocol adoption and development for reliable internet streaming transport.</p>
-                                <a href="https://www.rist.tv/specifications/" target="_blank">🔗 RIST Specifications</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="zixi protocol broadcast transport">Zixi Protocol</h4>
-                        <div class="category-tooltip">
-                            <h5>Zixi Broadcast Transport Protocol</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>Zixi:</strong> Zixi protocol development and licensing</li>
-                                <li><strong>Broadcast Industry:</strong> Professional broadcast transport</li>
-                                <li><strong>Content Providers:</strong> Large-scale content distribution</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Broadcast-quality internet transport</li>
-                                <li>Large-scale content distribution</li>
-                                <li>Professional video over IP</li>
-                                <li>Broadcast network optimization</li>
-                            </ul>
-                            <a href="https://zixi.com/" target="_blank">🔗 Zixi Protocol</a>
-                            <a href="https://zixi.com/technology/" target="_blank">🔗 Zixi Technology</a>
-                            <a href="https://www.streamingmedia.com/Articles/Editorial/What-Is-.../What-is-Zixi-74732.aspx" target="_blank">🔗 Zixi Overview</a>
-                        </div>
-                        <div class="tech-item" data-search="zixi sdvp streaming protocol">
-                            Zixi SDVP
-                            <div class="tooltip">
-                                <h5>Software-Defined Video Platform</h5>
-                                <p>Enterprise streaming protocol with <300ms latency and 100% reliability. Adaptive bitrate and network path selection. DTLS encryption built-in.</p>
-                                <a href="https://zixi.com/technology/" target="_blank">🔗 Zixi Technology</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="zixi broadcaster">
-                            Zixi Broadcaster
-                            <div class="tooltip">
-                                <h5>Zixi Broadcaster Software</h5>
-                                <p>Professional encoding and streaming software supporting multiple protocols. Advanced error correction and network optimization for live events.</p>
-                                <a href="https://zixi.com/zixi-broadcaster/" target="_blank">🔗 Product Information</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="open source streaming solutions">Open Source Solutions</h4>
-                        <div class="category-tooltip">
-                            <h5>Open Source Streaming Technologies</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>FFmpeg:</strong> Open source multimedia framework</li>
-                                <li><strong>GStreamer:</strong> Open source multimedia framework</li>
-                                <li><strong>Open Source Community:</strong> Collaborative development</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Open source streaming optimization</li>
-                                <li>Community-driven development</li>
-                                <li>Cost-effective streaming solutions</li>
-                                <li>Open source integration strategies</li>
-                            </ul>
-                            <a href="https://ffmpeg.org/" target="_blank">🔗 FFmpeg</a>
-                            <a href="https://gstreamer.freedesktop.org/" target="_blank">🔗 GStreamer</a>
-                            <a href="https://github.com/topics/streaming" target="_blank">🔗 GitHub Streaming</a>
-                        </div>
-                        <div class="tech-item" data-search="srt haivision open source">
-                            SRT Open Source
-                            <div class="tooltip">
-                                <h5>SRT Open Source Protocol</h5>
-                                <p>Originally developed by Haivision, now open source. 120ms+ latency, AES-128/256 encryption, caller/listener and rendezvous modes.</p>
-                                <a href="https://github.com/Haivision/srt" target="_blank">🔗 GitHub Repository</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="libsrt library implementation">
-                            libSRT
-                            <div class="tooltip">
-                                <h5>SRT Library Implementation</h5>
-                                <p>C++ library implementing SRT protocol. Cross-platform support, integrated into FFmpeg, GStreamer, and major streaming software.</p>
-                                <a href="https://github.com/Haivision/srt/blob/master/docs/API.md" target="_blank">🔗 API Documentation</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="rist reliable internet stream transport">RIST Levels</h4>
-                        <div class="category-tooltip">
-                            <h5>Reliable Internet Stream Transport</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>RIST Forum:</strong> RIST protocol development</li>
-                                <li><strong>Video Services Forum:</strong> Professional video standards</li>
-                                <li><strong>Broadcast Industry:</strong> Professional broadcast transport</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>RIST protocol optimization</li>
-                                <li>Professional video over IP</li>
-                                <li>Broadcast-quality internet transport</li>
-                                <li>RIST implementation strategies</li>
-                            </ul>
-                            <a href="https://www.rist.tv/" target="_blank">🔗 RIST Forum</a>
-                            <a href="https://www.videoservicesforum.org/" target="_blank">🔗 Video Services Forum</a>
-                            <a href="https://www.rist.tv/specifications/" target="_blank">🔗 RIST Specifications</a>
-                        </div>
-                        <div class="tech-item" data-search="rist profile simple">
-                            RIST Simple Profile
-                            <div class="tooltip">
-                                <h5>RIST Simple Profile</h5>
-                                <p>Basic RIST implementation for simple point-to-point links. RTP-based with basic error correction. Suitable for controlled network environments.</p>
-                                <a href="https://www.rist.tv/rist-specifications/" target="_blank">🔗 RIST Specifications</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="rist profile main advanced">
-                            RIST Main/Advanced
-                            <div class="tooltip">
-                                <h5>RIST Main & Advanced Profiles</h5>
-                                <p>Enhanced RIST with encryption, authentication, and advanced error correction. Main profile for professional use, Advanced for complex topologies.</p>
-                                <a href="https://www.rist.tv/rist-specifications/" target="_blank">🔗 RIST Specifications</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="enterprise streaming solutions">Enterprise Solutions</h4>
-                        <div class="category-tooltip">
-                            <h5>Enterprise Streaming Technologies</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>Enterprise Vendors:</strong> Professional streaming solutions</li>
-                                <li><strong>Broadcast Industry:</strong> Enterprise broadcast systems</li>
-                                <li><strong>Technology Providers:</strong> Enterprise-grade streaming</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Enterprise streaming architecture</li>
-                                <li>Scalable streaming solutions</li>
-                                <li>Enterprise security and compliance</li>
-                                <li>Enterprise integration strategies</li>
-                            </ul>
-                            <a href="https://www.streamingmedia.com/Articles/Editorial/What-Is-.../What-is-Enterprise-Streaming-74733.aspx" target="_blank">🔗 Enterprise Streaming Overview</a>
-                            <a href="https://www.broadcastingcable.com/news/enterprise-streaming" target="_blank">🔗 Enterprise Broadcasting</a>
-                            <a href="https://www.tvtechnology.com/enterprise" target="_blank">🔗 Enterprise TV Technology</a>
-                        </div>
-                        <div class="tech-item" data-search="aspera fasp ibm">
-                            Aspera FASP
-                            <div class="tooltip">
-                                <h5>Fast Adaptive Secure Protocol</h5>
-                                <p>IBM's high-speed file transfer protocol. Achieves 100x faster than TCP over long distances. Primarily for large file transfers, not live streaming.</p>
-                                <a href="https://www.ibm.com/products/aspera" target="_blank">🔗 IBM Aspera</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Container Layer -->
-            <div class="layer" data-layer="container">
-                <div class="layer-header container">
-                    CONTAINER LAYER - Media Packaging & Metadata
-                    <div class="layer-tooltip">
-                        <h5>Container Layer</h5>
-                        <p>Defines file formats that package compressed audio, video, and metadata into organized structures for storage and transmission.</p>
-                        <p><strong>Key Functions:</strong></p>
-                        <ul>
-                            <li>Media stream synchronization and timing</li>
-                            <li>Metadata storage and organization</li>
-                            <li>Cross-platform compatibility</li>
-                            <li>Streaming-optimized packaging formats</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="layer-content">
-                    <div class="category">
-                        <h4 class="category-header" data-search="mp4 mkv avi container format">Media Containers</h4>
-                        <div class="category-tooltip">
-                            <h5>Media Container Formats & Standards</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>ISO/IEC:</strong> MP4 and other container standards</li>
-                                <li><strong>MPEG:</strong> Media container specifications</li>
-                                <li><strong>Matroska:</strong> Open-source container format</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Container format optimization</li>
-                                <li>Metadata standards and schemas</li>
-                                <li>Cross-platform compatibility</li>
-                                <li>Streaming-optimized containers</li>
-                            </ul>
-                            <a href="https://www.iso.org/standard/74427.html" target="_blank">🔗 ISO/IEC 14496-12</a>
-                            <a href="https://www.mpeg.org/standards/MPEG-4/" target="_blank">🔗 MPEG-4 Standards</a>
-                            <a href="https://matroska.org/" target="_blank">🔗 Matroska Format</a>
-                        </div>
-                        <div class="tech-item" data-search="mpeg isobmff mp4">
-                            MPEG
-                            <div class="tooltip">
-                                <h5>ISO/IEC Moving Picture Experts Group (MPEG)</h5>
-                                <p>Creates foundational container formats including ISO Base Media File Format (ISOBMFF) and MPEG-4 Part 14 (MP4).</p>
-                                <a href="https://www.mpeg.org/" target="_blank">🔗 Official MPEG Website</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="matroska mkv open source">
-                            Matroska
-                            <div class="tooltip">
-                                <h5>Matroska Organization</h5>
-                                <p>Non-profit developing the open-source, royalty-free Matroska (MKV) multimedia container with unlimited track support.</p>
-                                <a href="https://www.matroska.org/" target="_blank">🔗 Matroska Website</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="google webm html5">
-                            WebM Project
-                            <div class="tooltip">
-                                <h5>Google (WebM Project)</h5>
-                                <p>Develops WebM as an open, royalty-free media format optimized for HTML5 video and web-based streaming.</p>
-                                <a href="https://www.webmproject.org/" target="_blank">🔗 WebM Project</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="streaming containers mp4 mkv">Streaming Containers</h4>
-                        <div class="category-tooltip">
-                            <h5>Streaming-Optimized Container Formats</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>ISO/IEC:</strong> MP4 and streaming container standards</li>
-                                <li><strong>MPEG:</strong> Media container specifications</li>
-                                <li><strong>Matroska:</strong> Open-source container format</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Streaming-optimized container formats</li>
-                                <li>Container format optimization</li>
-                                <li>Cross-platform compatibility</li>
-                                <li>Streaming metadata standards</li>
-                            </ul>
-                            <a href="https://www.iso.org/standard/74427.html" target="_blank">🔗 ISO/IEC 14496-12</a>
-                            <a href="https://www.mpeg.org/standards/MPEG-4/" target="_blank">🔗 MPEG-4 Standards</a>
-                            <a href="https://matroska.org/" target="_blank">🔗 Matroska Format</a>
-                        </div>
-                        <div class="tech-item" data-search="mp4 mpeg4 container">
-                            MP4
-                            <div class="tooltip">
-                                <h5>MPEG-4 Part 14 Container</h5>
-                                <p>Universal container format. Supports H.264/H.265, AAC, AC-3. Used for VOD and progressive download. Base for fMP4 streaming format.</p>
-                                <a href="https://www.iso.org/standard/61988.html" target="_blank">🔗 ISO 14496-14</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="webm google vp9 av1">
-                            WebM
-                            <div class="tooltip">
-                                <h5>WebM Container Format</h5>
-                                <p>Google's open container based on Matroska. Designed for web streaming. Supports VP8/VP9/AV1 video and Vorbis/Opus audio. No licensing fees.</p>
-                                <a href="https://www.webmproject.org/" target="_blank">🔗 WebM Project</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="mkv matroska">
-                            MKV (Matroska)
-                            <div class="tooltip">
-                                <h5>Matroska Video Container</h5>
-                                <p>Open-source container supporting unlimited tracks and codecs. Excellent for high-quality content with multiple audio/subtitle tracks. Very flexible format.</p>
-                                <a href="https://www.matroska.org/" target="_blank">🔗 Matroska.org</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="broadcast containers mxf professional">Broadcast Containers</h4>
-                        <div class="category-tooltip">
-                            <h5>Professional Broadcast Container Formats</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>SMPTE:</strong> MXF and broadcast container standards</li>
-                                <li><strong>EBU:</strong> European broadcast standards</li>
-                                <li><strong>Broadcast Industry:</strong> Professional broadcast formats</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Professional broadcast workflows</li>
-                                <li>Broadcast container optimization</li>
-                                <li>Professional metadata standards</li>
-                                <li>Broadcast archive formats</li>
-                            </ul>
-                            <a href="https://www.smpte.org/standards" target="_blank">🔗 SMPTE Standards</a>
-                            <a href="https://www.ebu.ch/standards" target="_blank">🔗 EBU Standards</a>
-                            <a href="https://www.smpte.org/standards/mxf" target="_blank">🔗 SMPTE MXF</a>
-                        </div>
-                        <div class="tech-item" data-search="mpeg-ts transport stream">
-                            MPEG-TS
-                            <div class="tooltip">
-                                <h5>MPEG Transport Stream</h5>
-                                <p>Standard container for broadcast television and legacy HLS. Robust error handling, suitable for transmission over lossy networks. Fixed 188-byte packets.</p>
-                                <a href="https://www.iso.org/standard/44169.html" target="_blank">🔗 ISO 13818-1</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="asi asynchronous serial interface">
-                            ASI
-                            <div class="tooltip">
-                                <h5>Asynchronous Serial Interface</h5>
-                                <p>Physical interface for MPEG transport streams in broadcast equipment. 270 Mbps data rate over coaxial cable. Used for contribution and distribution links.</p>
-                                <a href="https://www.dvb.org/" target="_blank">🔗 DVB Project</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="professional production broadcast workflow">Professional Production</h4>
-                        <div class="category-tooltip">
-                            <h5>Professional Video Production Workflows</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>SMPTE:</strong> Professional video production standards</li>
-                                <li><strong>EBU:</strong> European broadcast production standards</li>
-                                <li><strong>Broadcast Industry:</strong> Professional production workflows</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Professional production workflows</li>
-                                <li>Broadcast quality assurance</li>
-                                <li>Professional metadata management</li>
-                                <li>Production automation and efficiency</li>
-                            </ul>
-                            <a href="https://www.smpte.org/standards" target="_blank">🔗 SMPTE Production Standards</a>
-                            <a href="https://www.ebu.ch/standards" target="_blank">🔗 EBU Production Standards</a>
-                            <a href="https://www.broadcastingcable.com/production" target="_blank">🔗 Production Industry</a>
-                        </div>
-                        <div class="tech-item" data-search="mov quicktime apple">
-                            MOV (QuickTime)
-                            <div class="tooltip">
-                                <h5>Apple QuickTime Format</h5>
-                                <p>Professional container supporting high-quality codecs like ProRes and DNxHR. Widely used in post-production workflows. Excellent metadata support.</p>
-                                <a href="https://developer.apple.com/documentation/quicktime-file-format" target="_blank">🔗 Apple Documentation</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="mxf material exchange format">
-                            MXF
-                            <div class="tooltip">
-                                <h5>Material eXchange Format</h5>
-                                <p>Professional media container standard. Supports multiple video/audio tracks, extensive metadata, and various compression formats. Used in broadcast workflows.</p>
-                                <a href="https://www.smpte.org/standards/st377-1" target="_blank">🔗 SMPTE ST 377-1</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="imf interoperable master format">
-                            IMF
-                            <div class="tooltip">
-                                <h5>Interoperable Master Format</h5>
-                                <p>SMPTE standard for digital cinema and TV distribution. Enables versioning and localization. Used for deliveries to streaming platforms and broadcasters.</p>
-                                <a href="https://www.smpte.org/standards/st2067-2" target="_blank">🔗 SMPTE ST 2067</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Codec Layer -->
-            <div class="layer" data-layer="codec">
-                <div class="layer-header codec">
-                    CODEC LAYER - Video & Audio Compression
-                    <div class="layer-tooltip">
-                        <h5>Codec Layer</h5>
-                        <p>Handles the compression and decompression of audio and video data to reduce file sizes while maintaining quality.</p>
-                        <p><strong>Key Functions:</strong></p>
-                        <ul>
-                            <li>Video compression algorithms (H.264, H.265, AV1)</li>
-                            <li>Audio compression (AAC, Opus)</li>
-                            <li>Quality vs. bandwidth optimization</li>
-                            <li>Hardware acceleration support</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="layer-content">
-                    <div class="category">
-                        <h4 class="category-header" data-search="h264 h265 av1 video codec">Video Codecs</h4>
-                        <div class="category-tooltip">
-                            <h5>Video Compression Standards & Technologies</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>ITU-T:</strong> H.264/AVC and H.265/HEVC standards</li>
-                                <li><strong>ISO/IEC:</strong> MPEG video codec standards</li>
-                                <li><strong>Alliance for Open Media:</strong> AV1 development</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Next-generation video compression</li>
-                                <li>AI-powered codec optimization</li>
-                                <li>Hardware acceleration for codecs</li>
-                                <li>Codec royalty and licensing models</li>
-                            </ul>
-                            <a href="https://www.itu.int/rec/T-REC-H.264" target="_blank">🔗 ITU-T H.264</a>
-                            <a href="https://www.iso.org/standard/74529.html" target="_blank">�� ISO/IEC 14496-10</a>
-                            <a href="https://aomedia.org/" target="_blank">🔗 Alliance for Open Media</a>
-                        </div>
-                        <div class="tech-item" data-search="h264 avc mpeg4 universal">
-                            H.264/AVC
-                            <div class="tooltip">
-                                <h5>Advanced Video Coding</h5>
-                                <p>Universal video codec, ~60% market share. Excellent device support and mature ecosystem. Baseline for compatibility, High Profile for quality. MPEG-4 Part 10.</p>
-                                <a href="https://www.itu.int/rec/T-REC-H.264" target="_blank">🔗 ITU-T H.264</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="h265 hevc 4k hdr">
-                            H.265/HEVC
-                            <div class="tooltip">
-                                <h5>High Efficiency Video Coding</h5>
-                                <p>50% better compression than H.264. Essential for 4K and HDR content. Patent licensing complexity but widespread hardware support. ~25% market share.</p>
-                                <a href="https://www.itu.int/rec/T-REC-H.265" target="_blank">🔗 ITU-T H.265</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="av1 royalty free aom">
-                            AV1
-                            <div class="tooltip">
-                                <h5>AV1 Open Video Codec</h5>
-                                <p>Royalty-free codec with 50-60% better compression than H.264. Supported by Google, Netflix, Amazon. Growing hardware support. ~10% adoption, rapidly increasing.</p>
-                                <a href="https://aomedia.org/av1/" target="_blank">🔗 AOM AV1 Codec</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="vp9 google youtube">
-                            VP9
-                            <div class="tooltip">
-                                <h5>VP9 Video Codec</h5>
-                                <p>Google's open-source codec. Primary codec for YouTube >1080p content. 45-50% better than H.264. Good software support, limited hardware adoption.</p>
-                                <a href="https://developers.google.com/media/vp9/" target="_blank">🔗 Google VP9</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="next generation video codecs av1 vvc">Next-Generation Video</h4>
-                        <div class="category-tooltip">
-                            <h5>Next-Generation Video Compression Standards</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>Alliance for Open Media:</strong> AV1 and AV2 development</li>
-                                <li><strong>ITU-T:</strong> H.266/VVC standard development</li>
-                                <li><strong>ISO/IEC:</strong> MPEG video codec standards</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>AI-powered video compression</li>
-                                <li>Next-generation codec optimization</li>
-                                <li>Hardware acceleration for new codecs</li>
-                                <li>Codec royalty and licensing models</li>
-                            </ul>
-                            <a href="https://aomedia.org/" target="_blank">🔗 Alliance for Open Media</a>
-                            <a href="https://www.itu.int/rec/T-REC-H.266" target="_blank">🔗 ITU-T H.266/VVC</a>
-                            <a href="https://www.mpeg.org/standards/MPEG-I/" target="_blank">🔗 MPEG-I Standards</a>
-                        </div>
-                        <div class="tech-item" data-search="h266 vvc versatile video coding">
-                            H.266/VVC
-                            <div class="tooltip">
-                                <h5>Versatile Video Coding</h5>
-                                <p>Latest video codec standard with 70-80% better compression than H.264. Designed for 8K and immersive media. Early adoption phase, licensing uncertainty.</p>
-                                <a href="https://www.itu.int/rec/T-REC-H.266" target="_blank">🔗 ITU-T H.266</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="av2 next generation aom">
-                            AV2 (Future)
-                            <div class="tooltip">
-                                <h5>AV2 Next-Generation Codec</h5>
-                                <p>Successor to AV1 currently in development. Target: further 30% improvement over AV1. Royalty-free with focus on real-time encoding efficiency.</p>
-                                <a href="https://aomedia.org/" target="_blank">🔗 AOM Roadmap</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="professional video codecs broadcast">Professional Video Codecs</h4>
-                        <div class="category-tooltip">
-                            <h5>Professional Broadcast Video Codecs</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>SMPTE:</strong> Professional video codec standards</li>
-                                <li><strong>EBU:</strong> European broadcast codec standards</li>
-                                <li><strong>Broadcast Industry:</strong> Professional broadcast codecs</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Professional broadcast workflows</li>
-                                <li>Broadcast quality optimization</li>
-                                <li>Professional codec integration</li>
-                                <li>Broadcast archive and preservation</li>
-                            </ul>
-                            <a href="https://www.smpte.org/standards" target="_blank">🔗 SMPTE Codec Standards</a>
-                            <a href="https://www.ebu.ch/standards" target="_blank">🔗 EBU Codec Standards</a>
-                            <a href="https://www.broadcastingcable.com/technology" target="_blank">🔗 Broadcast Technology</a>
-                        </div>
-                        <div class="tech-item" data-search="prores apple professional">
-                            Apple ProRes
-                            <div class="tooltip">
-                                <h5>Apple ProRes Family</h5>
-                                <p>Professional intermediate codecs (422, 422 HQ, 4444, RAW). Optimized for editing workflows. Excellent quality preservation and fast decode performance.</p>
-                                <a href="https://support.apple.com/en-us/102207" target="_blank">🔗 Apple ProRes Guide</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="dnxhd dnxhr avid professional">
-                            Avid DNxHD/HR
-                            <div class="tooltip">
-                                <h5>Avid DNxHD/DNxHR</h5>
-                                <p>Professional editing codecs. DNxHD for HD, DNxHR for UHD. Constant quality and low computational complexity. Widely used in broadcast post-production.</p>
-                                <a href="https://www.avid.com/media-composer/dnx" target="_blank">🔗 Avid DNx Family</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="jpeg2000 cinema professional">
-                            JPEG 2000
-                            <div class="tooltip">
-                                <h5>JPEG 2000 Video Codec</h5>
-                                <p>Wavelet-based codec used in digital cinema (DCP). Excellent quality and error resilience. High computational cost limits broader adoption.</p>
-                                <a href="https://jpeg.org/jpeg2000/" target="_blank">🔗 JPEG Committee</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="jpegxs low latency smpte">
-                            JPEG XS
-                            <div class="tooltip">
-                                <h5>JPEG XS Low-Latency Codec</h5>
-                                <p>Ultra-low latency codec for professional workflows. <1ms coding delay. Used for live production and remote workflows over IP networks.</p>
-                                <a href="https://jpeg.org/jpegxs/" target="_blank">🔗 JPEG XS Standard</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="aac opus audio codec">Audio Codecs</h4>
-                        <div class="category-tooltip">
-                            <h5>Audio Compression Standards & Technologies</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>ISO/IEC:</strong> AAC and other audio standards</li>
-                                <li><strong>IETF:</strong> Opus codec specification</li>
-                                <li><strong>Xiph.Org:</strong> Open audio codec development</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Low-latency audio compression</li>
-                                <li>Spatial audio and immersive sound</li>
-                                <li>Audio quality optimization</li>
-                                <li>Cross-platform audio compatibility</li>
-                            </ul>
-                            <a href="https://www.iso.org/standard/43345.html" target="_blank">🔗 ISO/IEC 13818-7</a>
-                            <a href="https://tools.ietf.org/html/rfc6716" target="_blank">🔗 IETF Opus RFC</a>
-                            <a href="https://xiph.org/" target="_blank">🔗 Xiph.Org Foundation</a>
-                        </div>
-                        <div class="tech-item" data-search="aac advanced audio coding">
-                            AAC
-                            <div class="tooltip">
-                                <h5>Advanced Audio Coding</h5>
-                                <p>Standard audio codec with excellent compression efficiency. Multiple profiles (LC, HE, HE-v2). Used in streaming, broadcasting, and mobile applications.</p>
-                                <a href="https://www.iso.org/standard/76383.html" target="_blank">🔗 ISO 14496-3</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="opus low latency voip">
-                            Opus
-                            <div class="tooltip">
-                                <h5>Opus Audio Codec</h5>
-                                <p>Low-latency, royalty-free audio codec. Excellent for real-time communication and streaming. Adaptive bitrate, supports both speech and music. Used in WebRTC.</p>
-                                <a href="https://opus-codec.org/" target="_blank">🔗 Opus Codec</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="dolby atmos immersive audio">
-                            Dolby Atmos
-                            <div class="tooltip">
-                                <h5>Dolby Atmos</h5>
-                                <p>Object-based immersive audio technology. Supports up to 128 audio objects. Used in cinemas, streaming platforms, and home theaters for spatial audio.</p>
-                                <a href="https://www.dolby.com/technologies/dolby-atmos/" target="_blank">🔗 Dolby Atmos</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="mp3 legacy audio">
-                            MP3 (Legacy)
-                            <div class="tooltip">
-                                <h5>MP3 Audio Format</h5>
-                                <p>Legacy audio codec with universal compatibility. Being phased out in favor of more efficient codecs like AAC and Opus. Still used for compatibility.</p>
-                                <a href="https://www.iso.org/standard/22412.html" target="_blank">🔗 ISO 11172-3</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Network Transport Layer -->
-            <div class="layer" data-layer="network">
-                <div class="layer-header network">
-                    NETWORK LAYER - Internet Protocol & Routing
-                    <div class="layer-tooltip">
-                        <h5>Network Layer</h5>
-                        <p>Manages the fundamental protocols and routing that enable data transmission across the internet and local networks.</p>
-                        <p><strong>Key Functions:</strong></p>
-                        <ul>
-                            <li>IP addressing and packet routing</li>
-                            <li>Quality of Service (QoS) management</li>
-                            <li>Network congestion control</li>
-                            <li>Protocol selection (TCP, UDP, QUIC)</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="layer-content">
-                    <div class="category">
-                        <h4 class="category-header" data-search="internet protocols ip tcp udp">Internet Protocols</h4>
-                        <div class="category-tooltip">
-                            <h5>Internet Protocol Suite & Standards</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>IETF:</strong> TCP, UDP, and IP standards</li>
-                                <li><strong>IEEE:</strong> Network protocol specifications</li>
-                                <li><strong>ITU-T:</strong> International networking standards</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>IPv6 transition and optimization</li>
-                                <li>Network congestion control</li>
-                                <li>Quality of Service (QoS) mechanisms</li>
-                                <li>Network security and privacy</li>
-                            </ul>
-                            <a href="https://tools.ietf.org/html/rfc791" target="_blank">🔗 IETF IPv4 RFC</a>
-                            <a href="https://standards.ieee.org/standard/802_3-2018.html" target="_blank">🔗 IEEE 802.3</a>
-                            <a href="https://www.itu.int/rec/T-REC-Y.1541" target="_blank">🔗 ITU-T QoS</a>
-                        </div>
-                        <div class="tech-item" data-search="udp fast unreliable">
-                            UDP
-                            <div class="tooltip">
-                                <h5>User Datagram Protocol</h5>
-                                <p>Fast, connectionless protocol. Low overhead, no guaranteed delivery. Used for real-time streaming where speed is more important than reliability.</p>
-                                <a href="https://tools.ietf.org/html/rfc768" target="_blank">🔗 IETF RFC 768</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="tcp reliable connection">
-                            TCP
-                            <div class="tooltip">
-                                <h5>Transmission Control Protocol</h5>
-                                <p>Reliable, connection-oriented protocol. Guaranteed delivery with error correction. Used for HTTP streaming, file transfers, and applications requiring reliability.</p>
-                                <a href="https://tools.ietf.org/html/rfc793" target="_blank">🔗 IETF RFC 793</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="ipv4 ipv6 addressing">
-                            IPv4/IPv6
-                            <div class="tooltip">
-                                <h5>Internet Protocol versions 4 & 6</h5>
-                                <p>Network layer protocols for packet routing. IPv6 provides larger address space and better support for real-time services. Gradual transition ongoing.</p>
-                                <a href="https://tools.ietf.org/html/rfc791" target="_blank">🔗 IPv4 RFC 791</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="ieee qos 802.1p">
-                            IEEE
-                            <div class="tooltip">
-                                <h5>Institute of Electrical and Electronics Engineers (IEEE)</h5>
-                                <p>World's largest technical organization developing critical QoS standards (IEEE 802.1p/Q) and wireless protocols (IEEE 802.11).</p>
-                                <a href="https://1.ieee802.org/" target="_blank">🔗 IEEE 802.1 Working Group</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="ietf avt rtp rtcp">
-                            IETF
-                            <div class="tooltip">
-                                <h5>Internet Engineering Task Force (IETF)</h5>
-                                <p>Audio/Video Transport working group creates real-time protocols (RTP, RTCP, RTSP) and multicast standards for IP networks.</p>
-                                <a href="https://datatracker.ietf.org/wg/avt/about/" target="_blank">🔗 Audio/Video Transport Group</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="managed network qos enterprise">Managed Network</h4>
-                        <div class="category-tooltip">
-                            <h5>Managed Network Services & QoS</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>IEEE:</strong> QoS and network management standards</li>
-                                <li><strong>IETF:</strong> Network management protocols</li>
-                                <li><strong>Enterprise Vendors:</strong> Managed network solutions</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Network management automation</li>
-                                <li>QoS optimization for video</li>
-                                <li>Enterprise network security</li>
-                                <li>Network performance monitoring</li>
-                            </ul>
-                            <a href="https://standards.ieee.org/standard/802_1Q-2018.html" target="_blank">🔗 IEEE 802.1Q</a>
-                            <a href="https://tools.ietf.org/html/rfc3411" target="_blank">🔗 IETF SNMP</a>
-                            <a href="https://www.cisco.com/c/en/us/solutions/enterprise-networks/" target="_blank">🔗 Enterprise Networks</a>
-                        </div>
-                        <div class="tech-item" data-search="multicast igmp efficient distribution">
-                            Multicast (IGMP)
-                            <div class="tooltip">
-                                <h5>IP Multicast</h5>
-                                <p>Efficient one-to-many distribution. Single stream serves multiple receivers. Used in IPTV and enterprise streaming. Requires multicast-enabled network infrastructure.</p>
-                                <a href="https://tools.ietf.org/html/rfc3376" target="_blank">🔗 IETF RFC 3376</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="qos dscp quality service">
-                            QoS/DSCP
-                            <div class="tooltip">
-                                <h5>Quality of Service</h5>
-                                <p>Network traffic prioritization mechanisms. DSCP marks packets for priority handling. Essential for professional streaming over shared networks.</p>
-                                <a href="https://tools.ietf.org/html/rfc2474" target="_blank">🔗 IETF RFC 2474</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="vlan segmentation network">
-                            VLAN Segmentation
-                            <div class="tooltip">
-                                <h5>Virtual LAN Segmentation</h5>
-                                <p>Network isolation and traffic management. Separates production, management, and redundant streams. Improves security and reduces broadcast domains.</p>
-                                <a href="https://tools.ietf.org/html/rfc3069" target="_blank">🔗 VLAN Standards</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="broadcast networks professional broadcast">Broadcast Networks</h4>
-                        <div class="category-tooltip">
-                            <h5>Professional Broadcast Network Infrastructure</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>SMPTE:</strong> Broadcast network standards</li>
-                                <li><strong>EBU:</strong> European broadcast network standards</li>
-                                <li><strong>Broadcast Industry:</strong> Professional broadcast networks</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Professional broadcast workflows</li>
-                                <li>Broadcast network optimization</li>
-                                <li>Professional network security</li>
-                                <li>Broadcast network monitoring</li>
-                            </ul>
-                            <a href="https://www.smpte.org/standards" target="_blank">🔗 SMPTE Network Standards</a>
-                            <a href="https://www.ebu.ch/standards" target="_blank">🔗 EBU Network Standards</a>
-                            <a href="https://www.broadcastingcable.com/technology" target="_blank">🔗 Broadcast Technology</a>
-                        </div>
-                        <div class="tech-item" data-search="dvb digital video broadcasting">
-                            DVB
-                            <div class="tooltip">
-                                <h5>Digital Video Broadcasting</h5>
-                                <p>European digital TV standards family. Includes DVB-S (satellite), DVB-T (terrestrial), DVB-C (cable). Uses MPEG-TS containers and various modulation schemes.</p>
-                                <a href="https://www.dvb.org/" target="_blank">🔗 DVB Project</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="atsc american television">
-                            ATSC
-                            <div class="tooltip">
-                                <h5>Advanced Television Systems Committee</h5>
-                                <p>North American digital TV standard. ATSC 3.0 introduces IP-based delivery and advanced codecs. Supports 4K, HDR, and mobile reception.</p>
-                                <a href="https://www.atsc.org/" target="_blank">🔗 ATSC Standards</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="isdb japan digital broadcasting">
-                            ISDB
-                            <div class="tooltip">
-                                <h5>Integrated Services Digital Broadcasting</h5>
-                                <p>Japanese digital broadcasting standard. Features hierarchical transmission and partial reception. Used in Japan and several South American countries.</p>
-                                <a href="https://www.dibeg.org/" target="_blank">🔗 DiBEG Organization</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Physical Layer -->
-            <div class="layer" data-layer="physical">
-                <div class="layer-header physical">
-                    PHYSICAL LAYER - Hardware Interfaces & Connectivity
-                    <div class="layer-tooltip">
-                        <h5>Physical Layer</h5>
-                        <p>Defines the hardware interfaces, cables, and physical connections that enable data transmission between devices.</p>
-                        <p><strong>Key Functions:</strong></p>
-                        <ul>
-                            <li>Professional video interfaces (SDI, HDMI)</li>
-                            <li>Network connectivity (Ethernet, WiFi, 5G)</li>
-                            <li>Broadcast transmission infrastructure</li>
-                            <li>Hardware compatibility and standards</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="layer-content">
-                    <div class="category">
-                        <h4 class="category-header" data-search="ethernet wifi 5g physical interface">Physical Interfaces</h4>
-                        <div class="category-tooltip">
-                            <h5>Physical Network Interfaces & Standards</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>IEEE:</strong> Ethernet and WiFi standards</li>
-                                <li><strong>3GPP:</strong> Mobile network standards (4G/5G)</li>
-                                <li><strong>ITU-R:</strong> Radio communication standards</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>5G network slicing for video</li>
-                                <li>WiFi 6/7 for streaming optimization</li>
-                                <li>Fiber optic transmission standards</li>
-                                <li>Satellite and broadcast transmission</li>
-                            </ul>
-                            <a href="https://standards.ieee.org/standard/802_3-2018.html" target="_blank">🔗 IEEE 802.3 Ethernet</a>
-                            <a href="https://www.3gpp.org/specifications" target="_blank">🔗 3GPP 5G Standards</a>
-                            <a href="https://www.itu.int/rec/R-REC-BT.709" target="_blank">🔗 ITU-R Broadcast Standards</a>
-                        </div>
-                        <div class="tech-item" data-search="smpte sdi st2110">
-                            SMPTE
-                            <div class="tooltip">
-                                <h5>Society of Motion Picture & Television Engineers (SMPTE)</h5>
-                                <p>Global professional society maintaining SDI interface family and SMPTE 2110 suite for IP-based broadcast production.</p>
-                                <a href="https://www.smpte.org/standards" target="_blank">🔗 SMPTE Standards</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="dvb digital tv broadcasting">
-                            DVB
-                            <div class="tooltip">
-                                <h5>Digital Video Broadcasting Project (DVB)</h5>
-                                <p>Global consortium developing digital TV delivery standards used by 1.5+ billion receivers worldwide across multiple continents.</p>
-                                <a href="https://dvb.org/" target="_blank">🔗 DVB Project</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="atsc nextgen tv 4k">
-                            ATSC
-                            <div class="tooltip">
-                                <h5>Advanced Television Systems Committee (ATSC)</h5>
-                                <p>International organization developing digital TV standards for North America, including NextGen TV and 4K/8K broadcasting.</p>
-                                <a href="https://www.atsc.org/" target="_blank">🔗 ATSC Organization</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="professional video interfaces broadcast">Professional Video Interfaces</h4>
-                        <div class="category-tooltip">
-                            <h5>Professional Video Interface Standards</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>SMPTE:</strong> Professional video interface standards</li>
-                                <li><strong>EBU:</strong> European broadcast interface standards</li>
-                                <li><strong>Broadcast Industry:</strong> Professional broadcast interfaces</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Professional video interface optimization</li>
-                                <li>Broadcast interface standards</li>
-                                <li>Professional video connectivity</li>
-                                <li>Interface performance monitoring</li>
-                            </ul>
-                            <a href="https://www.smpte.org/standards" target="_blank">🔗 SMPTE Interface Standards</a>
-                            <a href="https://www.ebu.ch/standards" target="_blank">🔗 EBU Interface Standards</a>
-                            <a href="https://www.broadcastingcable.com/technology" target="_blank">🔗 Broadcast Technology</a>
-                        </div>
-                        <div class="tech-item" data-search="12g-sdi 4k uncompressed">
-                            12G-SDI
-                            <div class="tooltip">
-                                <h5>12G Serial Digital Interface</h5>
-                                <p>Professional interface for 4K uncompressed video at 60fps. Single BNC connector, 12 Gbps throughput. Used in high-end broadcast and post-production equipment.</p>
-                                <a href="https://www.smpte.org/standards/st2082-1" target="_blank">🔗 SMPTE ST 2082</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="6g-sdi 3g-sdi hd">
-                            6G/3G/HD-SDI
-                            <div class="tooltip">
-                                <h5>SDI Interface Family</h5>
-                                <p>Professional video interfaces. HD-SDI (1.485 Gbps), 3G-SDI (2.97 Gbps) for 1080p, 6G-SDI (6 Gbps) for 4K/UHD. BNC connectors, 75-ohm coaxial cable.</p>
-                                <a href="https://www.smpte.org/standards/st292-1" target="_blank">🔗 SMPTE SDI Standards</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="aes3 aes/ebu digital audio">
-                            AES3/AES67
-                            <div class="tooltip">
-                                <h5>AES Digital Audio Standards</h5>
-                                <p>AES3: Professional digital audio interface over XLR/BNC. AES67: Audio-over-IP standard for networked audio. Used in broadcast and live sound production.</p>
-                                <a href="https://www.aes.org/standards/" target="_blank">🔗 AES Standards</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="network infrastructure ethernet wifi">Network Infrastructure</h4>
-                        <div class="category-tooltip">
-                            <h5>Network Infrastructure & Connectivity</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>IEEE:</strong> Ethernet and WiFi standards</li>
-                                <li><strong>3GPP:</strong> Mobile network standards (4G/5G)</li>
-                                <li><strong>ITU-R:</strong> Radio communication standards</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>5G network slicing for video</li>
-                                <li>WiFi 6/7 for streaming optimization</li>
-                                <li>Fiber optic transmission standards</li>
-                                <li>Satellite and broadcast transmission</li>
-                            </ul>
-                            <a href="https://standards.ieee.org/standard/802_3-2018.html" target="_blank">🔗 IEEE 802.3 Ethernet</a>
-                            <a href="https://www.3gpp.org/specifications" target="_blank">🔗 3GPP 5G Standards</a>
-                            <a href="https://www.itu.int/rec/R-REC-BT.709" target="_blank">🔗 ITU-R Broadcast Standards</a>
-                        </div>
-                        <div class="tech-item" data-search="ethernet gigabit 10g">
-                            Ethernet
-                            <div class="tooltip">
-                                <h5>Ethernet Network Standards</h5>
-                                <p>Standard network interface. Gigabit (1 Gbps) common, 10/25/40/100 Gbps for high-bandwidth applications. Used for IP video transport and ST 2110 workflows.</p>
-                                <a href="https://standards.ieee.org/standard/802_3-2018.html" target="_blank">🔗 IEEE 802.3</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="fiber optic long distance">
-                            Fiber Optic
-                            <div class="tooltip">
-                                <h5>Fiber Optic Transmission</h5>
-                                <p>High-bandwidth, long-distance transmission medium. Single-mode for long distances, multi-mode for campus networks. Essential for professional video networks.</p>
-                                <a href="https://www.itu.int/rec/T-REC-G.652/en" target="_blank">🔗 ITU-T G.652</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="5g lte mobile networks">
-                            5G/LTE
-                            <div class="tooltip">
-                                <h5>Mobile Network Technologies</h5>
-                                <p>Cellular networks for mobile streaming. 5G enables ultra-low latency and high bandwidth mobile applications. Used for remote production and mobile streaming.</p>
-                                <a href="https://www.3gpp.org/" target="_blank">🔗 3GPP Standards</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <h4 class="category-header" data-search="broadcast distribution satellite terrestrial">Broadcast Distribution</h4>
-                        <div class="category-tooltip">
-                            <h5>Broadcast Distribution & Transmission</h5>
-                            <p><strong>Key Organizations:</strong></p>
-                            <ul>
-                                <li><strong>ITU-R:</strong> Broadcast transmission standards</li>
-                                <li><strong>DVB:</strong> Digital video broadcasting standards</li>
-                                <li><strong>Broadcast Industry:</strong> Professional broadcast distribution</li>
-                            </ul>
-                            <p><strong>Research Areas:</strong></p>
-                            <ul>
-                                <li>Satellite broadcast optimization</li>
-                                <li>Terrestrial broadcast standards</li>
-                                <li>Broadcast distribution efficiency</li>
-                                <li>Broadcast network monitoring</li>
-                            </ul>
-                            <a href="https://www.itu.int/rec/R-REC-BT.709" target="_blank">🔗 ITU-R Broadcast Standards</a>
-                            <a href="https://dvb.org/" target="_blank">🔗 DVB Standards</a>
-                            <a href="https://www.broadcastingcable.com/technology" target="_blank">🔗 Broadcast Technology</a>
-                        </div>
-                        <div class="tech-item" data-search="rf satellite terrestrial">
-                            RF/Satellite
-                            <div class="tooltip">
-                                <h5>Radio Frequency Transmission</h5>
-                                <p>Traditional broadcast distribution via terrestrial transmitters and satellite. C-band, Ku-band, and Ka-band for satellite. UHF/VHF for terrestrial broadcasting.</p>
-                                <a href="https://www.itu.int/en/ITU-R/Pages/default.aspx" target="_blank">🔗 ITU-R Radio Regulations</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="cable coax distribution">
-                            Cable/Coaxial
-                            <div class="tooltip">
-                                <h5>Coaxial Cable Distribution</h5>
-                                <p>Cable TV distribution using coaxial cables. QAM modulation for digital channels. DOCSIS for broadband internet. Still widely used for residential distribution.</p>
-                                <a href="https://www.cablelabs.com/" target="_blank">🔗 CableLabs Standards</a>
-                            </div>
-                        </div>
-                        <div class="tech-item" data-search="microwave point-to-point">
-                            Microwave Links
-                            <div class="tooltip">
-                                <h5>Microwave Point-to-Point Links</h5>
-                                <p>Line-of-sight wireless links for broadcast contribution and distribution. Used for remote locations and backup connectivity. Various frequency bands (6-42 GHz).</p>
-                                <a href="https://www.itu.int/rec/R-REC-F.1101/en" target="_blank">🔗 ITU-R F.1101</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Workflow Examples -->
-        <div class="workflow">
-            <h3>Standard Workflow Paths</h3>
-            
-            <div class="workflow-path">
-                <h4 class="category-header" data-search="live streaming workflow real-time">🔴 Live Streaming Workflow</h4>
-                <div class="category-tooltip">
-                    <h5>Live Streaming Production & Distribution</h5>
-                    <p><strong>Key Organizations:</strong></p>
-                    <ul>
-                        <li><strong>Streaming Industry:</strong> Live streaming platforms and services</li>
-                        <li><strong>Content Creators:</strong> Live content production</li>
-                        <li><strong>Technology Providers:</strong> Live streaming solutions</li>
-                    </ul>
-                    <p><strong>Research Areas:</strong></p>
-                    <ul>
-                        <li>Low-latency live streaming</li>
-                        <li>Live content optimization</li>
-                        <li>Real-time audience engagement</li>
-                        <li>Live streaming monetization</li>
-                    </ul>
-                    <a href="https://www.streamingmedia.com/Articles/Editorial/What-Is-.../What-is-Live-Streaming-74734.aspx" target="_blank">🔗 Live Streaming Overview</a>
-                    <a href="https://www.broadcastingcable.com/news/live-streaming" target="_blank">🔗 Live Broadcasting</a>
-                    <a href="https://www.tvtechnology.com/live-production" target="_blank">🔗 Live Production</a>
-                </div>
-                <div class="tech-item" data-search="camera streaming">
-                    Camera
-                    <div class="tooltip">
-                        <h5>Streaming Camera</h5>
-                        <p>Professional camera for live streaming. Supports various resolutions and frame rates. Used for live video capture.</p>
-                        <a href="https://www.camerabag.com/" target="_blank">🔗 CameraBag</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="video encoder">
-                    Video Encoder
-                    <div class="tooltip">
-                        <h5>Streaming Video Encoder</h5>
-                        <p>Hardware or software encoder for live streaming. Supports H.264/HEVC codecs. Used for live video compression and streaming.</p>
-                        <a href="https://www.blackmagicdesign.com/products/davinciresolve/" target="_blank">🔗 DaVinci Resolve</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="srt transport">
-                    SRT Transport
-                    <div class="tooltip">
-                        <h5>Secure Reliable Transport</h5>
-                        <p>Open-source protocol for low-latency streaming over unpredictable networks. 120ms+ latency, AES encryption, caller/listener mode. Widely adopted for contribution.</p>
-                        <a href="https://www.srtalliance.org/" target="_blank">🔗 SRT Alliance</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="cdn distribution">
-                    CDN Ingest
-                    <div class="tooltip">
-                        <h5>Content Delivery Network</h5>
-                        <p>Global network of servers for efficient content delivery. Supports various protocols and formats. Used for live streaming distribution.</p>
-                        <a href="https://www.akamai.com/" target="_blank">🔗 Akamai</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="dash hls abr">
-                    DASH/HLS ABR
-                    <div class="tooltip">
-                        <h5>Dynamic Adaptive Streaming</h5>
-                        <p>Adaptive bitrate streaming protocols. DASH for desktop, HLS for mobile. Supports multiple codecs and quality levels. Used for streaming optimization.</p>
-                        <a href="https://dashif.org/" target="_blank">🔗 DASH Industry Forum</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="player">
-                    Player
-                    <div class="tooltip">
-                        <h5>Streaming Player</h5>
-                        <p>Software for playing back streamed video. Supports various formats and streaming protocols. Used for playback on devices.</p>
-                        <a href="https://www.videolan.org/vlc/" target="_blank">🔗 VLC Media Player</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="display device">
-                    Display Device
-                    <div class="tooltip">
-                        <h5>Streaming Display</h5>
-                        <p>Device for displaying streamed video. Supports various resolutions and formats. Used for real-time video playback.</p>
-                        <a href="https://www.apple.com/apple-tv/" target="_blank">🔗 Apple TV</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="workflow-path">
-                <h4 class="category-header" data-search="professional broadcast workflow production">📺 Professional Broadcast Workflow</h4>
-                <div class="category-tooltip">
-                    <h5>Professional Broadcast Production & Distribution</h5>
-                    <p><strong>Key Organizations:</strong></p>
-                    <ul>
-                        <li><strong>SMPTE:</strong> Professional broadcast standards</li>
-                        <li><strong>EBU:</strong> European broadcast standards</li>
-                        <li><strong>Broadcast Industry:</strong> Professional broadcast workflows</li>
-                    </ul>
-                    <p><strong>Research Areas:</strong></p>
-                    <ul>
-                        <li>Professional broadcast workflows</li>
-                        <li>Broadcast quality assurance</li>
-                        <li>Professional production automation</li>
-                        <li>Broadcast network optimization</li>
-                    </ul>
-                    <a href="https://www.smpte.org/standards" target="_blank">🔗 SMPTE Broadcast Standards</a>
-                    <a href="https://www.ebu.ch/standards" target="_blank">🔗 EBU Broadcast Standards</a>
-                    <a href="https://www.broadcastingcable.com/production" target="_blank">🔗 Professional Production</a>
-                </div>
-                <div class="tech-item" data-search="studio camera">
-                    Studio Camera
-                    <div class="tooltip">
-                        <h5>Professional Broadcast Camera</h5>
-                        <p>High-quality camera for studio and live production. Supports various resolutions and formats. Used for professional video capture.</p>
-                        <a href="https://www.sony.com/electronics/cameras/bravia-professional-series" target="_blank">🔗 Sony Bravia Professional</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="production switcher">
-                    Production Switcher
-                    <div class="tooltip">
-                        <h5>Broadcast Production Switcher</h5>
-                        <p>Professional equipment for switching between multiple video sources. Supports various formats and resolutions. Used for live production switching.</p>
-                        <a href="https://www.arri.com/products/lighting-and-camera-equipment/camera-systems/arri-amira" target="_blank">🔗 ARRI AMIRA</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="st2110 ip network">
-                    ST 2110 IP Network
-                    <div class="tooltip">
-                        <h5>Professional Media Over IP</h5>
-                        <p>Suite of standards for uncompressed media over IP networks. Separate essence flows for video, audio, and metadata. Requires PTP synchronization.</p>
-                        <a href="https://www.smpte.org/standards/st2110" target="_blank">🔗 SMPTE Standards</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="master control">
-                    Master Control
-                    <div class="tooltip">
-                        <h5>Broadcast Master Control</h5>
-                        <p>Professional equipment for managing multiple video sources and outputs. Supports various formats and resolutions. Used for live production control.</p>
-                        <a href="https://www.arri.com/products/lighting-and-camera-equipment/camera-systems/arri-amira" target="_blank">🔗 ARRI AMIRA</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="mpeg-ts transport stream">
-                    MPEG-TS
-                    <div class="tooltip">
-                        <h5>MPEG Transport Stream</h5>
-                        <p>Standard container for broadcast television and legacy HLS. Robust error handling, suitable for transmission over lossy networks. Fixed 188-byte packets.</p>
-                        <a href="https://www.iso.org/standard/44169.html" target="_blank">🔗 ISO 13818-1</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="dvb modulation">
-                    DVB/ATSC Modulation
-                    <div class="tooltip">
-                        <h5>Digital Modulation</h5>
-                        <p>Modulation technology for digital broadcasting. Supports DVB-S, DVB-T, DVB-C, ATSC 3.0 for satellite, terrestrial, and cable distribution.</p>
-                        <a href="https://www.smpte.org/standards/st2110" target="_blank">🔗 SMPTE Standards</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="transmitter">
-                    Transmitter
-                    <div class="tooltip">
-                        <h5>Broadcast Transmitter</h5>
-                        <p>Hardware for transmitting broadcast signals. Supports various modulation schemes and power levels. Used for broadcast distribution.</p>
-                        <a href="https://www.arri.com/products/lighting-and-camera-equipment/camera-systems/arri-amira" target="_blank">🔗 ARRI AMIRA</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="set-top box">
-                    Set-Top Box
-                    <div class="tooltip">
-                        <h5>Streaming Set-Top Box</h5>
-                        <p>Device for streaming content to TVs. Supports various streaming protocols and user interfaces. Used for broadcast-to-home distribution.</p>
-                        <a href="https://www.apple.com/apple-tv/" target="_blank">🔗 Apple TV</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="workflow-path">
-                <h4 class="category-header" data-search="ott streaming workflow over-the-top">🌐 OTT Streaming Workflow</h4>
-                <div class="category-tooltip">
-                    <h5>Over-The-Top Streaming Services</h5>
-                    <p><strong>Key Organizations:</strong></p>
-                    <ul>
-                        <li><strong>OTT Platforms:</strong> Netflix, Disney+, Amazon Prime</li>
-                        <li><strong>Content Providers:</strong> OTT content production</li>
-                        <li><strong>Technology Providers:</strong> OTT streaming solutions</li>
-                    </ul>
-                    <p><strong>Research Areas:</strong></p>
-                    <ul>
-                        <li>OTT platform optimization</li>
-                        <li>Content recommendation algorithms</li>
-                        <li>OTT monetization strategies</li>
-                        <li>Cross-platform OTT delivery</li>
-                    </ul>
-                    <a href="https://www.streamingmedia.com/Articles/Editorial/What-Is-.../What-is-OTT-74735.aspx" target="_blank">🔗 OTT Overview</a>
-                    <a href="https://www.broadcastingcable.com/news/ott" target="_blank">🔗 OTT Broadcasting</a>
-                    <a href="https://www.tvtechnology.com/ott" target="_blank">🔗 OTT Technology</a>
-                </div>
-                <div class="tech-item" data-search="cloud encoder">
-                    Cloud Encoder
-                    <div class="tooltip">
-                        <h5>Cloud-Based Video Encoder</h5>
-                        <p>Software for encoding video content for streaming. Supports various codecs and formats. Used for cloud-based streaming production.</p>
-                        <a href="https://www.aws.amazon.com/elastictranscoder/" target="_blank">🔗 AWS Elastic Transcoder</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="multi-codec abr">
-                    Multi-Codec ABR
-                    <div class="tooltip">
-                        <h5>Adaptive Bitrate Streaming</h5>
-                        <p>Technology for streaming video content at multiple quality levels. Supports various codecs and bitrates. Used for adaptive streaming solutions.</p>
-                        <a href="https://www.akamai.com/solutions/adaptive-bitrate-streaming" target="_blank">🔗 Akamai Adaptive Bitrate Streaming</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="cmaf packaging">
-                    CMAF Packaging
-                    <div class="tooltip">
-                        <h5>Common Media Application Format</h5>
-                        <p>Unified format for DASH and HLS delivery. Reduces storage costs by 75%. Single encode for multiple protocols. Supports low-latency streaming.</p>
-                        <a href="https://www.iso.org/standard/71975.html" target="_blank">🔗 ISO 23000-19</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="cdn distribution">
-                    CDN Distribution
-                    <div class="tooltip">
-                        <h5>Content Delivery Network</h5>
-                        <p>Global network of servers for efficient content delivery. Supports various protocols and formats. Used for streaming content distribution.</p>
-                        <a href="https://www.akamai.com/" target="_blank">🔗 Akamai</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="adaptive streaming">
-                    Adaptive Streaming
-                    <div class="tooltip">
-                        <h5>Dynamic Adaptive Streaming</h5>
-                        <p>Technology for streaming video content at multiple quality levels. Supports various codecs and bitrates. Used for adaptive streaming solutions.</p>
-                        <a href="https://www.akamai.com/solutions/adaptive-bitrate-streaming" target="_blank">🔗 Akamai Adaptive Bitrate Streaming</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="smart tv mobile">
-                    Smart TV/Mobile
-                    <div class="tooltip">
-                        <h5>Connected Devices</h5>
-                        <p>Devices for streaming content to TVs and mobile devices. Supports various streaming protocols and user interfaces. Used for cross-platform streaming.</p>
-                        <a href="https://www.samsung.com/us/smart-tv/smart-tv-models/" target="_blank">🔗 Samsung Smart TV</a>
-                        <a href="https://www.apple.com/apple-tv/" target="_blank">🔗 Apple TV</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="display">
-                    Display
-                    <div class="tooltip">
-                        <h5>Streaming Display</h5>
-                        <p>Device for displaying streamed video. Supports various resolutions and formats. Used for real-time video playback.</p>
-                        <a href="https://www.apple.com/apple-tv/" target="_blank">🔗 Apple TV</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="workflow-path">
-                <h4 class="category-header" data-search="interactive real-time workflow gaming">🎮 Interactive/Real-Time Workflow</h4>
-                <div class="category-tooltip">
-                    <h5>Interactive & Real-Time Video Applications</h5>
-                    <p><strong>Key Organizations:</strong></p>
-                    <ul>
-                        <li><strong>Gaming Industry:</strong> Interactive video gaming</li>
-                        <li><strong>IETF:</strong> WebRTC and real-time standards</li>
-                        <li><strong>W3C:</strong> Web-based real-time APIs</li>
-                    </ul>
-                    <p><strong>Research Areas:</strong></p>
-                    <ul>
-                        <li>Interactive video optimization</li>
-                        <li>Real-time gaming experiences</li>
-                        <li>Low-latency interactive streaming</li>
-                        <li>Interactive content monetization</li>
-                    </ul>
-                    <a href="https://webrtc.org/" target="_blank">🔗 WebRTC</a>
-                    <a href="https://www.w3.org/TR/webrtc/" target="_blank">🔗 W3C WebRTC</a>
-                    <a href="https://www.streamingmedia.com/Articles/Editorial/What-Is-.../What-is-Interactive-Streaming-74736.aspx" target="_blank">🔗 Interactive Streaming</a>
-                </div>
-                <div class="tech-item" data-search="game application">
-                    Game/Application
-                    <div class="tooltip">
-                        <h5>Interactive Game/Application</h5>
-                        <p>Software for interactive video gaming. Supports various platforms and user interfaces. Used for creating interactive video content.</p>
-                        <a href="https://www.epicgames.com/fortnite/" target="_blank">🔗 Fortnite</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="screen capture">
-                    Screen Capture
-                    <div class="tooltip">
-                        <h5>Screen Capture Software</h5>
-                        <p>Software for capturing screen content. Supports various resolutions and frame rates. Used for creating screen recordings and live streams.</p>
-                        <a href="https://www.obsproject.com/" target="_blank">🔗 OBS Studio</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="low-latency codec">
-                    Low-Latency Codec
-                    <div class="tooltip">
-                        <h5>Low-Latency Video Codec</h5>
-                        <p>Codec optimized for low-latency streaming. Supports various resolutions and frame rates. Used for real-time video transmission.</p>
-                        <a href="https://www.ffmpeg.org/" target="_blank">🔗 FFmpeg</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="webrtc real-time communication">
-                    WebRTC
-                    <div class="tooltip">
-                        <h5>Web Real-Time Communication</h5>
-                        <p>Browser-native real-time streaming. Sub-500ms latency. P2P connections or SFU scaling. DTLS security. Growing integration with traditional streaming.</p>
-                        <a href="https://webrtc.org/" target="_blank">🔗 WebRTC.org</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="srt real-time messaging protocol">
-                    SRT
-                    <div class="tooltip">
-                        <h5>Secure Reliable Transport</h5>
-                        <p>Open-source protocol for low-latency streaming over unpredictable networks. 120ms+ latency, AES encryption, caller/listener mode. Widely adopted for contribution.</p>
-                        <a href="https://www.srtalliance.org/" target="_blank">🔗 SRT Alliance</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="p2p webrtc">
-                    P2P WebRTC
-                    <div class="tooltip">
-                        <h5>Peer-to-Peer WebRTC</h5>
-                        <p>Technology for peer-to-peer real-time communication. Supports various platforms and protocols. Used for real-time video collaboration.</p>
-                        <a href="https://webrtc.org/" target="_blank">🔗 WebRTC.org</a>
-                    </div>
-                </div>
-                <div class="tech-item" data-search="sfu scaling">
-                    SFU Scaling
-                    <div class="tooltip">
-                        <h5>Scalable Video Conferencing</h5>
-                        <p>Technology for scaling video conferencing systems. Supports various platforms and protocols. Used for real-time video collaboration.</p>
-                        <a href="https://www.twilio.com/video" target="_blank">🔗 Twilio Video</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Legend -->
-        <div class="legend">
-            <div class="legend-item">
-                <div class="legend-color application"></div>
-                <span>Application Layer - User-facing services and business logic</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color adaptive"></div>
-                <span>Adaptive Streaming - Client-side quality adaptation</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color transport"></div>
-                <span>Transport Layer - Protocol and session management</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color reliable-udp"></div>
-                <span>Reliable UDP - Professional transport with error correction</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color container-layer"></div>
-                <span>Container Layer - Media packaging and metadata</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color codec"></div>
-                <span>Codec Layer - Compression and decompression algorithms</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color network"></div>
-                <span>Network Layer - Basic network protocols and routing</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color physical"></div>
-                <span>Physical Layer - Hardware interfaces and transmission</span>
-            </div>
+        <div id="diagram-container">
+            <div class="loading">Loading interactive diagram...</div>
         </div>
     </div>
 
+    <script src="js/data-loader.js"></script>
+    <script src="js/validate-data.js"></script>
     <script>
-        // Search functionality
-        function searchTechnology() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const techItems = document.querySelectorAll('.tech-item');
-            
-            techItems.forEach(item => {
-                const searchData = item.getAttribute('data-search') || '';
-                const itemText = item.textContent.toLowerCase();
-                const isMatch = searchData.includes(searchTerm) || itemText.includes(searchTerm);
+        // Initialize the diagram when the page loads
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const loader = new StreamingStandardsDataLoader();
+                window.streamingStandardsLoader = loader; // Make it globally accessible
                 
-                if (searchTerm === '') {
-                    item.style.display = 'inline-block';
-                    item.style.backgroundColor = '';
-                } else if (isMatch) {
-                    item.style.display = 'inline-block';
-                    item.style.backgroundColor = '#667eea';
-                    item.style.color = 'white';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
-
-        // Smart tooltip positioning to prevent overflow
-        function adjustTooltipPosition(tooltip, element) {
-            const tooltipRect = tooltip.getBoundingClientRect();
-            const elementRect = element.getBoundingClientRect();
-            const containerRect = element.closest('.layer').getBoundingClientRect();
-            
-            // Reset positioning classes
-            tooltip.classList.remove('tooltip-above', 'tooltip-below', 'tooltip-left', 'tooltip-right');
-            
-            // Check if tooltip overflows container on the right
-            if (tooltipRect.right > containerRect.right) {
-                if (elementRect.left - tooltipRect.width > containerRect.left) {
-                    tooltip.classList.add('tooltip-left');
-                } else {
-                    tooltip.classList.add('tooltip-right');
-                }
-                return;
-            }
-            
-            // Check if tooltip overflows container on the left
-            if (tooltipRect.left < containerRect.left) {
-                if (elementRect.right + tooltipRect.width < containerRect.right) {
-                    tooltip.classList.add('tooltip-right');
-                } else {
-                    tooltip.classList.add('tooltip-left');
-                }
-                return;
-            }
-            
-            // Check if tooltip overflows container on the top
-            if (tooltipRect.top < containerRect.top) {
-                tooltip.classList.add('tooltip-below');
-                return;
-            }
-            
-            // Default positioning (above)
-            tooltip.classList.add('tooltip-above');
-        }
-
-        // Add smart positioning to all tooltips
-        document.querySelectorAll('.tech-item').forEach(item => {
-            const tooltip = item.querySelector('.tooltip');
-            if (!tooltip) return;
-            
-            item.addEventListener('mouseenter', function() {
-                // Small delay to let the CSS positioning take effect first
-                setTimeout(() => {
-                    adjustTooltipPosition(tooltip, this);
-                }, 10);
-            });
-        });
-
-        // Add keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                document.getElementById('searchInput').value = '';
-                searchTechnology();
-            }
-        });
-
-        // Add click tracking for analytics (if needed)
-        document.querySelectorAll('.tech-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const techName = this.textContent.trim();
-                console.log('Technology clicked:', techName);
-            });
-        });
-
-        // Mobile touch handling for tooltips
-        if ('ontouchstart' in window) {
-            document.querySelectorAll('.tech-item').forEach(item => {
-                const tooltip = item.querySelector('.tooltip');
-                if (!tooltip) return;
+                await loader.loadData();
+                loader.renderDiagram('diagram-container');
                 
-                item.addEventListener('touchstart', function(e) {
-                    e.preventDefault();
-                    
-                    // Hide all other tooltips
-                    document.querySelectorAll('.tooltip').forEach(t => {
-                        t.style.visibility = 'hidden';
-                        t.style.opacity = '0';
-                    });
-                    
-                    // Show this tooltip
-                    tooltip.style.visibility = 'visible';
-                    tooltip.style.opacity = '1';
-                    
-                    // Adjust positioning
-                    setTimeout(() => {
-                        adjustTooltipPosition(tooltip, this);
-                    }, 10);
-                });
-            });
-            
-            // Hide tooltips when touching elsewhere
-            document.addEventListener('touchstart', function(e) {
-                if (!e.target.closest('.tech-item')) {
-                    document.querySelectorAll('.tooltip').forEach(tooltip => {
-                        tooltip.style.visibility = 'hidden';
-                        tooltip.style.opacity = '0';
-                    });
-                }
-            });
-        }
+                console.log('Interactive diagram loaded successfully!');
+            } catch (error) {
+                console.error('Error loading diagram:', error);
+                document.getElementById('diagram-container').innerHTML = `
+                    <div class="error">
+                        <h2>Error Loading Diagram</h2>
+                        <p>Failed to load the interactive diagram. Please check the console for details.</p>
+                        <p>Error: ${error.message}</p>
+                    </div>
+                `;
+            }
+        });
     </script>
 </body>
 </html>
