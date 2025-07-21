@@ -113,7 +113,7 @@
             line-height: 1.4;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
-            pointer-events: none;
+            pointer-events: auto;
             
             /* Positioning relative to the layer header */
             bottom: 125%;
@@ -132,10 +132,7 @@
             border-color: #2c3e50 transparent transparent transparent;
         }
 
-        .layer-header:hover .layer-tooltip {
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
+        /* Layer tooltip visibility now controlled by JavaScript */
 
         .layer-tooltip h5 {
             color: #3498db;
@@ -223,7 +220,7 @@
             line-height: 1.4;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
-            pointer-events: none;
+            pointer-events: auto;
             
             /* Positioning relative to the category */
             bottom: 100%;
@@ -241,11 +238,7 @@
             border-color: #2c3e50 transparent transparent transparent;
         }
 
-        .category-header:hover + .category-tooltip,
-        .category-header:focus + .category-tooltip {
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
+        /* Category tooltip visibility now controlled by JavaScript */
 
         .category-tooltip h5 {
             color: #3498db;
@@ -312,7 +305,7 @@
             line-height: 1.4;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
-            pointer-events: none;
+            pointer-events: auto;
             
             /* Default positioning - will be adjusted by JavaScript */
             bottom: 125%;
@@ -329,11 +322,6 @@
             left: 50%;
             margin-left: -8px;
             border-color: #2c3e50 transparent transparent transparent;
-        }
-
-        .tech-item:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
         }
 
         /* Dynamic positioning classes */
@@ -393,11 +381,6 @@
             margin-left: 0;
             margin-top: -8px;
             border-color: transparent #2c3e50 transparent transparent;
-        }
-
-        .tech-item:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
         }
 
         .tooltip h5 {
@@ -655,13 +638,38 @@
             
             tooltips.forEach(tooltip => {
                 const element = tooltip.parentElement;
+                let hideTimeout;
                 
+                // Show tooltip on mouse enter
                 element.addEventListener('mouseenter', () => {
+                    clearTimeout(hideTimeout);
+                    tooltip.style.visibility = 'visible';
+                    tooltip.style.opacity = '1';
+                    
                     setTimeout(() => {
-                        if (tooltip.style.visibility === 'visible' || tooltip.style.opacity === '1') {
-                            adjustTooltipPosition(tooltip, element);
-                        }
+                        adjustTooltipPosition(tooltip, element);
                     }, 10);
+                });
+                
+                // Hide tooltip on mouse leave with delay
+                element.addEventListener('mouseleave', () => {
+                    hideTimeout = setTimeout(() => {
+                        tooltip.style.visibility = 'hidden';
+                        tooltip.style.opacity = '0';
+                    }, 300); // 300ms delay
+                });
+                
+                // Keep tooltip visible when hovering over it
+                tooltip.addEventListener('mouseenter', () => {
+                    clearTimeout(hideTimeout);
+                });
+                
+                // Hide tooltip when leaving it
+                tooltip.addEventListener('mouseleave', () => {
+                    hideTimeout = setTimeout(() => {
+                        tooltip.style.visibility = 'hidden';
+                        tooltip.style.opacity = '0';
+                    }, 100); // Shorter delay when leaving tooltip
                 });
             });
         }
