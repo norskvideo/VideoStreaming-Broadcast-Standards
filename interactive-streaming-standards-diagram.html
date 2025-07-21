@@ -624,8 +624,8 @@
         </div>
     </div>
 
-    <script src="js/data-loader.js"></script>
-    <script src="js/validate-data.js"></script>
+    <script src="js/data-loader.js?v=1"></script>
+    <script src="js/validate-data.js?v=1"></script>
     <script>
         // Initialize the diagram when the page loads
         document.addEventListener('DOMContentLoaded', async function() {
@@ -657,12 +657,6 @@
 
         // Smart tooltip positioning to prevent overflow
         function adjustTooltipPosition(tooltip, element) {
-            // Make tooltip temporarily visible to get its dimensions
-            const wasVisible = tooltip.style.visibility === 'visible';
-            tooltip.style.visibility = 'hidden';
-            tooltip.style.opacity = '0';
-            tooltip.style.display = 'block';
-            
             const elementRect = element.getBoundingClientRect();
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
@@ -674,8 +668,13 @@
                 tooltipClass: tooltip.className
             });
             
-            // Reset positioning classes
+            // Reset positioning classes and inline styles
             tooltip.classList.remove('tooltip-above', 'tooltip-below', 'tooltip-left', 'tooltip-right');
+            tooltip.style.left = '';
+            tooltip.style.right = '';
+            tooltip.style.top = '';
+            tooltip.style.bottom = '';
+            tooltip.style.transform = '';
             
             // Calculate tooltip dimensions based on type
             let tooltipWidth = 280; // Default width for tech tooltips
@@ -690,47 +689,75 @@
             if (elementRect.left + tooltipWidth/2 > viewportWidth - 20) {
                 console.log('Would overflow right, positioning left');
                 if (elementRect.left - tooltipWidth > 20) {
-                    tooltip.classList.add('tooltip-left');
-                    console.log('Added tooltip-left class');
+                    tooltip.style.right = '125%';
+                    tooltip.style.top = '50%';
+                    tooltip.style.transform = 'translateY(-50%)';
+                    tooltip.style.left = 'auto';
+                    tooltip.style.bottom = 'auto';
+                    console.log('Positioned left via inline styles');
                 } else {
-                    tooltip.classList.add('tooltip-right');
-                    console.log('Added tooltip-right class');
+                    tooltip.style.left = '125%';
+                    tooltip.style.top = '50%';
+                    tooltip.style.transform = 'translateY(-50%)';
+                    tooltip.style.right = 'auto';
+                    tooltip.style.bottom = 'auto';
+                    console.log('Positioned right via inline styles');
                 }
             }
             // Check if tooltip would overflow on the left
             else if (elementRect.left - tooltipWidth/2 < 20) {
                 console.log('Would overflow left, positioning right');
                 if (elementRect.right + tooltipWidth < viewportWidth - 20) {
-                    tooltip.classList.add('tooltip-right');
-                    console.log('Added tooltip-right class');
+                    tooltip.style.left = '125%';
+                    tooltip.style.top = '50%';
+                    tooltip.style.transform = 'translateY(-50%)';
+                    tooltip.style.right = 'auto';
+                    tooltip.style.bottom = 'auto';
+                    console.log('Positioned right via inline styles');
                 } else {
-                    tooltip.classList.add('tooltip-left');
-                    console.log('Added tooltip-left class');
+                    tooltip.style.right = '125%';
+                    tooltip.style.top = '50%';
+                    tooltip.style.transform = 'translateY(-50%)';
+                    tooltip.style.left = 'auto';
+                    tooltip.style.bottom = 'auto';
+                    console.log('Positioned left via inline styles');
                 }
             }
             // Check if tooltip would overflow on the top
             else if (elementRect.top - tooltipHeight < 20) {
                 console.log('Would overflow top, positioning below');
-                tooltip.classList.add('tooltip-below');
+                tooltip.style.top = '100%';
+                tooltip.style.bottom = 'auto';
+                tooltip.style.left = '0';
+                tooltip.style.right = 'auto';
+                tooltip.style.transform = 'none';
             }
             // Check if tooltip would overflow on the bottom
             else if (elementRect.bottom + tooltipHeight > viewportHeight - 20) {
                 console.log('Would overflow bottom, positioning above');
-                tooltip.classList.add('tooltip-above');
+                tooltip.style.bottom = '100%';
+                tooltip.style.top = 'auto';
+                tooltip.style.left = '0';
+                tooltip.style.right = 'auto';
+                tooltip.style.transform = 'none';
             }
             // Default positioning (above)
             else {
                 console.log('Default positioning above');
-                tooltip.classList.add('tooltip-above');
+                tooltip.style.bottom = '100%';
+                tooltip.style.top = 'auto';
+                tooltip.style.left = '0';
+                tooltip.style.right = 'auto';
+                tooltip.style.transform = 'none';
             }
             
-            console.log('Final tooltip classes:', tooltip.className);
-            
-            // Restore visibility
-            if (wasVisible) {
-                tooltip.style.visibility = 'visible';
-                tooltip.style.opacity = '1';
-            }
+            console.log('Final inline styles:', {
+                left: tooltip.style.left,
+                right: tooltip.style.right,
+                top: tooltip.style.top,
+                bottom: tooltip.style.bottom,
+                transform: tooltip.style.transform
+            });
         }
 
         // Add smart positioning to all tooltips
