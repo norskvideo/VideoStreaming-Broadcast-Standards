@@ -74,6 +74,69 @@
             transition: all 0.3s ease;
         }
 
+        .layer-header:hover {
+            opacity: 0.9;
+        }
+
+        .layer-tooltip {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            z-index: 99999;
+            background: #2c3e50;
+            color: white;
+            text-align: left;
+            padding: 15px;
+            border-radius: 8px;
+            width: 350px;
+            max-width: 90vw;
+            font-size: 0.85em;
+            line-height: 1.4;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            
+            /* Positioning relative to the layer */
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .layer-tooltip::after {
+            content: "";
+            position: absolute;
+            border-width: 8px;
+            border-style: solid;
+            top: 100%;
+            left: 50%;
+            margin-left: -8px;
+            border-color: #2c3e50 transparent transparent transparent;
+        }
+
+        .layer-header:hover .layer-tooltip {
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+        .layer-tooltip h5 {
+            color: #3498db;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+
+        .layer-tooltip p {
+            margin-bottom: 8px;
+        }
+
+        .layer-tooltip ul {
+            margin: 8px 0;
+            padding-left: 20px;
+        }
+
+        .layer-tooltip li {
+            margin-bottom: 4px;
+        }
+
         .application { background: linear-gradient(135deg, #ff6b6b, #ee5a52); color: white; }
         .adaptive { background: linear-gradient(135deg, #4ecdc4, #44a08d); color: white; }
         .transport { background: linear-gradient(135deg, #45b7d1, #3498db); color: white; }
@@ -451,6 +514,17 @@
             <div class="layer" data-layer="application">
                 <div class="layer-header application">
                     APPLICATION LAYER - User Experience & Business Logic
+                    <div class="layer-tooltip">
+                        <h5>Application Layer</h5>
+                        <p>The top layer handles user-facing features and business logic that directly impact the viewer experience.</p>
+                        <p><strong>Key Functions:</strong></p>
+                        <ul>
+                            <li>Content protection and DRM systems</li>
+                            <li>Content delivery network optimization</li>
+                            <li>User analytics and quality monitoring</li>
+                            <li>Business logic and monetization</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="layer-content">
                     <div class="category">
@@ -598,6 +672,17 @@
             <div class="layer" data-layer="adaptive">
                 <div class="layer-header adaptive">
                     ADAPTIVE STREAMING LAYER - Client-Side Adaptation & Manifest Management
+                    <div class="layer-tooltip">
+                        <h5>Adaptive Streaming Layer</h5>
+                        <p>Manages how video content adapts to varying network conditions and device capabilities in real-time.</p>
+                        <p><strong>Key Functions:</strong></p>
+                        <ul>
+                            <li>Dynamic bitrate adaptation based on network conditions</li>
+                            <li>Manifest file management (MPD, M3U8)</li>
+                            <li>Multi-protocol support (DASH, HLS, CMAF)</li>
+                            <li>Client-side quality selection algorithms</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="layer-content">
                     <div class="category">
@@ -775,6 +860,17 @@
             <div class="layer" data-layer="transport">
                 <div class="layer-header transport">
                     STREAMING TRANSPORT LAYER - Protocol & Session Management
+                    <div class="layer-tooltip">
+                        <h5>Streaming Transport Layer</h5>
+                        <p>Handles the reliable delivery of video data across networks using various protocols optimized for different use cases.</p>
+                        <p><strong>Key Functions:</strong></p>
+                        <ul>
+                            <li>HTTP-based streaming protocols (DASH, HLS)</li>
+                            <li>Real-time communication (WebRTC, RTP)</li>
+                            <li>Session management and connection handling</li>
+                            <li>Protocol-specific error recovery and optimization</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="layer-content">
                     <div class="category">
@@ -960,6 +1056,17 @@
             <div class="layer" data-layer="reliable-udp">
                 <div class="layer-header reliable-udp">
                     RELIABLE UDP LAYER - Enhanced Transport Protocols
+                    <div class="layer-tooltip">
+                        <h5>Reliable UDP Layer</h5>
+                        <p>Provides enhanced UDP-based transport protocols that add reliability features while maintaining low latency for professional streaming.</p>
+                        <p><strong>Key Functions:</strong></p>
+                        <ul>
+                            <li>Low-latency reliable transport (SRT, RIST)</li>
+                            <li>Error correction and packet recovery</li>
+                            <li>Professional contribution and distribution</li>
+                            <li>Network resilience and adaptation</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="layer-content">
                     <div class="category">
@@ -1159,6 +1266,17 @@
             <div class="layer" data-layer="container">
                 <div class="layer-header container">
                     CONTAINER LAYER - Media Packaging & Metadata
+                    <div class="layer-tooltip">
+                        <h5>Container Layer</h5>
+                        <p>Defines file formats that package compressed audio, video, and metadata into organized structures for storage and transmission.</p>
+                        <p><strong>Key Functions:</strong></p>
+                        <ul>
+                            <li>Media stream synchronization and timing</li>
+                            <li>Metadata storage and organization</li>
+                            <li>Cross-platform compatibility</li>
+                            <li>Streaming-optimized packaging formats</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="layer-content">
                     <div class="category">
@@ -1344,6 +1462,17 @@
             <div class="layer" data-layer="codec">
                 <div class="layer-header codec">
                     CODEC LAYER - Video & Audio Compression
+                    <div class="layer-tooltip">
+                        <h5>Codec Layer</h5>
+                        <p>Handles the compression and decompression of audio and video data to reduce file sizes while maintaining quality.</p>
+                        <p><strong>Key Functions:</strong></p>
+                        <ul>
+                            <li>Video compression algorithms (H.264, H.265, AV1)</li>
+                            <li>Audio compression (AAC, Opus)</li>
+                            <li>Quality vs. bandwidth optimization</li>
+                            <li>Hardware acceleration support</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="layer-content">
                     <div class="category">
@@ -1553,6 +1682,17 @@
             <div class="layer" data-layer="network">
                 <div class="layer-header network">
                     NETWORK LAYER - Internet Protocol & Routing
+                    <div class="layer-tooltip">
+                        <h5>Network Layer</h5>
+                        <p>Manages the fundamental protocols and routing that enable data transmission across the internet and local networks.</p>
+                        <p><strong>Key Functions:</strong></p>
+                        <ul>
+                            <li>IP addressing and packet routing</li>
+                            <li>Quality of Service (QoS) management</li>
+                            <li>Network congestion control</li>
+                            <li>Protocol selection (TCP, UDP, QUIC)</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="layer-content">
                     <div class="category">
@@ -1716,6 +1856,17 @@
             <div class="layer" data-layer="physical">
                 <div class="layer-header physical">
                     PHYSICAL LAYER - Hardware Interfaces & Connectivity
+                    <div class="layer-tooltip">
+                        <h5>Physical Layer</h5>
+                        <p>Defines the hardware interfaces, cables, and physical connections that enable data transmission between devices.</p>
+                        <p><strong>Key Functions:</strong></p>
+                        <ul>
+                            <li>Professional video interfaces (SDI, HDMI)</li>
+                            <li>Network connectivity (Ethernet, WiFi, 5G)</li>
+                            <li>Broadcast transmission infrastructure</li>
+                            <li>Hardware compatibility and standards</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="layer-content">
                     <div class="category">
