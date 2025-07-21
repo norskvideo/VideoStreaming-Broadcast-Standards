@@ -729,20 +729,26 @@
             tooltips.forEach((tooltip, index) => {
                 const element = tooltip.parentElement;
                 let hideTimeout;
+                let showTimeout;
                 
-                // Show tooltip on mouse enter
+                // Show tooltip on mouse enter with delay
                 element.addEventListener('mouseenter', () => {
                     clearTimeout(hideTimeout);
-                    tooltip.style.visibility = 'visible';
-                    tooltip.style.opacity = '1';
+                    clearTimeout(showTimeout);
                     
-                    setTimeout(() => {
-                        adjustTooltipPosition(tooltip, element);
-                    }, 10);
+                    showTimeout = setTimeout(() => {
+                        tooltip.style.visibility = 'visible';
+                        tooltip.style.opacity = '1';
+                        
+                        setTimeout(() => {
+                            adjustTooltipPosition(tooltip, element);
+                        }, 10);
+                    }, 200); // 200ms delay before showing tooltip
                 });
                 
                 // Hide tooltip on mouse leave with delay
                 element.addEventListener('mouseleave', () => {
+                    clearTimeout(showTimeout);
                     hideTimeout = setTimeout(() => {
                         tooltip.style.visibility = 'hidden';
                         tooltip.style.opacity = '0';
