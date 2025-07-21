@@ -727,29 +727,55 @@
             // Check if tooltip would overflow on the top
             else if (elementRect.top - tooltipHeight < 20) {
                 console.log('Would overflow top, positioning below');
-                tooltip.style.top = '100%';
-                tooltip.style.bottom = 'auto';
-                tooltip.style.left = '0';
-                tooltip.style.right = 'auto';
-                tooltip.style.transform = 'none';
+                if (tooltip.classList.contains('layer-tooltip')) {
+                    tooltip.style.top = '125%';
+                    tooltip.style.bottom = 'auto';
+                    tooltip.style.left = '50%';
+                    tooltip.style.right = 'auto';
+                    tooltip.style.transform = 'translateX(-50%)';
+                } else {
+                    tooltip.style.top = '100%';
+                    tooltip.style.bottom = 'auto';
+                    tooltip.style.left = '0';
+                    tooltip.style.right = 'auto';
+                    tooltip.style.transform = 'none';
+                }
             }
             // Check if tooltip would overflow on the bottom
             else if (elementRect.bottom + tooltipHeight > viewportHeight - 20) {
                 console.log('Would overflow bottom, positioning above');
-                tooltip.style.bottom = '100%';
-                tooltip.style.top = 'auto';
-                tooltip.style.left = '0';
-                tooltip.style.right = 'auto';
-                tooltip.style.transform = 'none';
+                if (tooltip.classList.contains('layer-tooltip')) {
+                    tooltip.style.bottom = '125%';
+                    tooltip.style.top = 'auto';
+                    tooltip.style.left = '50%';
+                    tooltip.style.right = 'auto';
+                    tooltip.style.transform = 'translateX(-50%)';
+                } else {
+                    tooltip.style.bottom = '100%';
+                    tooltip.style.top = 'auto';
+                    tooltip.style.left = '0';
+                    tooltip.style.right = 'auto';
+                    tooltip.style.transform = 'none';
+                }
             }
             // Default positioning (above)
             else {
                 console.log('Default positioning above');
-                tooltip.style.bottom = '100%';
-                tooltip.style.top = 'auto';
-                tooltip.style.left = '0';
-                tooltip.style.right = 'auto';
-                tooltip.style.transform = 'none';
+                if (tooltip.classList.contains('layer-tooltip')) {
+                    // Layer tooltips have different default positioning
+                    tooltip.style.bottom = '125%';
+                    tooltip.style.top = 'auto';
+                    tooltip.style.left = '50%';
+                    tooltip.style.right = 'auto';
+                    tooltip.style.transform = 'translateX(-50%)';
+                } else {
+                    // Category and tech tooltips
+                    tooltip.style.bottom = '100%';
+                    tooltip.style.top = 'auto';
+                    tooltip.style.left = '0';
+                    tooltip.style.right = 'auto';
+                    tooltip.style.transform = 'none';
+                }
             }
             
             console.log('Final inline styles:', {
