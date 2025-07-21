@@ -122,6 +122,31 @@ The maturity field will enable:
 
 ## 🔧 Step-by-Step Editing Guide
 
+### 0. Setting Up Your Local Environment
+
+**Important:** Due to browser security restrictions, you'll need a local web server to test your changes.
+
+**Quick Setup (Python):**
+```bash
+# Navigate to the project directory
+cd VideoStreaming-Broadcast-Standards
+
+# Start a local server (recommended)
+python start-local-server.py
+
+# Or manually:
+python -m http.server 8000
+
+# Open in browser
+# http://localhost:8000/interactive-streaming-standards-diagram.html
+```
+
+**Alternative (Node.js):**
+```bash
+npx http-server
+# Then open: http://localhost:8080/interactive-streaming-standards-diagram.html
+```
+
 ### 1. Adding a New Technology
 
 To add a new technology to an existing category:

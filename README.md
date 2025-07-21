@@ -23,7 +23,38 @@ Contributions are welcome, particularly where we don't have latest standards doc
 - **Community-Driven:** Designed for easy contributions from industry experts.
 
 ## Usage
-Open `interactive-streaming-standards-diagram.html` in any modern web browser. No build or server required.
+
+### Option 1: GitHub Pages (Recommended)
+The easiest way to view the diagram is through GitHub Pages:
+**[Launch Interactive Diagram](https://htmlpreview.github.io/?https://github.com/dom-robinson/VideoStreaming-Broadcast-Standards/blob/master/interactive-streaming-standards-diagram.html)**
+
+### Option 2: Local Development Server
+For local development, you'll need a simple web server due to browser CORS restrictions:
+
+**Using Python (if installed):**
+```bash
+# Option A: Use our helper script (recommended)
+python start-local-server.py
+
+# Option B: Manual server
+python -m http.server 8000
+```
+Then open: `http://localhost:8000/interactive-streaming-standards-diagram.html`
+
+**Using Node.js (if installed):**
+```bash
+npx http-server
+```
+Then open: `http://localhost:8080/interactive-streaming-standards-diagram.html`
+
+**Using PHP (if installed):**
+```bash
+php -S localhost:8000
+```
+Then open: `http://localhost:8000/interactive-streaming-standards-diagram.html`
+
+### Why a Server is Needed
+Modern browsers block local file access for security reasons. The diagram uses `fetch()` to load JSON data, which requires HTTP/HTTPS protocol.
 
 ## Contributing
 **Pull requests are welcome!**
