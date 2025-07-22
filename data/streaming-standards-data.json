@@ -273,16 +273,7 @@
               "name": "Stream Analytics",
               "description": "Real-time analysis of viewer behavior, content performance, and system health. Enables data-driven optimization and personalization.",
               "maturity": "",
-              "links": [
-                {
-                  "text": "Industry Overview",
-                  "url": "https://www.wowza.com/blog/streaming-analytics"
-                },
-                {
-                  "text": "Real-time Analytics Guide",
-                  "url": "https://www.akamai.com/blog/performance/streaming-analytics"
-                }
-              ],
+              "links": [],
               "searchTerms": [
                 "analytics",
                 "streaming",
