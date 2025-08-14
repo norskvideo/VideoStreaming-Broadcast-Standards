@@ -7,9 +7,9 @@ Note that this image is only periodically updated. To see what **latest** data w
 
 Contributions are welcome, particularly where we don't have latest standards documentation links in the pop up modals for each element in the chart.
 
-[<img src="htmlpreview_github_io__.jpg" alt="Interactive Video Streaming Standards Diagram Preview" width="800">](https://htmlpreview.github.io/?https://github.com/dom-robinson/VideoStreaming-Broadcast-Standards/blob/master/interactive-streaming-standards-diagram.html)
+[<img src="htmlpreview_github_io__.jpg" alt="Interactive Video Streaming Standards Diagram Preview" width="800">](https://htmlpreview.github.io/?https://github.com/norskvideo/VideoStreaming-Broadcast-Standards/blob/master/interactive-streaming-standards-diagram.html)
 
-**[Launch Interactive Diagram](https://htmlpreview.github.io/?https://github.com/dom-robinson/VideoStreaming-Broadcast-Standards/blob/master/interactive-streaming-standards-diagram.html)**
+**[Launch Interactive Diagram](https://htmlpreview.github.io/?https://github.com/norskvideo/VideoStreaming-Broadcast-Standards/blob/master/interactive-streaming-standards-diagram.html)**
 
 
 
@@ -26,7 +26,7 @@ Contributions are welcome, particularly where we don't have latest standards doc
 
 ### Option 1: GitHub Pages (Recommended)
 The easiest way to view the diagram is through GitHub Pages:
-**[Launch Interactive Diagram](https://htmlpreview.github.io/?https://github.com/dom-robinson/VideoStreaming-Broadcast-Standards/blob/master/interactive-streaming-standards-diagram.html)**
+**[Launch Interactive Diagram](https://htmlpreview.github.io/?https://github.com/norskvideo/VideoStreaming-Broadcast-Standards/blob/master/interactive-streaming-standards-diagram.html)**
 
 ### Option 2: Local Development Server
 For local development, you'll need a simple web server due to browser CORS restrictions:
@@ -92,4 +92,4 @@ You may use and reference this chart with attribution, but you may not create de
 
 ---
 
-**Created for the video engineering and broadcast community.** 
+**Created for the video engineering and broadcast community.**

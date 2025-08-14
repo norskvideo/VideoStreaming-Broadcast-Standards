@@ -131,7 +131,7 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
             pointer-events: auto;
-            
+
             /* Positioning relative to the layer header */
             bottom: 125%;
             left: 50%;
@@ -228,7 +228,7 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
             pointer-events: auto;
-            
+
             /* Positioning relative to the category */
             bottom: 100%;
             left: 0;
@@ -305,7 +305,7 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
             pointer-events: auto;
-            
+
             /* Default positioning - will be adjusted by JavaScript */
             bottom: 125%;
             left: 50%;
@@ -493,17 +493,17 @@
             .layer-content {
                 grid-template-columns: 1fr;
             }
-            
+
             .tooltip {
                 width: 250px;
                 max-width: 85vw;
                 font-size: 0.8em;
             }
-            
+
             .header h1 {
                 font-size: 2em;
             }
-            
+
             .search-box input {
                 width: 250px;
             }
@@ -580,7 +580,7 @@
                                 <div class="header-logo">
                         <img src="NorskNoNLightSmall.png" alt="NorskNoN Logo">
                         <div class="contribute-link">
-                            <a href="https://github.com/dom-robinson/VideoStreaming-Broadcast-Standards/blob/master/CONTRIBUTING.md" target="_blank">Contribute here</a>
+                            <a href="https://github.com/norskvideo/VideoStreaming-Broadcast-Standards/blob/master/CONTRIBUTING.md" target="_blank">Contribute here</a>
                         </div>
                     </div>
         </div>
@@ -594,7 +594,7 @@
         </div>
 
         <div class="footer">
-            <p>Published by Norsk as a free learning tool - see <a href="https://github.com/dom-robinson/VideoStreaming-Broadcast-Standards" target="_blank">GitHub repository</a> for contributions and suggestions</p>
+            <p>Published by Norsk as a free learning tool - see <a href="https://github.com/norskvideo/VideoStreaming-Broadcast-Standards" target="_blank">GitHub repository</a> for contributions and suggestions</p>
             <p class="version-info">Version <span id="version-number">loading...</span> | Last updated: <span id="last-updated">loading...</span></p>
         </div>
     </div>
@@ -608,13 +608,13 @@
             try {
                 const loader = new StreamingStandardsDataLoader();
                 window.streamingStandardsLoader = loader; // Make it globally accessible
-                
+
                 await loader.loadData();
                 loader.renderDiagram('diagram-container');
-                
+
                 // Display version information
                 displayVersionInfo(loader.data);
-                
+
                 // Initialize smart tooltip positioning after a short delay to ensure DOM is ready
                 setTimeout(() => {
                     initializeTooltipPositioning();
@@ -636,9 +636,9 @@
             const elementRect = element.getBoundingClientRect();
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
-            
 
-            
+
+
             // Reset positioning classes and inline styles
             tooltip.classList.remove('tooltip-above', 'tooltip-below', 'tooltip-left', 'tooltip-right');
             tooltip.style.left = '';
@@ -646,7 +646,7 @@
             tooltip.style.top = '';
             tooltip.style.bottom = '';
             tooltip.style.transform = '';
-            
+
             // Calculate tooltip dimensions based on type
             let tooltipWidth = 280; // Default width for tech tooltips
             if (tooltip.classList.contains('category-tooltip')) {
@@ -655,7 +655,7 @@
                 tooltipWidth = 350;
             }
             const tooltipHeight = 150; // Approximate height
-            
+
             // Check if tooltip would overflow on the right
             if (elementRect.left + tooltipWidth/2 > viewportWidth - 20) {
                 if (elementRect.left - tooltipWidth > 20) {
@@ -747,34 +747,34 @@
                     tooltip.style.transform = 'none';
                 }
             }
-            
+
 
         }
 
         // Add smart positioning to all tooltips
         function initializeTooltipPositioning() {
             const tooltips = document.querySelectorAll('.tooltip, .category-tooltip, .layer-tooltip');
-            
+
             tooltips.forEach((tooltip, index) => {
                 const element = tooltip.parentElement;
                 let hideTimeout;
                 let showTimeout;
-                
+
                 // Show tooltip on mouse enter with delay
                 element.addEventListener('mouseenter', () => {
                     clearTimeout(hideTimeout);
                     clearTimeout(showTimeout);
-                    
+
                     showTimeout = setTimeout(() => {
                         tooltip.style.visibility = 'visible';
                         tooltip.style.opacity = '1';
-                        
+
                         setTimeout(() => {
                             adjustTooltipPosition(tooltip, element);
                         }, 10);
                     }, 500); // 500ms delay before showing tooltip
                 });
-                
+
                 // Hide tooltip on mouse leave with delay
                 element.addEventListener('mouseleave', () => {
                     clearTimeout(showTimeout);
@@ -783,12 +783,12 @@
                         tooltip.style.opacity = '0';
                     }, 300); // 300ms delay
                 });
-                
+
                 // Keep tooltip visible when hovering over it
                 tooltip.addEventListener('mouseenter', () => {
                     clearTimeout(hideTimeout);
                 });
-                
+
                 // Hide tooltip when leaving it
                 tooltip.addEventListener('mouseleave', () => {
                     hideTimeout = setTimeout(() => {
@@ -804,11 +804,11 @@
             if (data && data.metadata) {
                 const versionElement = document.getElementById('version-number');
                 const lastUpdatedElement = document.getElementById('last-updated');
-                
+
                 if (versionElement && data.metadata.version) {
                     versionElement.textContent = data.metadata.version;
                 }
-                
+
                 if (lastUpdatedElement && data.metadata.lastUpdated) {
                     lastUpdatedElement.textContent = data.metadata.lastUpdated;
                 }
@@ -819,13 +819,13 @@
         function searchTechnology() {
             const searchInput = document.getElementById('searchInput');
             const query = searchInput.value.toLowerCase();
-            
+
             if (window.streamingStandardsLoader) {
                 if (query.length < 2) {
                     window.streamingStandardsLoader.showAllItems();
                     return;
                 }
-                
+
                 const results = window.streamingStandardsLoader.searchTechnologies(query);
                 window.streamingStandardsLoader.displaySearchResults(results, query);
             }
