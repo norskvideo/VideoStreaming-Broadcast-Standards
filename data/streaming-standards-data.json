@@ -557,7 +557,7 @@
           ],
           "technologies": [
             {
-              "name": "CMAF Protocol",
+              "name": "CMAF Format",
               "description": "Unified format for DASH and HLS delivery. Reduces storage costs by 75%. Single encode for multiple protocols. Supports low-latency streaming.",
               "links": [
                 {
